@@ -1,0 +1,71 @@
+{
+  "versions": {
+    "cavern": "cavern - Survex 1.4.24",
+    "dump3d": "dump3d - Survex 1.4.24",
+    "extend": "extend - Survex 1.4.24"
+  },
+  "commands": [
+    [
+      "cavern",
+      "--no-auxiliary-files",
+      "--output=survey.3d",
+      "survey.svx"
+    ],
+    [
+      "cavern",
+      "--no-auxiliary-files",
+      "--3d-version=3",
+      "--output=legacy.3d",
+      "legacy.svx"
+    ],
+    [
+      "cavern",
+      "--output=closure.3d",
+      "legacy.svx"
+    ],
+    [
+      "extend",
+      "survey.3d",
+      "extended.3d"
+    ]
+  ],
+  "dumps": {
+    "survey.legs.dump": [
+      "--legs",
+      "--show-dates",
+      "survey.3d"
+    ],
+    "survey.lines.dump": [
+      "--show-dates",
+      "survey.3d"
+    ],
+    "legacy.legs.dump": [
+      "--legs",
+      "--show-dates",
+      "legacy.3d"
+    ],
+    "closure.legs.dump": [
+      "--legs",
+      "--show-dates",
+      "closure.3d"
+    ],
+    "extended.legs.dump": [
+      "--legs",
+      "--show-dates",
+      "extended.3d"
+    ]
+  },
+  "sha256": {
+    "closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+    "closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+    "extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+    "extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+    "legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+    "legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+    "legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+    "survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+    "survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+    "survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+    "survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb"
+  }
+}

@@ -1,0 +1,16 @@
+build==1.6.1
+iniconfig==2.3.1
+librt==0.16.0
+mypy==1.20.2
+mypy-extensions==1.1.0
+numpy==2.3.5
+packaging==26.3
+pathspec==1.1.1
+pluggy==1.7.0
+pygments==2.21.0
+pyproject-hooks==1.3.3
+pytest==9.1.1
+ruff==0.17.2
+scipy==1.16.3
+-e .
+typing-extensions==4.16.0

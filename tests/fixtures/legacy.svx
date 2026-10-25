@@ -1,0 +1,7 @@
+; No shot date, unnamed root survey, real closure error and legacy style omission.
+*title "Legacy closure"
+*data normal from to tape compass clino
+*fix 1 0 0 0
+1 2 10 0 0
+2 3 10 90 0
+3 1 14.15 225 0

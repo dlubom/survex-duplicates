@@ -1,0 +1,23 @@
+{
+  "title": "Tatra Cave Registry \u2014 complete spatial model snapshot",
+  "upstream_repository": "https://github.com/dlubom/Jaskiniowy-Kataster-Tatr-Zachodnich",
+  "source_checkout_revision": "a41faea66c3c3170a96010ef7314b375875cfced",
+  "origin_note": "Preserved locally generated model snapshot; not an upstream binary release. The checkout revision identifies its source context, not a reproducibility guarantee for the compiled binary.",
+  "snapshot_date": "2026-10-25",
+  "attribution": "Tatra Cave Registry contributors",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "model_modified": false,
+  "dump_generator": "dump3d - Survex 1.4.24",
+  "dump_command": [
+    "dump3d",
+    "--legs",
+    "--show-dates",
+    "examples/kataster/KATASTER.3d"
+  ],
+  "sha256": {
+    "KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+    "KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+    "LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679"
+  }
+}

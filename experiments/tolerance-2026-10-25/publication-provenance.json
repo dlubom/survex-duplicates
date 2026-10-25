@@ -1,0 +1,42 @@
+{
+  "reason": "Publication portability and English documentation; remove contributor-specific machine paths while preserving numerical evidence.",
+  "original_artifact_sha256": {
+    "experiments/tolerance-2026-10-25/results.json": "c241af6a6a0afe3481b89fbf25849af182696ac1159c7bbd2c43f25115031522",
+    "experiments/tolerance-2026-10-25/verification.json": "04c04dc41da002d0568f8c034c1fac38fa19d1cd8bfd97fbc7a1989aedf1967f",
+    "benchmarks/kataster-results/verification.json": "66580ba5ef3e9e488a0d36c08519f7a651eba3b24a4b646f0cfac8f56e28e557",
+    "benchmarks/results.json": "419197606040472c9cfd088fe651052c2958a80338e82bb23fd577c2b6df4ca1",
+    "experiments/tolerance-2026-10-25/README.md": "9713bca81a7fd982f3cf4dc1bf160719bee5806eb379947d8d45589d38fd667c"
+  },
+  "redacted_fields": {
+    "results.json": [
+      "source",
+      "command",
+      "dump3d_version"
+    ],
+    "verification.json": [
+      "source",
+      "command",
+      "dump3d_version",
+      "results_sha256 (updated to the path-redacted results artifact)"
+    ],
+    "benchmarks/kataster-results/verification.json": [
+      "input",
+      "reference_sha256 (updated reference artifact)",
+      "runs.include_duplicates=True (explicit historical selection policy)"
+    ],
+    "benchmarks/results.json": [
+      "runs.include_duplicates=True (explicit historical selection policy)",
+      "selection_note"
+    ]
+  },
+  "unchanged_evidence": [
+    "binary SHA-256",
+    "dump SHA-256 and dump bytes",
+    "leg records, station names and coordinates",
+    "pair IDs, orientation, squared errors and rules",
+    "all numeric measurements and timing values",
+    "pairs.csv and historical CSV report bytes"
+  ],
+  "source_repository": "https://github.com/dlubom/Jaskiniowy-Kataster-Tatr-Zachodnich",
+  "data_license": "CC-BY-SA-4.0"
+}

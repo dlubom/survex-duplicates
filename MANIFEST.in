@@ -1,0 +1,10 @@
+include *.md
+include requirements-tested.txt
+include znajdz_duplikaty.py
+include LICENSE
+include examples/kataster/LICENCE
+recursive-include examples *.md *.3d *.dump *.json *.csv
+recursive-include docs *.md
+recursive-include tests *.py *.svx *.3d *.dump *.json *.md
+recursive-include benchmarks *.py *.md *.json *.csv
+recursive-include experiments *.py *.md *.json *.dump *.csv

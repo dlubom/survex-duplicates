@@ -1,0 +1,24 @@
+; Purpose-built detector fixture. Generated outputs are committed alongside this source.
+*title "Detektor — rzeczywiste fixture"
+*set names _-[],"
+*begin p],"q[
+*date 2024.02.13
+*data cartesian from to dx dy dz
+*fix a 0 0 0
+a b 1 0 0
+*fix c 0 0 0
+*flags duplicate
+c d 1 0 0
+*flags not duplicate
+*fix e 1 0 0
+*date 2024.12.07-2024.12.09
+e f -1 0 0
+*flags splay surface duplicate
+f .. 0 1 0
+*flags not splay surface duplicate
+b g 0 1 0
+g a -1 -1.01 0
+*data passage station left right up down
+a 1 2 3 4
+b 2 3 4 5
+*end p],"q[
