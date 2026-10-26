@@ -117,3 +117,36 @@ and 0 Spec findings**. A fresh exported copy passed **246 tests, 0 skipped**,
 mypy and Ruff after a normal pip package installation. Installed CLI execution
 outside the source directory produced byte-identical demo reports.
 Details: [publication-review.md](publication-review.md).
+
+## uv migration checks (2026-10-26)
+
+The migration was verified with uv 0.11.8 in a fresh Python 3.12.13 environment
+on macOS arm64, using Survex 1.4.24. The lockfile retains NumPy 2.3.5,
+SciPy 1.16.3, pytest 9.1.1, mypy 1.20.2 and Ruff 0.17.2. Development tools
+are now in the default `dev` dependency group; `uv build` supplies the build
+frontend. The historical `requirements-tested.txt` remains unchanged.
+
+- `uv sync --locked`, `uv lock --check` and `uv sync --locked --check` passed;
+  the environment check reported no changes needed.
+- `uv run --locked pytest -q -rs`: **246 passed, 0 skipped**, 11.63 seconds,
+  including real binary integration tests.
+- Strict mypy passed for all nine production modules. Ruff lint passed and
+  the formatting check passed for all 25 Python files.
+- Full registry verification passed for all eight tolerance/filter settings,
+  including complete pairs, orientations and both endpoint errors. The input
+  SHA-256 was unchanged before and after analysis. New reports are in
+  `reports/verification/`.
+- All twelve default-selection and twelve explicit-audit benchmark cases
+  passed their complete pair/orientation checks. New measurements are in
+  `reports/benchmark-default.json` and `reports/benchmark-audit.json`;
+  historical measurements were not replaced.
+- `uv build` produced a wheel and source distribution. The source distribution
+  includes `uv.lock`, `.python-version` and `pyproject.toml`.
+- A separate `uv sync --locked --no-dev` environment contained only the project,
+  NumPy and SciPy. Its text-demo report was byte-identical to the bundled
+  default reference (218 pairs). Installing the built wheel into that environment
+  and running its CLI outside the source tree produced the same report.
+
+The commands above are documented in [the development workflow](../README.md#development-and-verification).
+GitHub Actions is configured to run the locked checks on Python 3.12, 3.13 and
+3.14 with Survex installed; the local checks recorded here used Python 3.12.13.

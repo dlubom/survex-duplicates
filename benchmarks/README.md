@@ -3,9 +3,14 @@
 Publication measurements were made on Apple M4 (10 logical cores), Mac16,10, 16 GiB RAM, macOS 27.0.1 arm64. Python 3.12.14, NumPy 2.3.5, SciPy 1.16.3. Each case runs sequentially in a fresh process.
 
 ```bash
-python -m benchmarks.run --out benchmarks/publication-results.json
-python -m benchmarks.run --include-duplicates --out benchmarks/audit-results.json
+uv sync --locked
+mkdir -p reports
+uv run --locked python -m benchmarks.run --out reports/benchmark-default.json
+uv run --locked python -m benchmarks.run --include-duplicates --out reports/benchmark-audit.json
 ```
+
+New measurements are saved separately in the ignored `reports/` directory.
+The publication and historical results below remain unchanged.
 
 Seed 20261025; batch size 1. Inputs are generated as full text dumps, then read by the production reader. Search/write time includes CSV formatting, flush, fsync and atomic publication. Peak RSS is ru_maxrss for the entire fresh process, including imports, generation, reading and verification. macOS reports bytes; Linux KiB is converted to bytes. Measurements are single observations, not promised runtime limits.
 

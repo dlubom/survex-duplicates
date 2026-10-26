@@ -16,22 +16,23 @@ Matches are candidates for human review, not automatic proof of erroneous data.
 
 The repository includes a complete registry model with **18,584 legs**, its
 text dump and verified example reports. The text demo works without Survex.
-Python 3.12 or newer is required.
+Python 3.12 or newer is required. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+first; it manages the project's Python environment and locked dependencies.
 
 ```bash
 git clone https://github.com/dlubom/survex-duplicates.git
 cd survex-duplicates
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install .
+uv sync --locked --no-dev
 
-python -m survex_duplicates examples/kataster/KATASTER.legs.dump --out duplicates.csv
-python -m survex_duplicates examples/kataster/KATASTER.legs.dump --exclude-splays --out duplicates-without-splays.csv
+uv run --locked --no-dev survex-duplicates examples/kataster/KATASTER.legs.dump --out duplicates.csv
+uv run --locked --no-dev survex-duplicates examples/kataster/KATASTER.legs.dump --exclude-splays --out duplicates-without-splays.csv
 ```
 
-On Windows, activate the environment with `.venv\Scripts\activate`.
-You can use `survex-duplicates` in place of `python -m survex_duplicates`.
-The legacy `python znajdz_duplikaty.py ...` wrapper invokes the same CLI.
+These commands also work on Windows; environment activation is unnecessary.
+The `.python-version` file selects Python 3.12, which uv downloads if needed.
+You can use `uv run --locked --no-dev python -m survex_duplicates` in place of
+`uv run --locked --no-dev survex-duplicates`. The legacy
+`uv run --locked --no-dev python znajdz_duplikaty.py ...` wrapper invokes the same CLI.
 
 Expected results for the bundled snapshot:
 
@@ -57,10 +58,10 @@ Binary `.3d` input additionally requires Survex's `dump3d` executable in PATH,
 with support for `--legs` and `--show-dates`. Tested with Survex 1.4.24.
 
 ```bash
-survex-duplicates examples/kataster/KATASTER.3d --out duplicates-binary.csv
-survex-duplicates examples/kataster/KATASTER.legs.dump --epsilon 0.05 --out duplicates-5cm.csv
-survex-duplicates examples/kataster/KATASTER.3d --include-duplicates --out duplicates-audit.csv
-survex-duplicates --help
+uv run --locked --no-dev survex-duplicates examples/kataster/KATASTER.3d --out duplicates-binary.csv
+uv run --locked --no-dev survex-duplicates examples/kataster/KATASTER.legs.dump --epsilon 0.05 --out duplicates-5cm.csv
+uv run --locked --no-dev survex-duplicates examples/kataster/KATASTER.3d --include-duplicates --out duplicates-audit.csv
+uv run --locked --no-dev survex-duplicates --help
 ```
 
 `--relative-percent 5` means five percent, not the fraction 0.05.
@@ -140,16 +141,26 @@ threshold truncation or outward rounding of an index query radius.
 ## Development and verification
 
 ```bash
-python -m pip install -e '.[dev]'
-python -m pytest -q
-python -m mypy
-python -m ruff check survex_duplicates tests benchmarks znajdz_duplikaty.py
-python -m ruff format --check survex_duplicates tests benchmarks znajdz_duplikaty.py
-python -m benchmarks.verify_kataster
-python -m benchmarks.run --out benchmarks/publication-results.json
-python -m benchmarks.run --include-duplicates --out benchmarks/audit-results.json
-python -m build
+uv sync --locked
+uv run --locked pytest -q -rs
+uv run --locked mypy
+uv run --locked ruff check survex_duplicates tests benchmarks znajdz_duplikaty.py
+uv run --locked ruff format --check survex_duplicates tests benchmarks znajdz_duplikaty.py
+uv run --locked python -m benchmarks.verify_kataster --out-dir reports/verification
+uv run --locked python -m benchmarks.run --out reports/benchmark-default.json
+uv run --locked python -m benchmarks.run --include-duplicates --out reports/benchmark-audit.json
+uv build
 ```
+
+`uv sync --locked` installs the project in editable mode and includes the `dev`
+dependency group (pytest, mypy and Ruff). Commit `uv.lock` whenever dependencies
+change. Use `uv lock --upgrade` to update them deliberately, then rerun the checks.
+Verification creates `reports/`; new measurements go there so historical evidence
+remains unchanged. Package distributions are written to `dist/`.
+
+GitHub Actions runs the locked environment on Python 3.12, 3.13 and 3.14, installs
+Survex for the binary integration tests, and checks tests, types, lint, formatting,
+the full registry and package builds on every push and pull request.
 
 The registry is bundled: tests have no dependency on a contributor's checkout
 or home directory. Real binary tests require `dump3d` and are skipped if it is
@@ -165,7 +176,8 @@ evidence for all eight combinations of tolerance and flags. See the
 
 Tested environment: Python 3.12.14, NumPy 2.3.5, SciPy 1.16.3, pytest 9.1.1,
 Survex 1.4.24, mypy 1.20.2, Ruff 0.17.2; macOS 27.0.1 arm64, Apple M4,
-16 GiB RAM. Exact development dependencies are in `requirements-tested.txt`.
+16 GiB RAM. `requirements-tested.txt` preserves the exact development dependencies
+from those historical measurements; `uv.lock` defines the current environment.
 
 ## Limits
 

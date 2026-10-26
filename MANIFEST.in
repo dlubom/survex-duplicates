@@ -1,5 +1,7 @@
 include *.md
 include requirements-tested.txt
+include uv.lock
+include .python-version
 include znajdz_duplikaty.py
 include LICENSE
 include examples/kataster/LICENCE
