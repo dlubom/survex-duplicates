@@ -1,8 +1,8 @@
 # Building and publishing a release
 
 This guide describes the six-platform Go release workflow. `VERSION` contains
-`1.1.0`; the corresponding release tag is `v1.1.0`. These are preparation values,
-not a claim that the version has been published or its remote checks passed.
+`1.0.0`; the corresponding release tag is `v1.0.0`. Check GitHub Releases and
+the release workflow for publication status and validation results.
 The [platform guide](platforms.md) lists the six native ZIP packages.
 
 Run maintenance commands below from a source checkout, with Git and the pinned
@@ -19,9 +19,9 @@ Then inspect the validated target matrix and build one package:
 
 ```bash
 go run ./cmd/release matrix
-go run ./cmd/release build --target darwin_arm64 --version v1.1.0-local --out dist --snapshot
-go run ./cmd/release verify --archive dist/survex-duplicates_v1.1.0-local_darwin_arm64.zip
-go run ./cmd/release smoke --archive dist/survex-duplicates_v1.1.0-local_darwin_arm64.zip
+go run ./cmd/release build --target darwin_arm64 --version v1.0.0-local --out dist --snapshot
+go run ./cmd/release verify --archive dist/survex-duplicates_v1.0.0-local_darwin_arm64.zip
+go run ./cmd/release smoke --archive dist/survex-duplicates_v1.0.0-local_darwin_arm64.zip
 ```
 
 Choose your own target for `build` and the matching filename for the following
@@ -60,7 +60,7 @@ exact `revision` recorded in the package manifests, including `-dirty` when
 present, then run:
 
 ```bash
-go run ./cmd/release assemble --dir dist --version v1.1.0-local --revision "$release_revision" --snapshot
+go run ./cmd/release assemble --dir dist --version v1.0.0-local --revision "$release_revision" --snapshot
 ```
 
 In PowerShell, the same example uses a `$release_revision` variable containing
@@ -78,14 +78,14 @@ asset set also contains the six individual checksum sidecars.
 A release build omits `--snapshot`:
 
 ```bash
-go run ./cmd/release build --target darwin_arm64 --version v1.1.0 --out dist
+go run ./cmd/release build --target darwin_arm64 --version v1.0.0 --out dist
 ```
 
 This requires all of the following:
 
-- `VERSION` is `1.1.0`, matching the requested `v1.1.0`;
+- `VERSION` is `1.0.0`, matching the requested `v1.0.0`;
 - the working tree is clean, including nonignored untracked files;
-- the existing tag `v1.1.0` resolves to HEAD;
+- the existing tag `v1.0.0` resolves to HEAD;
 - the pinned Go toolchain and target manifest validate;
 - the bundled input, license and expected-report hashes still match provenance.
 

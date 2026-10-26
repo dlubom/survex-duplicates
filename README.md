@@ -141,7 +141,8 @@ See the [verification record](docs/verification.md),
 [benchmarks](benchmarks/README.md), [fixture provenance](tests/fixtures/README.md),
 [specification](docs/specification.md) and [agent instructions](AGENTS.md).
 The [release guide](docs/releasing.md) describes package verification and tag
-publication; [prepared v1.1.0 notes](docs/releases/1.1.0.md) describe this transition.
+publication; [v1.0.0 release notes](docs/releases/1.0.0.md) and the [changelog](CHANGELOG.md)
+record the initial release.
 
 ## Limits and license
 

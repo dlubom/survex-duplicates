@@ -2,8 +2,7 @@
 
 The release configuration prepares **six native ZIP packages**, built with
 **Go 1.26.3**: Linux, macOS and Windows, each for x86-64 and ARM64. The version
-in `VERSION` is currently `1.1.0`; preparation of these packages does not mean
-that `v1.1.0` has been published. Download published assets from
+in `VERSION` is `1.0.0`. Download published assets from
 [GitHub Releases](https://github.com/dlubom/survex-duplicates/releases).
 
 ## Choose a package
@@ -12,14 +11,14 @@ Choose the operating system on which the executable will run and its processor
 architecture. `amd64` means x86-64, including both Intel and AMD processors.
 `arm64` means 64-bit ARM; on macOS this is Apple silicon.
 
-| System | Processor | Target ID | ZIP filename for v1.1.0 |
+| System | Processor | Target ID | ZIP filename for v1.0.0 |
 | --- | --- | --- | --- |
-| Linux | x86-64 | `linux_amd64` | `survex-duplicates_v1.1.0_linux_amd64.zip` |
-| Linux | ARM64 | `linux_arm64` | `survex-duplicates_v1.1.0_linux_arm64.zip` |
-| macOS | Intel | `darwin_amd64` | `survex-duplicates_v1.1.0_darwin_amd64.zip` |
-| macOS | Apple silicon | `darwin_arm64` | `survex-duplicates_v1.1.0_darwin_arm64.zip` |
-| Windows | x86-64 | `windows_amd64` | `survex-duplicates_v1.1.0_windows_amd64.zip` |
-| Windows | ARM64 | `windows_arm64` | `survex-duplicates_v1.1.0_windows_arm64.zip` |
+| Linux | x86-64 | `linux_amd64` | `survex-duplicates_v1.0.0_linux_amd64.zip` |
+| Linux | ARM64 | `linux_arm64` | `survex-duplicates_v1.0.0_linux_arm64.zip` |
+| macOS | Intel | `darwin_amd64` | `survex-duplicates_v1.0.0_darwin_amd64.zip` |
+| macOS | Apple silicon | `darwin_arm64` | `survex-duplicates_v1.0.0_darwin_arm64.zip` |
+| Windows | x86-64 | `windows_amd64` | `survex-duplicates_v1.0.0_windows_amd64.zip` |
+| Windows | ARM64 | `windows_arm64` | `survex-duplicates_v1.0.0_windows_arm64.zip` |
 
 For another release, substitute its version in the filename. The exact matrix
 is maintained in [release/targets.json in the source repository](https://github.com/dlubom/survex-duplicates/blob/main/release/targets.json).
@@ -39,8 +38,8 @@ that checksum before extracting. For example, after downloading the Apple
 silicon package on macOS:
 
 ```bash
-shasum -a 256 -c survex-duplicates_v1.1.0_darwin_arm64.zip.sha256
-unzip survex-duplicates_v1.1.0_darwin_arm64.zip -d survex-duplicates
+shasum -a 256 -c survex-duplicates_v1.0.0_darwin_arm64.zip.sha256
+unzip survex-duplicates_v1.0.0_darwin_arm64.zip -d survex-duplicates
 cd survex-duplicates
 ./survex-duplicates --version
 ./survex-duplicates examples/kataster/KATASTER.legs.dump --out duplicates.csv
@@ -54,9 +53,9 @@ For Windows x86-64, use PowerShell and compare the `Get-FileHash` value with the
 matching checksum file:
 
 ```powershell
-Get-FileHash .\survex-duplicates_v1.1.0_windows_amd64.zip -Algorithm SHA256
-Get-Content .\survex-duplicates_v1.1.0_windows_amd64.zip.sha256
-Expand-Archive .\survex-duplicates_v1.1.0_windows_amd64.zip -DestinationPath .\survex-duplicates
+Get-FileHash .\survex-duplicates_v1.0.0_windows_amd64.zip -Algorithm SHA256
+Get-Content .\survex-duplicates_v1.0.0_windows_amd64.zip.sha256
+Expand-Archive .\survex-duplicates_v1.0.0_windows_amd64.zip -DestinationPath .\survex-duplicates
 Set-Location .\survex-duplicates
 .\survex-duplicates.exe --version
 .\survex-duplicates.exe examples/kataster/KATASTER.legs.dump --out duplicates.csv
