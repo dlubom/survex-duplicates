@@ -57,6 +57,9 @@ jobs:
     name: Static analysis, coverage and fuzzing
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
     env:
       GOTOOLCHAIN: local
     steps:
