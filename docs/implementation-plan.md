@@ -3,6 +3,8 @@
 Historical record of the original implementation, before publication and the
 DUPLICATE selection amendment. Current behaviour is defined by
 [specification.md](specification.md) and ADR 0003.
+The current primary runtime is defined by [ADR 0004](adr/0004-go-runtime.md);
+package publication follows the [release guide](releasing.md).
 
 The approved original specification, glossary and ADR 0001–0002 were the
 requirements. Local review base: `d7655786c701b521a5ae1e1c0ce9bc574950a70f`;

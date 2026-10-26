@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T17:46:07.884392+00:00",
+  "baseline_revision": "1143a96292d49457ea344d46410072ecbbcec1af",
+  "working_tree": "uncommitted migration and release preparation",
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "go": "go1.26.3",
+    "python": "3.12.14",
+    "survex": "1.4.24"
+  },
+  "checks": {
+    "go_tests": {
+      "passed": 133,
+      "skipped": [
+        "TestDifferentialProbe; separately exercised by 320 differential comparisons"
+      ]
+    },
+    "race": {
+      "passed": 133,
+      "skipped": [
+        "TestDifferentialProbe"
+      ],
+      "packages": [
+        {
+          "package": "github.com/dlubom/survex-duplicates",
+          "elapsed_seconds": 13.168
+        },
+        {
+          "package": "github.com/dlubom/survex-duplicates/internal/releasepack",
+          "elapsed_seconds": 1.379
+        }
+      ]
+    },
+    "go_vet": "passed for root and release packages",
+    "gofmt": "passed",
+    "pytest": {
+      "passed": 246,
+      "skipped": 0
+    },
+    "mypy": {
+      "modules": 9,
+      "status": "passed"
+    },
+    "ruff": {
+      "files": 27,
+      "lint": "passed",
+      "format": "passed"
+    },
+    "publication_gates": {
+      "test_methods": 5,
+      "scenarios": 24,
+      "status": "passed",
+      "network": "stub only; no GitHub mutations"
+    },
+    "actionlint": {
+      "version": "1.7.12",
+      "status": "passed"
+    },
+    "registry_verification": {
+      "settings": 8,
+      "comparison": "complete pairs, orientation and both endpoint errors",
+      "status": "passed"
+    },
+    "differential": {
+      "csv_bytes": 160,
+      "ordered_exact_tuples": 320,
+      "real_binary_input": true,
+      "inputs_unchanged": true
+    }
+  },
+  "packages": {
+    "version": "v1.1.0-local",
+    "targets": [
+      "darwin_amd64",
+      "darwin_arm64",
+      "linux_amd64",
+      "linux_arm64",
+      "windows_amd64",
+      "windows_arm64"
+    ],
+    "build_and_verification": "passed for all six",
+    "archive_members_each": 29,
+    "complete_asset_set": 14,
+    "native_smoke": {
+      "target": "darwin_arm64",
+      "path": "empty",
+      "version": "passed",
+      "full_csv_pairs": [
+        218,
+        60
+      ],
+      "status": "passed"
+    },
+    "independent_readback": {
+      "reader": "Python zipfile plus ELF, Mach-O and PE header inspection",
+      "checks": [
+        "member hashes, sizes and modes",
+        "all six binary OS/CPU identities",
+        "same complete source fingerprints",
+        "Go license",
+        "all eight CSV hashes",
+        "all relative Markdown links",
+        "exact asset set, sidecars and aggregate checksums"
+      ],
+      "status": "passed"
+    },
+    "qualification_record": "package-qualification.json",
+    "record_boundary": "The qualification archives precede this new evidence directory and final documentation record. Final local archives are rebuilt afterwards; executable bytes must remain equal."
+  },
+  "review": {
+    "code_workflow_docs": "no confirmed blocking findings",
+    "license_portability_fix": "reviewed and independently verified"
+  },
+  "not_executed": [
+    "native execution on linux_amd64, linux_arm64, darwin_amd64, windows_amd64, windows_arm64",
+    "GitHub-hosted workflow for these uncommitted changes",
+    "public release, tag creation, push or commit"
+  ],
+  "environment_limits": "Low disk space interrupted cold test compiles. Only task caches and regenerable local artifacts were removed; the final full race run completed successfully."
+}

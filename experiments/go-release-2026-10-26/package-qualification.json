@@ -1,0 +1,1814 @@
+[
+  {
+    "archive": "survex-duplicates_v1.1.0-local_darwin_amd64.zip",
+    "archive_sha256": "5aaea7782ce79bfcb5cbcc5d06aad4966ab670727f9714de624da1aebf31f476",
+    "manifest": {
+      "schema_version": 1,
+      "version": "v1.1.0-local",
+      "revision": "1143a96292d49457ea344d46410072ecbbcec1af-dirty",
+      "dirty": true,
+      "snapshot": true,
+      "source_date_epoch": 1793021677,
+      "toolchain": "go1.26.3",
+      "target": {
+        "id": "darwin_amd64",
+        "goos": "darwin",
+        "goarch": "amd64",
+        "env": {
+          "GOAMD64": "v1"
+        },
+        "kind": "native",
+        "archive": "zip",
+        "runner": "macos-15-intel"
+      },
+      "source_sha256": {
+        ".gitattributes": "52f432efc1fee29283258c6761b8c40ddbe998713099aaba00dda0969dff32e3",
+        ".github/workflows/check.yml": "387150142d1a4b3f22cbee1ba02e399365e3fd470799d4ec6d3497f890473e27",
+        ".github/workflows/release.yml": "0a81b3b48d876afac0bb71c32b242f4c7e7e2121c5b32a47512035cc19b59549",
+        ".gitignore": "256002b1d2ea46e32b6e6c046fe7c81af9d7791cc6fda3cc20c99b58a276f3e9",
+        ".go-version": "2024f46f44cce5cf8671607c46b0b205966dce32f7458b1f74b9042cbc9032ae",
+        ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+        "AGENTS.md": "c80b421fd7afe1eb03fa8dfcfea3679f639f3b4584d17d3f5180fd1d10ec4318",
+        "GLOSSARY.md": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+        "LICENSE": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+        "MANIFEST.in": "5101ec2d5b6d8774a1467a6ca7923a4e24d142bb87c9575e89934e32f3019e82",
+        "NOTICE.md": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+        "README.md": "bcefe680f7c267e9b86addff8f70067a090d76c2ed392156b4312809b4689040",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
+        "benchmarks/README.md": "202a0a65efc76c0a1295d0e9bf880add60248d81bffd44a6abf3702ded577942",
+        "benchmarks/__init__.py": "b28ba3d65f59a936650e6ee46e42857c2ec5141fab47a3ae3022c90bffea531d",
+        "benchmarks/audit-results.json": "dfe357e2670a6f1a2af61e64e938b5f459084402d9caa2622d8d97a6bfb7aa65",
+        "benchmarks/compare_go.py": "468df83221328232066ba7e5dccf79adb7821b253b95d899a7a89d49d55cc6f0",
+        "benchmarks/datasets.py": "796676af6ee590b29448df94fea48b2860d5b80738690054fa982608ca3571a0",
+        "benchmarks/kataster-results/kataster-absolute_m-all.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "benchmarks/kataster-results/kataster-absolute_m-no-splays.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "benchmarks/kataster-results/kataster-relative_percent-all.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "benchmarks/kataster-results/kataster-relative_percent-no-splays.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "benchmarks/kataster-results/verification.json": "e247bb22b7b55925af718b9eb69e06ca5fb90ca0d5efe99af57a6d127875d45b",
+        "benchmarks/publication-results.json": "9b3ff640188615538fe9130ada6eb7726383b867c689442631e0b502ed4e9387",
+        "benchmarks/results.json": "3a5cb1c38b053aab7262db36347d8f0eb474f008aa1ff5f962d91f6f526ef75d",
+        "benchmarks/run.py": "16b69e5e230c7d07cd2cdcc9048c93ae523357fd08cf8d34637b73aa250c2f78",
+        "benchmarks/verify_kataster.py": "3b293dfbc02bc06255940319eb984b4155227ed0c0893350f4cbc2acfeccaf6b",
+        "benchmarks/worker.py": "814f91e3321a0dadb8c607b9b827484a1bb790788e189dedc9b6249d0fd957cf",
+        "cli.go": "e94e42133da9a18fb9345625f3679e7035f371e2e6c73ba1b205a6c39df989d6",
+        "cli_args.go": "897efc395dc53292197b888987656d34da7604f8397cc1cb67a18472bea047af",
+        "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+        "cli_test.go": "69ff3892940bbc39be57d5beb9e3ef66d61d65dd4f4c9f361130b24a71fe8196",
+        "cmd/release/main.go": "799791984be6b2758263f32cf598598d63735a4ba88e34ec053f97fba345f8fd",
+        "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+        "docs/adr/0001-station-names-from-model.md": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+        "docs/adr/0002-default-relative-tolerance.md": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+        "docs/adr/0004-go-runtime.md": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+        "docs/code-review.md": "8dd58f4bdd25cd44b576236621e1d85361183e2658bdbc45a357c6b4a4b3bf41",
+        "docs/implementation-plan.md": "54ba08d8b71b9a5617835f74f6d7ac176a9c25aad9417b8979814208e6025386",
+        "docs/platforms.md": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+        "docs/publication-plan.md": "92f4441d9de586a4af6fad4ed491b66939340c84acbd528b207e0fbcc9efbe20",
+        "docs/publication-review.md": "b704e0427a554aefa1555e8368d4ec4475ba91335f5b46c1ec0b8d8a0d0b9c8a",
+        "docs/releases/1.1.0.md": "67b4baa599365b070696ac938082bed3f6589f675316e19541ebbbc7131513f4",
+        "docs/releasing.md": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+        "docs/specification.md": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+        "docs/superpowers/plans/2026-10-26-go-migration.md": "5bf6958c016a6fc406183f1c11f0154008414573d8d228ceea8d569bf4586e3a",
+        "docs/superpowers/plans/2026-10-26-go-release.md": "63786ccb57ea60560d76573f4e9dec2d87f83becf5a4f4da208a7579bfe9890a",
+        "docs/usage.md": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+        "docs/verification.md": "bb489394d3b71dc86d67c4bd11c1c21be8cf70d09a7fe86248aa34cf625c2997",
+        "examples/kataster/KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+        "examples/kataster/KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "examples/kataster/LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+        "examples/kataster/README.md": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+        "examples/kataster/provenance.json": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "examples/kataster/results/kataster-absolute_m-all.csv": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "examples/kataster/results/kataster-relative_percent-all.csv": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+        "examples/kataster/results/verification.json": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+        "experiments/go-2026-10-26/README.md": "6b14169e473d5df622f9bb562c639413a427368a79e64a6b050a31035d03d887",
+        "experiments/go-2026-10-26/results.json": "b6a509d79f0572a0a524746ef5792938b00afdaa016df451d0acbd82f4baf960",
+        "experiments/go-2026-10-26/validation.json": "fb6306eae5bd13c6bc642ba02361433ae0c027a126afac3510692dac4aad2e26",
+        "experiments/tolerance-2026-10-25/README.md": "83b7f326f1d6ebaea77d74aec6f2225495ecc38fc6be4181e0aa77cd12c5d278",
+        "experiments/tolerance-2026-10-25/compare.py": "4ea64cf65c80bc75ef0e3dab59a4a1fa7d5293da09f13920a21543cb5d998ec1",
+        "experiments/tolerance-2026-10-25/kataster.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "experiments/tolerance-2026-10-25/pairs.csv": "be4ef0b0da225cc5bdd4e7c7f45608ee9d799887f1ecf45eafb3fa99356e1a59",
+        "experiments/tolerance-2026-10-25/publication-provenance.json": "53bb95080304f2604a821af0cf7e3cad72b176dd691f43ffa5c9c3b4a61baad1",
+        "experiments/tolerance-2026-10-25/results.json": "77c32c9b1d0ad7383dfcd0eb3784879fb931f5fff7c0e13a1800d11f114e005b",
+        "experiments/tolerance-2026-10-25/verification.json": "506a40face46ab297700bbb91c1e7b13eab571f75b7971ef5710e10d7f3331d8",
+        "experiments/tolerance-2026-10-25/verification.py": "d447eac65d719870cd0e127b5646bcae83b3c1e6964e49280ad923cf0fcba3b7",
+        "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+        "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+        "go.mod": "7eed7d4377e4f2fc38ddbc90afe4cb55c1103e9d8298d1f89746a314cf076d89",
+        "internal/releasepack/archive.go": "8353c838df9f9d552c5708eb2e172196d4692c8745bb44d90b5ce1ce113b382a",
+        "internal/releasepack/build.go": "b5e15ef2476346a787ce7faff45deb5256b4d2c3c864a74de8cd894632d1b281",
+        "internal/releasepack/bundle.go": "6634d2c380c2621837c2af9ba22baec9ae873971ed1e0695c36695498dca342b",
+        "internal/releasepack/commands.go": "c1427fffefb2b04cdce1c6d274e1507bf85e084ad200085932b331ef9b67dda0",
+        "internal/releasepack/release_test.go": "a33eff647be455c4da915e8c48342683bb5ceeea963c2ef9b41955ec39093b62",
+        "internal/releasepack/targets.go": "3ec0c82cd5d5baa650e0341ecd2e80dd1400970baa7415b77c098ff00d69c1fb",
+        "internal/releasepack/verify.go": "b03600ed5f3467cdd4c24388d62ba2ca0bf759287645689bd874f7841dd455a8",
+        "kataster_test.go": "fdf363d8248d952db1318ef289620db8d275326e5655ed20240578584d248f07",
+        "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+        "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+        "pyproject.toml": "f403d1cac9755c007efdf813c3fbabddd00c9717fabca23fd73687f6b0826793",
+        "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+        "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+        "release/GO-LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "release/README.md.tmpl": "0cedd4fb8d4fbeca1a675af6e7b92f712f9d4a3e696357d0c905dee84a8a2986",
+        "release/targets.json": "e849942f5ba2534bf905a7ff18e75b5be05741d2ccd33fc8f5f8b8efc0b1c059",
+        "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+        "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+        "requirements-tested.txt": "8213d7ee8fc0d3bc310b47f370f440c7d6819fe0af2ecf647ad8d204ac64a6b5",
+        "scripts/publish-release.sh": "271849a96f1097cd400016c3fcb433d52355689ae5d9e45be86077f3a15eeb30",
+        "scripts/test_publish_release.py": "0d3d140437dadd46a31cae3aa60f5b2165e1cbfd6c7e3079c29188f5f061d4a7",
+        "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+        "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6",
+        "survex_duplicates/__init__.py": "cd54fe67d97cf2bfb0501a854e7485acd43276d8385aa3ad623872a7d20f65ea",
+        "survex_duplicates/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "survex_duplicates/_decimal_syntax.py": "6167b954cfeda15fe4bfd09a514212980c82ff381aa4844ca86e3db1140dde9c",
+        "survex_duplicates/cli.py": "674e3aad07e84bcc811562f8ba473850a14ee44b4ea11c9537ac48fd52780fc9",
+        "survex_duplicates/geometry.py": "d8d42d533144d04545bc4886642cefec75961ac5069f7a82a08ab27a120a8f8c",
+        "survex_duplicates/models.py": "782eafca0e64155d977beb75d9c87fd4b9edb107efabf1609a8b395f0210ab07",
+        "survex_duplicates/reader.py": "db2b313399fda8866d490a0ffcd6809411e1e7709aa2c453f1fe34466fc91d9b",
+        "survex_duplicates/report.py": "392c34939169a05e9e91a959f9e217fe6cb6673ecfec1af549f67158a3f169d6",
+        "survex_duplicates/search.py": "f0d0b47114c3da7254a742d2d2f9b745d99fc5911b3be21065ae1fd0005f23f9",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/fixtures/README.md": "ec213439e8fd5496c43caa6e43862b02cca6b18403331b11d56f8774a1eb837e",
+        "tests/fixtures/closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+        "tests/fixtures/closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+        "tests/fixtures/extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+        "tests/fixtures/extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+        "tests/fixtures/legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+        "tests/fixtures/legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+        "tests/fixtures/legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+        "tests/fixtures/provenance.json": "282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a",
+        "tests/fixtures/regenerate.py": "2549060ca05651b0efe04a14c9854a84298da10ad1387472b568f8591ce29caa",
+        "tests/fixtures/survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+        "tests/fixtures/survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+        "tests/fixtures/survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+        "tests/fixtures/survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb",
+        "tests/oracle.py": "e9a9c3bf04d8b6a251841959e45a698232524e275a89cf4311c00cc70bcd36e0",
+        "tests/test_cli.py": "e3c355099a3fdebd891e4ec507297a455fda868087ea3a4fcbd86c04ec89ece3",
+        "tests/test_geometry.py": "696b5fc2f60416df06e378c32b4b89fa233d2bfee0ab46ae9da401575585c5df",
+        "tests/test_integration.py": "c975cf0c3141d7fb9b069e8a4b6065d11f4fc43f302fc215e463553d060f4e79",
+        "tests/test_reader.py": "e2a8afb044751a937463c1d93ccdeb247e279564b625fca91bdc60a06bb20350",
+        "tests/test_search.py": "3f24d38277802c68246a3e3ef6aefbd46eb889ae31126667b755f087ba0e35db",
+        "uv.lock": "c00a68b2019bf7d60a1f29aa372568e3e2fb06932fdfdb039605cbfa37ce47bd",
+        "version.go": "9abbfc0541d339fd3d090265494462ad29ef8eacb87af624ecaae21b642f52c8",
+        "znajdz_duplikaty.py": "da5f45f3e5bb9d8da37b93a9ee37421a562b9715fe37f71fdd8e5b7332bd47d4"
+      },
+      "files": {
+        "GLOSSARY.md": {
+          "sha256": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+          "size": 2692,
+          "mode": 420
+        },
+        "GO-LICENSE": {
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "size": 1453,
+          "mode": 420
+        },
+        "LICENSE": {
+          "sha256": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+          "size": 1073,
+          "mode": 420
+        },
+        "NOTICE.md": {
+          "sha256": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+          "size": 1936,
+          "mode": 420
+        },
+        "README.md": {
+          "sha256": "80346c89a2a99733c526ecdefd87696dde0aa2b0bc2af6e325a93a4dbaa8cc7b",
+          "size": 3014,
+          "mode": 420
+        },
+        "docs/adr/0001-station-names-from-model.md": {
+          "sha256": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+          "size": 647,
+          "mode": 420
+        },
+        "docs/adr/0002-default-relative-tolerance.md": {
+          "sha256": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+          "size": 1028,
+          "mode": 420
+        },
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": {
+          "sha256": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+          "size": 1452,
+          "mode": 420
+        },
+        "docs/adr/0004-go-runtime.md": {
+          "sha256": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+          "size": 2652,
+          "mode": 420
+        },
+        "docs/platforms.md": {
+          "sha256": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+          "size": 6886,
+          "mode": 420
+        },
+        "docs/releasing.md": {
+          "sha256": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+          "size": 7495,
+          "mode": 420
+        },
+        "docs/specification.md": {
+          "sha256": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+          "size": 26613,
+          "mode": 420
+        },
+        "docs/usage.md": {
+          "sha256": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+          "size": 16048,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.3d": {
+          "sha256": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+          "size": 662051,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.legs.dump": {
+          "sha256": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+          "size": 3122729,
+          "mode": 420
+        },
+        "examples/kataster/LICENCE": {
+          "sha256": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+          "size": 259,
+          "mode": 420
+        },
+        "examples/kataster/README.md": {
+          "sha256": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+          "size": 7686,
+          "mode": 420
+        },
+        "examples/kataster/provenance.json": {
+          "sha256": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+          "size": 1093,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": {
+          "sha256": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+          "size": 52712,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all.csv": {
+          "sha256": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+          "size": 52155,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": {
+          "sha256": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+          "size": 27785,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": {
+          "sha256": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+          "size": 27228,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": {
+          "sha256": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+          "size": 119746,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all.csv": {
+          "sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+          "size": 118544,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": {
+          "sha256": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+          "size": 35715,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": {
+          "sha256": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+          "size": 34513,
+          "mode": 420
+        },
+        "examples/kataster/results/verification.json": {
+          "sha256": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+          "size": 6014,
+          "mode": 420
+        },
+        "survex-duplicates": {
+          "sha256": "9562db24171b8e6b2f220ab3826d1472c15faa7e5322a30acd4006d905224689",
+          "size": 4083744,
+          "mode": 493
+        }
+      }
+    }
+  },
+  {
+    "archive": "survex-duplicates_v1.1.0-local_darwin_arm64.zip",
+    "archive_sha256": "a42065c4c3dc5ce34d9394041e2e34545415c3e641ded5f0ed368798070ce01e",
+    "manifest": {
+      "schema_version": 1,
+      "version": "v1.1.0-local",
+      "revision": "1143a96292d49457ea344d46410072ecbbcec1af-dirty",
+      "dirty": true,
+      "snapshot": true,
+      "source_date_epoch": 1793021677,
+      "toolchain": "go1.26.3",
+      "target": {
+        "id": "darwin_arm64",
+        "goos": "darwin",
+        "goarch": "arm64",
+        "env": {
+          "GOARM64": "v8.0"
+        },
+        "kind": "native",
+        "archive": "zip",
+        "runner": "macos-15"
+      },
+      "source_sha256": {
+        ".gitattributes": "52f432efc1fee29283258c6761b8c40ddbe998713099aaba00dda0969dff32e3",
+        ".github/workflows/check.yml": "387150142d1a4b3f22cbee1ba02e399365e3fd470799d4ec6d3497f890473e27",
+        ".github/workflows/release.yml": "0a81b3b48d876afac0bb71c32b242f4c7e7e2121c5b32a47512035cc19b59549",
+        ".gitignore": "256002b1d2ea46e32b6e6c046fe7c81af9d7791cc6fda3cc20c99b58a276f3e9",
+        ".go-version": "2024f46f44cce5cf8671607c46b0b205966dce32f7458b1f74b9042cbc9032ae",
+        ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+        "AGENTS.md": "c80b421fd7afe1eb03fa8dfcfea3679f639f3b4584d17d3f5180fd1d10ec4318",
+        "GLOSSARY.md": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+        "LICENSE": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+        "MANIFEST.in": "5101ec2d5b6d8774a1467a6ca7923a4e24d142bb87c9575e89934e32f3019e82",
+        "NOTICE.md": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+        "README.md": "bcefe680f7c267e9b86addff8f70067a090d76c2ed392156b4312809b4689040",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
+        "benchmarks/README.md": "202a0a65efc76c0a1295d0e9bf880add60248d81bffd44a6abf3702ded577942",
+        "benchmarks/__init__.py": "b28ba3d65f59a936650e6ee46e42857c2ec5141fab47a3ae3022c90bffea531d",
+        "benchmarks/audit-results.json": "dfe357e2670a6f1a2af61e64e938b5f459084402d9caa2622d8d97a6bfb7aa65",
+        "benchmarks/compare_go.py": "468df83221328232066ba7e5dccf79adb7821b253b95d899a7a89d49d55cc6f0",
+        "benchmarks/datasets.py": "796676af6ee590b29448df94fea48b2860d5b80738690054fa982608ca3571a0",
+        "benchmarks/kataster-results/kataster-absolute_m-all.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "benchmarks/kataster-results/kataster-absolute_m-no-splays.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "benchmarks/kataster-results/kataster-relative_percent-all.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "benchmarks/kataster-results/kataster-relative_percent-no-splays.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "benchmarks/kataster-results/verification.json": "e247bb22b7b55925af718b9eb69e06ca5fb90ca0d5efe99af57a6d127875d45b",
+        "benchmarks/publication-results.json": "9b3ff640188615538fe9130ada6eb7726383b867c689442631e0b502ed4e9387",
+        "benchmarks/results.json": "3a5cb1c38b053aab7262db36347d8f0eb474f008aa1ff5f962d91f6f526ef75d",
+        "benchmarks/run.py": "16b69e5e230c7d07cd2cdcc9048c93ae523357fd08cf8d34637b73aa250c2f78",
+        "benchmarks/verify_kataster.py": "3b293dfbc02bc06255940319eb984b4155227ed0c0893350f4cbc2acfeccaf6b",
+        "benchmarks/worker.py": "814f91e3321a0dadb8c607b9b827484a1bb790788e189dedc9b6249d0fd957cf",
+        "cli.go": "e94e42133da9a18fb9345625f3679e7035f371e2e6c73ba1b205a6c39df989d6",
+        "cli_args.go": "897efc395dc53292197b888987656d34da7604f8397cc1cb67a18472bea047af",
+        "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+        "cli_test.go": "69ff3892940bbc39be57d5beb9e3ef66d61d65dd4f4c9f361130b24a71fe8196",
+        "cmd/release/main.go": "799791984be6b2758263f32cf598598d63735a4ba88e34ec053f97fba345f8fd",
+        "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+        "docs/adr/0001-station-names-from-model.md": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+        "docs/adr/0002-default-relative-tolerance.md": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+        "docs/adr/0004-go-runtime.md": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+        "docs/code-review.md": "8dd58f4bdd25cd44b576236621e1d85361183e2658bdbc45a357c6b4a4b3bf41",
+        "docs/implementation-plan.md": "54ba08d8b71b9a5617835f74f6d7ac176a9c25aad9417b8979814208e6025386",
+        "docs/platforms.md": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+        "docs/publication-plan.md": "92f4441d9de586a4af6fad4ed491b66939340c84acbd528b207e0fbcc9efbe20",
+        "docs/publication-review.md": "b704e0427a554aefa1555e8368d4ec4475ba91335f5b46c1ec0b8d8a0d0b9c8a",
+        "docs/releases/1.1.0.md": "67b4baa599365b070696ac938082bed3f6589f675316e19541ebbbc7131513f4",
+        "docs/releasing.md": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+        "docs/specification.md": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+        "docs/superpowers/plans/2026-10-26-go-migration.md": "5bf6958c016a6fc406183f1c11f0154008414573d8d228ceea8d569bf4586e3a",
+        "docs/superpowers/plans/2026-10-26-go-release.md": "63786ccb57ea60560d76573f4e9dec2d87f83becf5a4f4da208a7579bfe9890a",
+        "docs/usage.md": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+        "docs/verification.md": "bb489394d3b71dc86d67c4bd11c1c21be8cf70d09a7fe86248aa34cf625c2997",
+        "examples/kataster/KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+        "examples/kataster/KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "examples/kataster/LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+        "examples/kataster/README.md": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+        "examples/kataster/provenance.json": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "examples/kataster/results/kataster-absolute_m-all.csv": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "examples/kataster/results/kataster-relative_percent-all.csv": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+        "examples/kataster/results/verification.json": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+        "experiments/go-2026-10-26/README.md": "6b14169e473d5df622f9bb562c639413a427368a79e64a6b050a31035d03d887",
+        "experiments/go-2026-10-26/results.json": "b6a509d79f0572a0a524746ef5792938b00afdaa016df451d0acbd82f4baf960",
+        "experiments/go-2026-10-26/validation.json": "fb6306eae5bd13c6bc642ba02361433ae0c027a126afac3510692dac4aad2e26",
+        "experiments/tolerance-2026-10-25/README.md": "83b7f326f1d6ebaea77d74aec6f2225495ecc38fc6be4181e0aa77cd12c5d278",
+        "experiments/tolerance-2026-10-25/compare.py": "4ea64cf65c80bc75ef0e3dab59a4a1fa7d5293da09f13920a21543cb5d998ec1",
+        "experiments/tolerance-2026-10-25/kataster.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "experiments/tolerance-2026-10-25/pairs.csv": "be4ef0b0da225cc5bdd4e7c7f45608ee9d799887f1ecf45eafb3fa99356e1a59",
+        "experiments/tolerance-2026-10-25/publication-provenance.json": "53bb95080304f2604a821af0cf7e3cad72b176dd691f43ffa5c9c3b4a61baad1",
+        "experiments/tolerance-2026-10-25/results.json": "77c32c9b1d0ad7383dfcd0eb3784879fb931f5fff7c0e13a1800d11f114e005b",
+        "experiments/tolerance-2026-10-25/verification.json": "506a40face46ab297700bbb91c1e7b13eab571f75b7971ef5710e10d7f3331d8",
+        "experiments/tolerance-2026-10-25/verification.py": "d447eac65d719870cd0e127b5646bcae83b3c1e6964e49280ad923cf0fcba3b7",
+        "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+        "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+        "go.mod": "7eed7d4377e4f2fc38ddbc90afe4cb55c1103e9d8298d1f89746a314cf076d89",
+        "internal/releasepack/archive.go": "8353c838df9f9d552c5708eb2e172196d4692c8745bb44d90b5ce1ce113b382a",
+        "internal/releasepack/build.go": "b5e15ef2476346a787ce7faff45deb5256b4d2c3c864a74de8cd894632d1b281",
+        "internal/releasepack/bundle.go": "6634d2c380c2621837c2af9ba22baec9ae873971ed1e0695c36695498dca342b",
+        "internal/releasepack/commands.go": "c1427fffefb2b04cdce1c6d274e1507bf85e084ad200085932b331ef9b67dda0",
+        "internal/releasepack/release_test.go": "a33eff647be455c4da915e8c48342683bb5ceeea963c2ef9b41955ec39093b62",
+        "internal/releasepack/targets.go": "3ec0c82cd5d5baa650e0341ecd2e80dd1400970baa7415b77c098ff00d69c1fb",
+        "internal/releasepack/verify.go": "b03600ed5f3467cdd4c24388d62ba2ca0bf759287645689bd874f7841dd455a8",
+        "kataster_test.go": "fdf363d8248d952db1318ef289620db8d275326e5655ed20240578584d248f07",
+        "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+        "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+        "pyproject.toml": "f403d1cac9755c007efdf813c3fbabddd00c9717fabca23fd73687f6b0826793",
+        "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+        "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+        "release/GO-LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "release/README.md.tmpl": "0cedd4fb8d4fbeca1a675af6e7b92f712f9d4a3e696357d0c905dee84a8a2986",
+        "release/targets.json": "e849942f5ba2534bf905a7ff18e75b5be05741d2ccd33fc8f5f8b8efc0b1c059",
+        "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+        "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+        "requirements-tested.txt": "8213d7ee8fc0d3bc310b47f370f440c7d6819fe0af2ecf647ad8d204ac64a6b5",
+        "scripts/publish-release.sh": "271849a96f1097cd400016c3fcb433d52355689ae5d9e45be86077f3a15eeb30",
+        "scripts/test_publish_release.py": "0d3d140437dadd46a31cae3aa60f5b2165e1cbfd6c7e3079c29188f5f061d4a7",
+        "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+        "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6",
+        "survex_duplicates/__init__.py": "cd54fe67d97cf2bfb0501a854e7485acd43276d8385aa3ad623872a7d20f65ea",
+        "survex_duplicates/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "survex_duplicates/_decimal_syntax.py": "6167b954cfeda15fe4bfd09a514212980c82ff381aa4844ca86e3db1140dde9c",
+        "survex_duplicates/cli.py": "674e3aad07e84bcc811562f8ba473850a14ee44b4ea11c9537ac48fd52780fc9",
+        "survex_duplicates/geometry.py": "d8d42d533144d04545bc4886642cefec75961ac5069f7a82a08ab27a120a8f8c",
+        "survex_duplicates/models.py": "782eafca0e64155d977beb75d9c87fd4b9edb107efabf1609a8b395f0210ab07",
+        "survex_duplicates/reader.py": "db2b313399fda8866d490a0ffcd6809411e1e7709aa2c453f1fe34466fc91d9b",
+        "survex_duplicates/report.py": "392c34939169a05e9e91a959f9e217fe6cb6673ecfec1af549f67158a3f169d6",
+        "survex_duplicates/search.py": "f0d0b47114c3da7254a742d2d2f9b745d99fc5911b3be21065ae1fd0005f23f9",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/fixtures/README.md": "ec213439e8fd5496c43caa6e43862b02cca6b18403331b11d56f8774a1eb837e",
+        "tests/fixtures/closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+        "tests/fixtures/closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+        "tests/fixtures/extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+        "tests/fixtures/extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+        "tests/fixtures/legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+        "tests/fixtures/legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+        "tests/fixtures/legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+        "tests/fixtures/provenance.json": "282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a",
+        "tests/fixtures/regenerate.py": "2549060ca05651b0efe04a14c9854a84298da10ad1387472b568f8591ce29caa",
+        "tests/fixtures/survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+        "tests/fixtures/survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+        "tests/fixtures/survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+        "tests/fixtures/survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb",
+        "tests/oracle.py": "e9a9c3bf04d8b6a251841959e45a698232524e275a89cf4311c00cc70bcd36e0",
+        "tests/test_cli.py": "e3c355099a3fdebd891e4ec507297a455fda868087ea3a4fcbd86c04ec89ece3",
+        "tests/test_geometry.py": "696b5fc2f60416df06e378c32b4b89fa233d2bfee0ab46ae9da401575585c5df",
+        "tests/test_integration.py": "c975cf0c3141d7fb9b069e8a4b6065d11f4fc43f302fc215e463553d060f4e79",
+        "tests/test_reader.py": "e2a8afb044751a937463c1d93ccdeb247e279564b625fca91bdc60a06bb20350",
+        "tests/test_search.py": "3f24d38277802c68246a3e3ef6aefbd46eb889ae31126667b755f087ba0e35db",
+        "uv.lock": "c00a68b2019bf7d60a1f29aa372568e3e2fb06932fdfdb039605cbfa37ce47bd",
+        "version.go": "9abbfc0541d339fd3d090265494462ad29ef8eacb87af624ecaae21b642f52c8",
+        "znajdz_duplikaty.py": "da5f45f3e5bb9d8da37b93a9ee37421a562b9715fe37f71fdd8e5b7332bd47d4"
+      },
+      "files": {
+        "GLOSSARY.md": {
+          "sha256": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+          "size": 2692,
+          "mode": 420
+        },
+        "GO-LICENSE": {
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "size": 1453,
+          "mode": 420
+        },
+        "LICENSE": {
+          "sha256": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+          "size": 1073,
+          "mode": 420
+        },
+        "NOTICE.md": {
+          "sha256": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+          "size": 1936,
+          "mode": 420
+        },
+        "README.md": {
+          "sha256": "43762c36e7bf1d6fee37c0ade3d4657208253b3041b8289a37e0828519498aee",
+          "size": 3014,
+          "mode": 420
+        },
+        "docs/adr/0001-station-names-from-model.md": {
+          "sha256": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+          "size": 647,
+          "mode": 420
+        },
+        "docs/adr/0002-default-relative-tolerance.md": {
+          "sha256": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+          "size": 1028,
+          "mode": 420
+        },
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": {
+          "sha256": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+          "size": 1452,
+          "mode": 420
+        },
+        "docs/adr/0004-go-runtime.md": {
+          "sha256": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+          "size": 2652,
+          "mode": 420
+        },
+        "docs/platforms.md": {
+          "sha256": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+          "size": 6886,
+          "mode": 420
+        },
+        "docs/releasing.md": {
+          "sha256": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+          "size": 7495,
+          "mode": 420
+        },
+        "docs/specification.md": {
+          "sha256": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+          "size": 26613,
+          "mode": 420
+        },
+        "docs/usage.md": {
+          "sha256": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+          "size": 16048,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.3d": {
+          "sha256": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+          "size": 662051,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.legs.dump": {
+          "sha256": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+          "size": 3122729,
+          "mode": 420
+        },
+        "examples/kataster/LICENCE": {
+          "sha256": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+          "size": 259,
+          "mode": 420
+        },
+        "examples/kataster/README.md": {
+          "sha256": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+          "size": 7686,
+          "mode": 420
+        },
+        "examples/kataster/provenance.json": {
+          "sha256": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+          "size": 1093,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": {
+          "sha256": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+          "size": 52712,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all.csv": {
+          "sha256": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+          "size": 52155,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": {
+          "sha256": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+          "size": 27785,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": {
+          "sha256": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+          "size": 27228,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": {
+          "sha256": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+          "size": 119746,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all.csv": {
+          "sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+          "size": 118544,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": {
+          "sha256": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+          "size": 35715,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": {
+          "sha256": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+          "size": 34513,
+          "mode": 420
+        },
+        "examples/kataster/results/verification.json": {
+          "sha256": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+          "size": 6014,
+          "mode": 420
+        },
+        "survex-duplicates": {
+          "sha256": "59c30b299ba41d58cb9d5c712a674e4fec53e25ad7dfd3532954969dd956d258",
+          "size": 3898818,
+          "mode": 493
+        }
+      }
+    }
+  },
+  {
+    "archive": "survex-duplicates_v1.1.0-local_linux_amd64.zip",
+    "archive_sha256": "617145af72a7e79401248f9dff5626c14d576c51b7830bb6db800c8af6b405e8",
+    "manifest": {
+      "schema_version": 1,
+      "version": "v1.1.0-local",
+      "revision": "1143a96292d49457ea344d46410072ecbbcec1af-dirty",
+      "dirty": true,
+      "snapshot": true,
+      "source_date_epoch": 1793021677,
+      "toolchain": "go1.26.3",
+      "target": {
+        "id": "linux_amd64",
+        "goos": "linux",
+        "goarch": "amd64",
+        "env": {
+          "GOAMD64": "v1"
+        },
+        "kind": "native",
+        "archive": "zip",
+        "runner": "ubuntu-24.04"
+      },
+      "source_sha256": {
+        ".gitattributes": "52f432efc1fee29283258c6761b8c40ddbe998713099aaba00dda0969dff32e3",
+        ".github/workflows/check.yml": "387150142d1a4b3f22cbee1ba02e399365e3fd470799d4ec6d3497f890473e27",
+        ".github/workflows/release.yml": "0a81b3b48d876afac0bb71c32b242f4c7e7e2121c5b32a47512035cc19b59549",
+        ".gitignore": "256002b1d2ea46e32b6e6c046fe7c81af9d7791cc6fda3cc20c99b58a276f3e9",
+        ".go-version": "2024f46f44cce5cf8671607c46b0b205966dce32f7458b1f74b9042cbc9032ae",
+        ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+        "AGENTS.md": "c80b421fd7afe1eb03fa8dfcfea3679f639f3b4584d17d3f5180fd1d10ec4318",
+        "GLOSSARY.md": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+        "LICENSE": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+        "MANIFEST.in": "5101ec2d5b6d8774a1467a6ca7923a4e24d142bb87c9575e89934e32f3019e82",
+        "NOTICE.md": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+        "README.md": "bcefe680f7c267e9b86addff8f70067a090d76c2ed392156b4312809b4689040",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
+        "benchmarks/README.md": "202a0a65efc76c0a1295d0e9bf880add60248d81bffd44a6abf3702ded577942",
+        "benchmarks/__init__.py": "b28ba3d65f59a936650e6ee46e42857c2ec5141fab47a3ae3022c90bffea531d",
+        "benchmarks/audit-results.json": "dfe357e2670a6f1a2af61e64e938b5f459084402d9caa2622d8d97a6bfb7aa65",
+        "benchmarks/compare_go.py": "468df83221328232066ba7e5dccf79adb7821b253b95d899a7a89d49d55cc6f0",
+        "benchmarks/datasets.py": "796676af6ee590b29448df94fea48b2860d5b80738690054fa982608ca3571a0",
+        "benchmarks/kataster-results/kataster-absolute_m-all.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "benchmarks/kataster-results/kataster-absolute_m-no-splays.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "benchmarks/kataster-results/kataster-relative_percent-all.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "benchmarks/kataster-results/kataster-relative_percent-no-splays.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "benchmarks/kataster-results/verification.json": "e247bb22b7b55925af718b9eb69e06ca5fb90ca0d5efe99af57a6d127875d45b",
+        "benchmarks/publication-results.json": "9b3ff640188615538fe9130ada6eb7726383b867c689442631e0b502ed4e9387",
+        "benchmarks/results.json": "3a5cb1c38b053aab7262db36347d8f0eb474f008aa1ff5f962d91f6f526ef75d",
+        "benchmarks/run.py": "16b69e5e230c7d07cd2cdcc9048c93ae523357fd08cf8d34637b73aa250c2f78",
+        "benchmarks/verify_kataster.py": "3b293dfbc02bc06255940319eb984b4155227ed0c0893350f4cbc2acfeccaf6b",
+        "benchmarks/worker.py": "814f91e3321a0dadb8c607b9b827484a1bb790788e189dedc9b6249d0fd957cf",
+        "cli.go": "e94e42133da9a18fb9345625f3679e7035f371e2e6c73ba1b205a6c39df989d6",
+        "cli_args.go": "897efc395dc53292197b888987656d34da7604f8397cc1cb67a18472bea047af",
+        "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+        "cli_test.go": "69ff3892940bbc39be57d5beb9e3ef66d61d65dd4f4c9f361130b24a71fe8196",
+        "cmd/release/main.go": "799791984be6b2758263f32cf598598d63735a4ba88e34ec053f97fba345f8fd",
+        "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+        "docs/adr/0001-station-names-from-model.md": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+        "docs/adr/0002-default-relative-tolerance.md": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+        "docs/adr/0004-go-runtime.md": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+        "docs/code-review.md": "8dd58f4bdd25cd44b576236621e1d85361183e2658bdbc45a357c6b4a4b3bf41",
+        "docs/implementation-plan.md": "54ba08d8b71b9a5617835f74f6d7ac176a9c25aad9417b8979814208e6025386",
+        "docs/platforms.md": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+        "docs/publication-plan.md": "92f4441d9de586a4af6fad4ed491b66939340c84acbd528b207e0fbcc9efbe20",
+        "docs/publication-review.md": "b704e0427a554aefa1555e8368d4ec4475ba91335f5b46c1ec0b8d8a0d0b9c8a",
+        "docs/releases/1.1.0.md": "67b4baa599365b070696ac938082bed3f6589f675316e19541ebbbc7131513f4",
+        "docs/releasing.md": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+        "docs/specification.md": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+        "docs/superpowers/plans/2026-10-26-go-migration.md": "5bf6958c016a6fc406183f1c11f0154008414573d8d228ceea8d569bf4586e3a",
+        "docs/superpowers/plans/2026-10-26-go-release.md": "63786ccb57ea60560d76573f4e9dec2d87f83becf5a4f4da208a7579bfe9890a",
+        "docs/usage.md": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+        "docs/verification.md": "bb489394d3b71dc86d67c4bd11c1c21be8cf70d09a7fe86248aa34cf625c2997",
+        "examples/kataster/KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+        "examples/kataster/KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "examples/kataster/LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+        "examples/kataster/README.md": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+        "examples/kataster/provenance.json": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "examples/kataster/results/kataster-absolute_m-all.csv": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "examples/kataster/results/kataster-relative_percent-all.csv": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+        "examples/kataster/results/verification.json": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+        "experiments/go-2026-10-26/README.md": "6b14169e473d5df622f9bb562c639413a427368a79e64a6b050a31035d03d887",
+        "experiments/go-2026-10-26/results.json": "b6a509d79f0572a0a524746ef5792938b00afdaa016df451d0acbd82f4baf960",
+        "experiments/go-2026-10-26/validation.json": "fb6306eae5bd13c6bc642ba02361433ae0c027a126afac3510692dac4aad2e26",
+        "experiments/tolerance-2026-10-25/README.md": "83b7f326f1d6ebaea77d74aec6f2225495ecc38fc6be4181e0aa77cd12c5d278",
+        "experiments/tolerance-2026-10-25/compare.py": "4ea64cf65c80bc75ef0e3dab59a4a1fa7d5293da09f13920a21543cb5d998ec1",
+        "experiments/tolerance-2026-10-25/kataster.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "experiments/tolerance-2026-10-25/pairs.csv": "be4ef0b0da225cc5bdd4e7c7f45608ee9d799887f1ecf45eafb3fa99356e1a59",
+        "experiments/tolerance-2026-10-25/publication-provenance.json": "53bb95080304f2604a821af0cf7e3cad72b176dd691f43ffa5c9c3b4a61baad1",
+        "experiments/tolerance-2026-10-25/results.json": "77c32c9b1d0ad7383dfcd0eb3784879fb931f5fff7c0e13a1800d11f114e005b",
+        "experiments/tolerance-2026-10-25/verification.json": "506a40face46ab297700bbb91c1e7b13eab571f75b7971ef5710e10d7f3331d8",
+        "experiments/tolerance-2026-10-25/verification.py": "d447eac65d719870cd0e127b5646bcae83b3c1e6964e49280ad923cf0fcba3b7",
+        "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+        "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+        "go.mod": "7eed7d4377e4f2fc38ddbc90afe4cb55c1103e9d8298d1f89746a314cf076d89",
+        "internal/releasepack/archive.go": "8353c838df9f9d552c5708eb2e172196d4692c8745bb44d90b5ce1ce113b382a",
+        "internal/releasepack/build.go": "b5e15ef2476346a787ce7faff45deb5256b4d2c3c864a74de8cd894632d1b281",
+        "internal/releasepack/bundle.go": "6634d2c380c2621837c2af9ba22baec9ae873971ed1e0695c36695498dca342b",
+        "internal/releasepack/commands.go": "c1427fffefb2b04cdce1c6d274e1507bf85e084ad200085932b331ef9b67dda0",
+        "internal/releasepack/release_test.go": "a33eff647be455c4da915e8c48342683bb5ceeea963c2ef9b41955ec39093b62",
+        "internal/releasepack/targets.go": "3ec0c82cd5d5baa650e0341ecd2e80dd1400970baa7415b77c098ff00d69c1fb",
+        "internal/releasepack/verify.go": "b03600ed5f3467cdd4c24388d62ba2ca0bf759287645689bd874f7841dd455a8",
+        "kataster_test.go": "fdf363d8248d952db1318ef289620db8d275326e5655ed20240578584d248f07",
+        "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+        "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+        "pyproject.toml": "f403d1cac9755c007efdf813c3fbabddd00c9717fabca23fd73687f6b0826793",
+        "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+        "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+        "release/GO-LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "release/README.md.tmpl": "0cedd4fb8d4fbeca1a675af6e7b92f712f9d4a3e696357d0c905dee84a8a2986",
+        "release/targets.json": "e849942f5ba2534bf905a7ff18e75b5be05741d2ccd33fc8f5f8b8efc0b1c059",
+        "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+        "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+        "requirements-tested.txt": "8213d7ee8fc0d3bc310b47f370f440c7d6819fe0af2ecf647ad8d204ac64a6b5",
+        "scripts/publish-release.sh": "271849a96f1097cd400016c3fcb433d52355689ae5d9e45be86077f3a15eeb30",
+        "scripts/test_publish_release.py": "0d3d140437dadd46a31cae3aa60f5b2165e1cbfd6c7e3079c29188f5f061d4a7",
+        "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+        "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6",
+        "survex_duplicates/__init__.py": "cd54fe67d97cf2bfb0501a854e7485acd43276d8385aa3ad623872a7d20f65ea",
+        "survex_duplicates/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "survex_duplicates/_decimal_syntax.py": "6167b954cfeda15fe4bfd09a514212980c82ff381aa4844ca86e3db1140dde9c",
+        "survex_duplicates/cli.py": "674e3aad07e84bcc811562f8ba473850a14ee44b4ea11c9537ac48fd52780fc9",
+        "survex_duplicates/geometry.py": "d8d42d533144d04545bc4886642cefec75961ac5069f7a82a08ab27a120a8f8c",
+        "survex_duplicates/models.py": "782eafca0e64155d977beb75d9c87fd4b9edb107efabf1609a8b395f0210ab07",
+        "survex_duplicates/reader.py": "db2b313399fda8866d490a0ffcd6809411e1e7709aa2c453f1fe34466fc91d9b",
+        "survex_duplicates/report.py": "392c34939169a05e9e91a959f9e217fe6cb6673ecfec1af549f67158a3f169d6",
+        "survex_duplicates/search.py": "f0d0b47114c3da7254a742d2d2f9b745d99fc5911b3be21065ae1fd0005f23f9",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/fixtures/README.md": "ec213439e8fd5496c43caa6e43862b02cca6b18403331b11d56f8774a1eb837e",
+        "tests/fixtures/closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+        "tests/fixtures/closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+        "tests/fixtures/extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+        "tests/fixtures/extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+        "tests/fixtures/legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+        "tests/fixtures/legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+        "tests/fixtures/legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+        "tests/fixtures/provenance.json": "282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a",
+        "tests/fixtures/regenerate.py": "2549060ca05651b0efe04a14c9854a84298da10ad1387472b568f8591ce29caa",
+        "tests/fixtures/survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+        "tests/fixtures/survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+        "tests/fixtures/survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+        "tests/fixtures/survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb",
+        "tests/oracle.py": "e9a9c3bf04d8b6a251841959e45a698232524e275a89cf4311c00cc70bcd36e0",
+        "tests/test_cli.py": "e3c355099a3fdebd891e4ec507297a455fda868087ea3a4fcbd86c04ec89ece3",
+        "tests/test_geometry.py": "696b5fc2f60416df06e378c32b4b89fa233d2bfee0ab46ae9da401575585c5df",
+        "tests/test_integration.py": "c975cf0c3141d7fb9b069e8a4b6065d11f4fc43f302fc215e463553d060f4e79",
+        "tests/test_reader.py": "e2a8afb044751a937463c1d93ccdeb247e279564b625fca91bdc60a06bb20350",
+        "tests/test_search.py": "3f24d38277802c68246a3e3ef6aefbd46eb889ae31126667b755f087ba0e35db",
+        "uv.lock": "c00a68b2019bf7d60a1f29aa372568e3e2fb06932fdfdb039605cbfa37ce47bd",
+        "version.go": "9abbfc0541d339fd3d090265494462ad29ef8eacb87af624ecaae21b642f52c8",
+        "znajdz_duplikaty.py": "da5f45f3e5bb9d8da37b93a9ee37421a562b9715fe37f71fdd8e5b7332bd47d4"
+      },
+      "files": {
+        "GLOSSARY.md": {
+          "sha256": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+          "size": 2692,
+          "mode": 420
+        },
+        "GO-LICENSE": {
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "size": 1453,
+          "mode": 420
+        },
+        "LICENSE": {
+          "sha256": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+          "size": 1073,
+          "mode": 420
+        },
+        "NOTICE.md": {
+          "sha256": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+          "size": 1936,
+          "mode": 420
+        },
+        "README.md": {
+          "sha256": "193333c494285dcd4450ecfc6676747426006d0cf4192b28f50392645c98ee0f",
+          "size": 3013,
+          "mode": 420
+        },
+        "docs/adr/0001-station-names-from-model.md": {
+          "sha256": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+          "size": 647,
+          "mode": 420
+        },
+        "docs/adr/0002-default-relative-tolerance.md": {
+          "sha256": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+          "size": 1028,
+          "mode": 420
+        },
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": {
+          "sha256": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+          "size": 1452,
+          "mode": 420
+        },
+        "docs/adr/0004-go-runtime.md": {
+          "sha256": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+          "size": 2652,
+          "mode": 420
+        },
+        "docs/platforms.md": {
+          "sha256": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+          "size": 6886,
+          "mode": 420
+        },
+        "docs/releasing.md": {
+          "sha256": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+          "size": 7495,
+          "mode": 420
+        },
+        "docs/specification.md": {
+          "sha256": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+          "size": 26613,
+          "mode": 420
+        },
+        "docs/usage.md": {
+          "sha256": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+          "size": 16048,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.3d": {
+          "sha256": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+          "size": 662051,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.legs.dump": {
+          "sha256": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+          "size": 3122729,
+          "mode": 420
+        },
+        "examples/kataster/LICENCE": {
+          "sha256": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+          "size": 259,
+          "mode": 420
+        },
+        "examples/kataster/README.md": {
+          "sha256": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+          "size": 7686,
+          "mode": 420
+        },
+        "examples/kataster/provenance.json": {
+          "sha256": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+          "size": 1093,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": {
+          "sha256": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+          "size": 52712,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all.csv": {
+          "sha256": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+          "size": 52155,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": {
+          "sha256": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+          "size": 27785,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": {
+          "sha256": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+          "size": 27228,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": {
+          "sha256": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+          "size": 119746,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all.csv": {
+          "sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+          "size": 118544,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": {
+          "sha256": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+          "size": 35715,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": {
+          "sha256": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+          "size": 34513,
+          "mode": 420
+        },
+        "examples/kataster/results/verification.json": {
+          "sha256": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+          "size": 6014,
+          "mode": 420
+        },
+        "survex-duplicates": {
+          "sha256": "054689ac7e04437a78fa2e9c8f6250cc166e0420c6fe3e863da0e6f5e6d4defd",
+          "size": 4107086,
+          "mode": 493
+        }
+      }
+    }
+  },
+  {
+    "archive": "survex-duplicates_v1.1.0-local_linux_arm64.zip",
+    "archive_sha256": "46032135f0004b2bf90a526937e05973c8cd2cbb621d31a249cfbb3bff1aafde",
+    "manifest": {
+      "schema_version": 1,
+      "version": "v1.1.0-local",
+      "revision": "1143a96292d49457ea344d46410072ecbbcec1af-dirty",
+      "dirty": true,
+      "snapshot": true,
+      "source_date_epoch": 1793021677,
+      "toolchain": "go1.26.3",
+      "target": {
+        "id": "linux_arm64",
+        "goos": "linux",
+        "goarch": "arm64",
+        "env": {
+          "GOARM64": "v8.0"
+        },
+        "kind": "native",
+        "archive": "zip",
+        "runner": "ubuntu-24.04-arm"
+      },
+      "source_sha256": {
+        ".gitattributes": "52f432efc1fee29283258c6761b8c40ddbe998713099aaba00dda0969dff32e3",
+        ".github/workflows/check.yml": "387150142d1a4b3f22cbee1ba02e399365e3fd470799d4ec6d3497f890473e27",
+        ".github/workflows/release.yml": "0a81b3b48d876afac0bb71c32b242f4c7e7e2121c5b32a47512035cc19b59549",
+        ".gitignore": "256002b1d2ea46e32b6e6c046fe7c81af9d7791cc6fda3cc20c99b58a276f3e9",
+        ".go-version": "2024f46f44cce5cf8671607c46b0b205966dce32f7458b1f74b9042cbc9032ae",
+        ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+        "AGENTS.md": "c80b421fd7afe1eb03fa8dfcfea3679f639f3b4584d17d3f5180fd1d10ec4318",
+        "GLOSSARY.md": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+        "LICENSE": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+        "MANIFEST.in": "5101ec2d5b6d8774a1467a6ca7923a4e24d142bb87c9575e89934e32f3019e82",
+        "NOTICE.md": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+        "README.md": "bcefe680f7c267e9b86addff8f70067a090d76c2ed392156b4312809b4689040",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
+        "benchmarks/README.md": "202a0a65efc76c0a1295d0e9bf880add60248d81bffd44a6abf3702ded577942",
+        "benchmarks/__init__.py": "b28ba3d65f59a936650e6ee46e42857c2ec5141fab47a3ae3022c90bffea531d",
+        "benchmarks/audit-results.json": "dfe357e2670a6f1a2af61e64e938b5f459084402d9caa2622d8d97a6bfb7aa65",
+        "benchmarks/compare_go.py": "468df83221328232066ba7e5dccf79adb7821b253b95d899a7a89d49d55cc6f0",
+        "benchmarks/datasets.py": "796676af6ee590b29448df94fea48b2860d5b80738690054fa982608ca3571a0",
+        "benchmarks/kataster-results/kataster-absolute_m-all.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "benchmarks/kataster-results/kataster-absolute_m-no-splays.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "benchmarks/kataster-results/kataster-relative_percent-all.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "benchmarks/kataster-results/kataster-relative_percent-no-splays.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "benchmarks/kataster-results/verification.json": "e247bb22b7b55925af718b9eb69e06ca5fb90ca0d5efe99af57a6d127875d45b",
+        "benchmarks/publication-results.json": "9b3ff640188615538fe9130ada6eb7726383b867c689442631e0b502ed4e9387",
+        "benchmarks/results.json": "3a5cb1c38b053aab7262db36347d8f0eb474f008aa1ff5f962d91f6f526ef75d",
+        "benchmarks/run.py": "16b69e5e230c7d07cd2cdcc9048c93ae523357fd08cf8d34637b73aa250c2f78",
+        "benchmarks/verify_kataster.py": "3b293dfbc02bc06255940319eb984b4155227ed0c0893350f4cbc2acfeccaf6b",
+        "benchmarks/worker.py": "814f91e3321a0dadb8c607b9b827484a1bb790788e189dedc9b6249d0fd957cf",
+        "cli.go": "e94e42133da9a18fb9345625f3679e7035f371e2e6c73ba1b205a6c39df989d6",
+        "cli_args.go": "897efc395dc53292197b888987656d34da7604f8397cc1cb67a18472bea047af",
+        "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+        "cli_test.go": "69ff3892940bbc39be57d5beb9e3ef66d61d65dd4f4c9f361130b24a71fe8196",
+        "cmd/release/main.go": "799791984be6b2758263f32cf598598d63735a4ba88e34ec053f97fba345f8fd",
+        "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+        "docs/adr/0001-station-names-from-model.md": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+        "docs/adr/0002-default-relative-tolerance.md": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+        "docs/adr/0004-go-runtime.md": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+        "docs/code-review.md": "8dd58f4bdd25cd44b576236621e1d85361183e2658bdbc45a357c6b4a4b3bf41",
+        "docs/implementation-plan.md": "54ba08d8b71b9a5617835f74f6d7ac176a9c25aad9417b8979814208e6025386",
+        "docs/platforms.md": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+        "docs/publication-plan.md": "92f4441d9de586a4af6fad4ed491b66939340c84acbd528b207e0fbcc9efbe20",
+        "docs/publication-review.md": "b704e0427a554aefa1555e8368d4ec4475ba91335f5b46c1ec0b8d8a0d0b9c8a",
+        "docs/releases/1.1.0.md": "67b4baa599365b070696ac938082bed3f6589f675316e19541ebbbc7131513f4",
+        "docs/releasing.md": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+        "docs/specification.md": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+        "docs/superpowers/plans/2026-10-26-go-migration.md": "5bf6958c016a6fc406183f1c11f0154008414573d8d228ceea8d569bf4586e3a",
+        "docs/superpowers/plans/2026-10-26-go-release.md": "63786ccb57ea60560d76573f4e9dec2d87f83becf5a4f4da208a7579bfe9890a",
+        "docs/usage.md": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+        "docs/verification.md": "bb489394d3b71dc86d67c4bd11c1c21be8cf70d09a7fe86248aa34cf625c2997",
+        "examples/kataster/KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+        "examples/kataster/KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "examples/kataster/LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+        "examples/kataster/README.md": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+        "examples/kataster/provenance.json": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "examples/kataster/results/kataster-absolute_m-all.csv": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "examples/kataster/results/kataster-relative_percent-all.csv": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+        "examples/kataster/results/verification.json": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+        "experiments/go-2026-10-26/README.md": "6b14169e473d5df622f9bb562c639413a427368a79e64a6b050a31035d03d887",
+        "experiments/go-2026-10-26/results.json": "b6a509d79f0572a0a524746ef5792938b00afdaa016df451d0acbd82f4baf960",
+        "experiments/go-2026-10-26/validation.json": "fb6306eae5bd13c6bc642ba02361433ae0c027a126afac3510692dac4aad2e26",
+        "experiments/tolerance-2026-10-25/README.md": "83b7f326f1d6ebaea77d74aec6f2225495ecc38fc6be4181e0aa77cd12c5d278",
+        "experiments/tolerance-2026-10-25/compare.py": "4ea64cf65c80bc75ef0e3dab59a4a1fa7d5293da09f13920a21543cb5d998ec1",
+        "experiments/tolerance-2026-10-25/kataster.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "experiments/tolerance-2026-10-25/pairs.csv": "be4ef0b0da225cc5bdd4e7c7f45608ee9d799887f1ecf45eafb3fa99356e1a59",
+        "experiments/tolerance-2026-10-25/publication-provenance.json": "53bb95080304f2604a821af0cf7e3cad72b176dd691f43ffa5c9c3b4a61baad1",
+        "experiments/tolerance-2026-10-25/results.json": "77c32c9b1d0ad7383dfcd0eb3784879fb931f5fff7c0e13a1800d11f114e005b",
+        "experiments/tolerance-2026-10-25/verification.json": "506a40face46ab297700bbb91c1e7b13eab571f75b7971ef5710e10d7f3331d8",
+        "experiments/tolerance-2026-10-25/verification.py": "d447eac65d719870cd0e127b5646bcae83b3c1e6964e49280ad923cf0fcba3b7",
+        "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+        "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+        "go.mod": "7eed7d4377e4f2fc38ddbc90afe4cb55c1103e9d8298d1f89746a314cf076d89",
+        "internal/releasepack/archive.go": "8353c838df9f9d552c5708eb2e172196d4692c8745bb44d90b5ce1ce113b382a",
+        "internal/releasepack/build.go": "b5e15ef2476346a787ce7faff45deb5256b4d2c3c864a74de8cd894632d1b281",
+        "internal/releasepack/bundle.go": "6634d2c380c2621837c2af9ba22baec9ae873971ed1e0695c36695498dca342b",
+        "internal/releasepack/commands.go": "c1427fffefb2b04cdce1c6d274e1507bf85e084ad200085932b331ef9b67dda0",
+        "internal/releasepack/release_test.go": "a33eff647be455c4da915e8c48342683bb5ceeea963c2ef9b41955ec39093b62",
+        "internal/releasepack/targets.go": "3ec0c82cd5d5baa650e0341ecd2e80dd1400970baa7415b77c098ff00d69c1fb",
+        "internal/releasepack/verify.go": "b03600ed5f3467cdd4c24388d62ba2ca0bf759287645689bd874f7841dd455a8",
+        "kataster_test.go": "fdf363d8248d952db1318ef289620db8d275326e5655ed20240578584d248f07",
+        "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+        "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+        "pyproject.toml": "f403d1cac9755c007efdf813c3fbabddd00c9717fabca23fd73687f6b0826793",
+        "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+        "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+        "release/GO-LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "release/README.md.tmpl": "0cedd4fb8d4fbeca1a675af6e7b92f712f9d4a3e696357d0c905dee84a8a2986",
+        "release/targets.json": "e849942f5ba2534bf905a7ff18e75b5be05741d2ccd33fc8f5f8b8efc0b1c059",
+        "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+        "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+        "requirements-tested.txt": "8213d7ee8fc0d3bc310b47f370f440c7d6819fe0af2ecf647ad8d204ac64a6b5",
+        "scripts/publish-release.sh": "271849a96f1097cd400016c3fcb433d52355689ae5d9e45be86077f3a15eeb30",
+        "scripts/test_publish_release.py": "0d3d140437dadd46a31cae3aa60f5b2165e1cbfd6c7e3079c29188f5f061d4a7",
+        "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+        "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6",
+        "survex_duplicates/__init__.py": "cd54fe67d97cf2bfb0501a854e7485acd43276d8385aa3ad623872a7d20f65ea",
+        "survex_duplicates/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "survex_duplicates/_decimal_syntax.py": "6167b954cfeda15fe4bfd09a514212980c82ff381aa4844ca86e3db1140dde9c",
+        "survex_duplicates/cli.py": "674e3aad07e84bcc811562f8ba473850a14ee44b4ea11c9537ac48fd52780fc9",
+        "survex_duplicates/geometry.py": "d8d42d533144d04545bc4886642cefec75961ac5069f7a82a08ab27a120a8f8c",
+        "survex_duplicates/models.py": "782eafca0e64155d977beb75d9c87fd4b9edb107efabf1609a8b395f0210ab07",
+        "survex_duplicates/reader.py": "db2b313399fda8866d490a0ffcd6809411e1e7709aa2c453f1fe34466fc91d9b",
+        "survex_duplicates/report.py": "392c34939169a05e9e91a959f9e217fe6cb6673ecfec1af549f67158a3f169d6",
+        "survex_duplicates/search.py": "f0d0b47114c3da7254a742d2d2f9b745d99fc5911b3be21065ae1fd0005f23f9",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/fixtures/README.md": "ec213439e8fd5496c43caa6e43862b02cca6b18403331b11d56f8774a1eb837e",
+        "tests/fixtures/closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+        "tests/fixtures/closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+        "tests/fixtures/extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+        "tests/fixtures/extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+        "tests/fixtures/legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+        "tests/fixtures/legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+        "tests/fixtures/legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+        "tests/fixtures/provenance.json": "282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a",
+        "tests/fixtures/regenerate.py": "2549060ca05651b0efe04a14c9854a84298da10ad1387472b568f8591ce29caa",
+        "tests/fixtures/survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+        "tests/fixtures/survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+        "tests/fixtures/survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+        "tests/fixtures/survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb",
+        "tests/oracle.py": "e9a9c3bf04d8b6a251841959e45a698232524e275a89cf4311c00cc70bcd36e0",
+        "tests/test_cli.py": "e3c355099a3fdebd891e4ec507297a455fda868087ea3a4fcbd86c04ec89ece3",
+        "tests/test_geometry.py": "696b5fc2f60416df06e378c32b4b89fa233d2bfee0ab46ae9da401575585c5df",
+        "tests/test_integration.py": "c975cf0c3141d7fb9b069e8a4b6065d11f4fc43f302fc215e463553d060f4e79",
+        "tests/test_reader.py": "e2a8afb044751a937463c1d93ccdeb247e279564b625fca91bdc60a06bb20350",
+        "tests/test_search.py": "3f24d38277802c68246a3e3ef6aefbd46eb889ae31126667b755f087ba0e35db",
+        "uv.lock": "c00a68b2019bf7d60a1f29aa372568e3e2fb06932fdfdb039605cbfa37ce47bd",
+        "version.go": "9abbfc0541d339fd3d090265494462ad29ef8eacb87af624ecaae21b642f52c8",
+        "znajdz_duplikaty.py": "da5f45f3e5bb9d8da37b93a9ee37421a562b9715fe37f71fdd8e5b7332bd47d4"
+      },
+      "files": {
+        "GLOSSARY.md": {
+          "sha256": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+          "size": 2692,
+          "mode": 420
+        },
+        "GO-LICENSE": {
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "size": 1453,
+          "mode": 420
+        },
+        "LICENSE": {
+          "sha256": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+          "size": 1073,
+          "mode": 420
+        },
+        "NOTICE.md": {
+          "sha256": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+          "size": 1936,
+          "mode": 420
+        },
+        "README.md": {
+          "sha256": "9518cf0a671e98cd22e3a871b9ea007a2775102c02a326dda3741387005d9602",
+          "size": 3013,
+          "mode": 420
+        },
+        "docs/adr/0001-station-names-from-model.md": {
+          "sha256": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+          "size": 647,
+          "mode": 420
+        },
+        "docs/adr/0002-default-relative-tolerance.md": {
+          "sha256": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+          "size": 1028,
+          "mode": 420
+        },
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": {
+          "sha256": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+          "size": 1452,
+          "mode": 420
+        },
+        "docs/adr/0004-go-runtime.md": {
+          "sha256": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+          "size": 2652,
+          "mode": 420
+        },
+        "docs/platforms.md": {
+          "sha256": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+          "size": 6886,
+          "mode": 420
+        },
+        "docs/releasing.md": {
+          "sha256": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+          "size": 7495,
+          "mode": 420
+        },
+        "docs/specification.md": {
+          "sha256": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+          "size": 26613,
+          "mode": 420
+        },
+        "docs/usage.md": {
+          "sha256": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+          "size": 16048,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.3d": {
+          "sha256": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+          "size": 662051,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.legs.dump": {
+          "sha256": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+          "size": 3122729,
+          "mode": 420
+        },
+        "examples/kataster/LICENCE": {
+          "sha256": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+          "size": 259,
+          "mode": 420
+        },
+        "examples/kataster/README.md": {
+          "sha256": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+          "size": 7686,
+          "mode": 420
+        },
+        "examples/kataster/provenance.json": {
+          "sha256": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+          "size": 1093,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": {
+          "sha256": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+          "size": 52712,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all.csv": {
+          "sha256": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+          "size": 52155,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": {
+          "sha256": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+          "size": 27785,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": {
+          "sha256": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+          "size": 27228,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": {
+          "sha256": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+          "size": 119746,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all.csv": {
+          "sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+          "size": 118544,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": {
+          "sha256": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+          "size": 35715,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": {
+          "sha256": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+          "size": 34513,
+          "mode": 420
+        },
+        "examples/kataster/results/verification.json": {
+          "sha256": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+          "size": 6014,
+          "mode": 420
+        },
+        "survex-duplicates": {
+          "sha256": "d446356c2087e38b20a6cc0cbbc3f6673052f2fdbffdc3eab35865d04fbb55a7",
+          "size": 3925855,
+          "mode": 493
+        }
+      }
+    }
+  },
+  {
+    "archive": "survex-duplicates_v1.1.0-local_windows_amd64.zip",
+    "archive_sha256": "796f2651ce1bbdbdfa177fdbcbb4d00b50dc21dcc16e0eb67b92b7f15a9e3953",
+    "manifest": {
+      "schema_version": 1,
+      "version": "v1.1.0-local",
+      "revision": "1143a96292d49457ea344d46410072ecbbcec1af-dirty",
+      "dirty": true,
+      "snapshot": true,
+      "source_date_epoch": 1793021677,
+      "toolchain": "go1.26.3",
+      "target": {
+        "id": "windows_amd64",
+        "goos": "windows",
+        "goarch": "amd64",
+        "env": {
+          "GOAMD64": "v1"
+        },
+        "kind": "native",
+        "archive": "zip",
+        "runner": "windows-2025"
+      },
+      "source_sha256": {
+        ".gitattributes": "52f432efc1fee29283258c6761b8c40ddbe998713099aaba00dda0969dff32e3",
+        ".github/workflows/check.yml": "387150142d1a4b3f22cbee1ba02e399365e3fd470799d4ec6d3497f890473e27",
+        ".github/workflows/release.yml": "0a81b3b48d876afac0bb71c32b242f4c7e7e2121c5b32a47512035cc19b59549",
+        ".gitignore": "256002b1d2ea46e32b6e6c046fe7c81af9d7791cc6fda3cc20c99b58a276f3e9",
+        ".go-version": "2024f46f44cce5cf8671607c46b0b205966dce32f7458b1f74b9042cbc9032ae",
+        ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+        "AGENTS.md": "c80b421fd7afe1eb03fa8dfcfea3679f639f3b4584d17d3f5180fd1d10ec4318",
+        "GLOSSARY.md": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+        "LICENSE": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+        "MANIFEST.in": "5101ec2d5b6d8774a1467a6ca7923a4e24d142bb87c9575e89934e32f3019e82",
+        "NOTICE.md": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+        "README.md": "bcefe680f7c267e9b86addff8f70067a090d76c2ed392156b4312809b4689040",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
+        "benchmarks/README.md": "202a0a65efc76c0a1295d0e9bf880add60248d81bffd44a6abf3702ded577942",
+        "benchmarks/__init__.py": "b28ba3d65f59a936650e6ee46e42857c2ec5141fab47a3ae3022c90bffea531d",
+        "benchmarks/audit-results.json": "dfe357e2670a6f1a2af61e64e938b5f459084402d9caa2622d8d97a6bfb7aa65",
+        "benchmarks/compare_go.py": "468df83221328232066ba7e5dccf79adb7821b253b95d899a7a89d49d55cc6f0",
+        "benchmarks/datasets.py": "796676af6ee590b29448df94fea48b2860d5b80738690054fa982608ca3571a0",
+        "benchmarks/kataster-results/kataster-absolute_m-all.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "benchmarks/kataster-results/kataster-absolute_m-no-splays.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "benchmarks/kataster-results/kataster-relative_percent-all.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "benchmarks/kataster-results/kataster-relative_percent-no-splays.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "benchmarks/kataster-results/verification.json": "e247bb22b7b55925af718b9eb69e06ca5fb90ca0d5efe99af57a6d127875d45b",
+        "benchmarks/publication-results.json": "9b3ff640188615538fe9130ada6eb7726383b867c689442631e0b502ed4e9387",
+        "benchmarks/results.json": "3a5cb1c38b053aab7262db36347d8f0eb474f008aa1ff5f962d91f6f526ef75d",
+        "benchmarks/run.py": "16b69e5e230c7d07cd2cdcc9048c93ae523357fd08cf8d34637b73aa250c2f78",
+        "benchmarks/verify_kataster.py": "3b293dfbc02bc06255940319eb984b4155227ed0c0893350f4cbc2acfeccaf6b",
+        "benchmarks/worker.py": "814f91e3321a0dadb8c607b9b827484a1bb790788e189dedc9b6249d0fd957cf",
+        "cli.go": "e94e42133da9a18fb9345625f3679e7035f371e2e6c73ba1b205a6c39df989d6",
+        "cli_args.go": "897efc395dc53292197b888987656d34da7604f8397cc1cb67a18472bea047af",
+        "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+        "cli_test.go": "69ff3892940bbc39be57d5beb9e3ef66d61d65dd4f4c9f361130b24a71fe8196",
+        "cmd/release/main.go": "799791984be6b2758263f32cf598598d63735a4ba88e34ec053f97fba345f8fd",
+        "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+        "docs/adr/0001-station-names-from-model.md": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+        "docs/adr/0002-default-relative-tolerance.md": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+        "docs/adr/0004-go-runtime.md": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+        "docs/code-review.md": "8dd58f4bdd25cd44b576236621e1d85361183e2658bdbc45a357c6b4a4b3bf41",
+        "docs/implementation-plan.md": "54ba08d8b71b9a5617835f74f6d7ac176a9c25aad9417b8979814208e6025386",
+        "docs/platforms.md": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+        "docs/publication-plan.md": "92f4441d9de586a4af6fad4ed491b66939340c84acbd528b207e0fbcc9efbe20",
+        "docs/publication-review.md": "b704e0427a554aefa1555e8368d4ec4475ba91335f5b46c1ec0b8d8a0d0b9c8a",
+        "docs/releases/1.1.0.md": "67b4baa599365b070696ac938082bed3f6589f675316e19541ebbbc7131513f4",
+        "docs/releasing.md": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+        "docs/specification.md": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+        "docs/superpowers/plans/2026-10-26-go-migration.md": "5bf6958c016a6fc406183f1c11f0154008414573d8d228ceea8d569bf4586e3a",
+        "docs/superpowers/plans/2026-10-26-go-release.md": "63786ccb57ea60560d76573f4e9dec2d87f83becf5a4f4da208a7579bfe9890a",
+        "docs/usage.md": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+        "docs/verification.md": "bb489394d3b71dc86d67c4bd11c1c21be8cf70d09a7fe86248aa34cf625c2997",
+        "examples/kataster/KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+        "examples/kataster/KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "examples/kataster/LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+        "examples/kataster/README.md": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+        "examples/kataster/provenance.json": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "examples/kataster/results/kataster-absolute_m-all.csv": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "examples/kataster/results/kataster-relative_percent-all.csv": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+        "examples/kataster/results/verification.json": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+        "experiments/go-2026-10-26/README.md": "6b14169e473d5df622f9bb562c639413a427368a79e64a6b050a31035d03d887",
+        "experiments/go-2026-10-26/results.json": "b6a509d79f0572a0a524746ef5792938b00afdaa016df451d0acbd82f4baf960",
+        "experiments/go-2026-10-26/validation.json": "fb6306eae5bd13c6bc642ba02361433ae0c027a126afac3510692dac4aad2e26",
+        "experiments/tolerance-2026-10-25/README.md": "83b7f326f1d6ebaea77d74aec6f2225495ecc38fc6be4181e0aa77cd12c5d278",
+        "experiments/tolerance-2026-10-25/compare.py": "4ea64cf65c80bc75ef0e3dab59a4a1fa7d5293da09f13920a21543cb5d998ec1",
+        "experiments/tolerance-2026-10-25/kataster.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "experiments/tolerance-2026-10-25/pairs.csv": "be4ef0b0da225cc5bdd4e7c7f45608ee9d799887f1ecf45eafb3fa99356e1a59",
+        "experiments/tolerance-2026-10-25/publication-provenance.json": "53bb95080304f2604a821af0cf7e3cad72b176dd691f43ffa5c9c3b4a61baad1",
+        "experiments/tolerance-2026-10-25/results.json": "77c32c9b1d0ad7383dfcd0eb3784879fb931f5fff7c0e13a1800d11f114e005b",
+        "experiments/tolerance-2026-10-25/verification.json": "506a40face46ab297700bbb91c1e7b13eab571f75b7971ef5710e10d7f3331d8",
+        "experiments/tolerance-2026-10-25/verification.py": "d447eac65d719870cd0e127b5646bcae83b3c1e6964e49280ad923cf0fcba3b7",
+        "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+        "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+        "go.mod": "7eed7d4377e4f2fc38ddbc90afe4cb55c1103e9d8298d1f89746a314cf076d89",
+        "internal/releasepack/archive.go": "8353c838df9f9d552c5708eb2e172196d4692c8745bb44d90b5ce1ce113b382a",
+        "internal/releasepack/build.go": "b5e15ef2476346a787ce7faff45deb5256b4d2c3c864a74de8cd894632d1b281",
+        "internal/releasepack/bundle.go": "6634d2c380c2621837c2af9ba22baec9ae873971ed1e0695c36695498dca342b",
+        "internal/releasepack/commands.go": "c1427fffefb2b04cdce1c6d274e1507bf85e084ad200085932b331ef9b67dda0",
+        "internal/releasepack/release_test.go": "a33eff647be455c4da915e8c48342683bb5ceeea963c2ef9b41955ec39093b62",
+        "internal/releasepack/targets.go": "3ec0c82cd5d5baa650e0341ecd2e80dd1400970baa7415b77c098ff00d69c1fb",
+        "internal/releasepack/verify.go": "b03600ed5f3467cdd4c24388d62ba2ca0bf759287645689bd874f7841dd455a8",
+        "kataster_test.go": "fdf363d8248d952db1318ef289620db8d275326e5655ed20240578584d248f07",
+        "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+        "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+        "pyproject.toml": "f403d1cac9755c007efdf813c3fbabddd00c9717fabca23fd73687f6b0826793",
+        "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+        "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+        "release/GO-LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "release/README.md.tmpl": "0cedd4fb8d4fbeca1a675af6e7b92f712f9d4a3e696357d0c905dee84a8a2986",
+        "release/targets.json": "e849942f5ba2534bf905a7ff18e75b5be05741d2ccd33fc8f5f8b8efc0b1c059",
+        "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+        "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+        "requirements-tested.txt": "8213d7ee8fc0d3bc310b47f370f440c7d6819fe0af2ecf647ad8d204ac64a6b5",
+        "scripts/publish-release.sh": "271849a96f1097cd400016c3fcb433d52355689ae5d9e45be86077f3a15eeb30",
+        "scripts/test_publish_release.py": "0d3d140437dadd46a31cae3aa60f5b2165e1cbfd6c7e3079c29188f5f061d4a7",
+        "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+        "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6",
+        "survex_duplicates/__init__.py": "cd54fe67d97cf2bfb0501a854e7485acd43276d8385aa3ad623872a7d20f65ea",
+        "survex_duplicates/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "survex_duplicates/_decimal_syntax.py": "6167b954cfeda15fe4bfd09a514212980c82ff381aa4844ca86e3db1140dde9c",
+        "survex_duplicates/cli.py": "674e3aad07e84bcc811562f8ba473850a14ee44b4ea11c9537ac48fd52780fc9",
+        "survex_duplicates/geometry.py": "d8d42d533144d04545bc4886642cefec75961ac5069f7a82a08ab27a120a8f8c",
+        "survex_duplicates/models.py": "782eafca0e64155d977beb75d9c87fd4b9edb107efabf1609a8b395f0210ab07",
+        "survex_duplicates/reader.py": "db2b313399fda8866d490a0ffcd6809411e1e7709aa2c453f1fe34466fc91d9b",
+        "survex_duplicates/report.py": "392c34939169a05e9e91a959f9e217fe6cb6673ecfec1af549f67158a3f169d6",
+        "survex_duplicates/search.py": "f0d0b47114c3da7254a742d2d2f9b745d99fc5911b3be21065ae1fd0005f23f9",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/fixtures/README.md": "ec213439e8fd5496c43caa6e43862b02cca6b18403331b11d56f8774a1eb837e",
+        "tests/fixtures/closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+        "tests/fixtures/closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+        "tests/fixtures/extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+        "tests/fixtures/extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+        "tests/fixtures/legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+        "tests/fixtures/legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+        "tests/fixtures/legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+        "tests/fixtures/provenance.json": "282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a",
+        "tests/fixtures/regenerate.py": "2549060ca05651b0efe04a14c9854a84298da10ad1387472b568f8591ce29caa",
+        "tests/fixtures/survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+        "tests/fixtures/survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+        "tests/fixtures/survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+        "tests/fixtures/survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb",
+        "tests/oracle.py": "e9a9c3bf04d8b6a251841959e45a698232524e275a89cf4311c00cc70bcd36e0",
+        "tests/test_cli.py": "e3c355099a3fdebd891e4ec507297a455fda868087ea3a4fcbd86c04ec89ece3",
+        "tests/test_geometry.py": "696b5fc2f60416df06e378c32b4b89fa233d2bfee0ab46ae9da401575585c5df",
+        "tests/test_integration.py": "c975cf0c3141d7fb9b069e8a4b6065d11f4fc43f302fc215e463553d060f4e79",
+        "tests/test_reader.py": "e2a8afb044751a937463c1d93ccdeb247e279564b625fca91bdc60a06bb20350",
+        "tests/test_search.py": "3f24d38277802c68246a3e3ef6aefbd46eb889ae31126667b755f087ba0e35db",
+        "uv.lock": "c00a68b2019bf7d60a1f29aa372568e3e2fb06932fdfdb039605cbfa37ce47bd",
+        "version.go": "9abbfc0541d339fd3d090265494462ad29ef8eacb87af624ecaae21b642f52c8",
+        "znajdz_duplikaty.py": "da5f45f3e5bb9d8da37b93a9ee37421a562b9715fe37f71fdd8e5b7332bd47d4"
+      },
+      "files": {
+        "GLOSSARY.md": {
+          "sha256": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+          "size": 2692,
+          "mode": 420
+        },
+        "GO-LICENSE": {
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "size": 1453,
+          "mode": 420
+        },
+        "LICENSE": {
+          "sha256": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+          "size": 1073,
+          "mode": 420
+        },
+        "NOTICE.md": {
+          "sha256": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+          "size": 1936,
+          "mode": 420
+        },
+        "README.md": {
+          "sha256": "e1d5be5bd28fea31656420362fc11d29c91053e654ffd5cfe74b64b42495566f",
+          "size": 3015,
+          "mode": 420
+        },
+        "docs/adr/0001-station-names-from-model.md": {
+          "sha256": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+          "size": 647,
+          "mode": 420
+        },
+        "docs/adr/0002-default-relative-tolerance.md": {
+          "sha256": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+          "size": 1028,
+          "mode": 420
+        },
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": {
+          "sha256": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+          "size": 1452,
+          "mode": 420
+        },
+        "docs/adr/0004-go-runtime.md": {
+          "sha256": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+          "size": 2652,
+          "mode": 420
+        },
+        "docs/platforms.md": {
+          "sha256": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+          "size": 6886,
+          "mode": 420
+        },
+        "docs/releasing.md": {
+          "sha256": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+          "size": 7495,
+          "mode": 420
+        },
+        "docs/specification.md": {
+          "sha256": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+          "size": 26613,
+          "mode": 420
+        },
+        "docs/usage.md": {
+          "sha256": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+          "size": 16048,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.3d": {
+          "sha256": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+          "size": 662051,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.legs.dump": {
+          "sha256": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+          "size": 3122729,
+          "mode": 420
+        },
+        "examples/kataster/LICENCE": {
+          "sha256": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+          "size": 259,
+          "mode": 420
+        },
+        "examples/kataster/README.md": {
+          "sha256": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+          "size": 7686,
+          "mode": 420
+        },
+        "examples/kataster/provenance.json": {
+          "sha256": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+          "size": 1093,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": {
+          "sha256": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+          "size": 52712,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all.csv": {
+          "sha256": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+          "size": 52155,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": {
+          "sha256": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+          "size": 27785,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": {
+          "sha256": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+          "size": 27228,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": {
+          "sha256": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+          "size": 119746,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all.csv": {
+          "sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+          "size": 118544,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": {
+          "sha256": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+          "size": 35715,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": {
+          "sha256": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+          "size": 34513,
+          "mode": 420
+        },
+        "examples/kataster/results/verification.json": {
+          "sha256": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+          "size": 6014,
+          "mode": 420
+        },
+        "survex-duplicates.exe": {
+          "sha256": "e47ae9ace1cdb742b3220ceaa5470c5c844cda38582f1d066bb009b98f2f0509",
+          "size": 4220416,
+          "mode": 493
+        }
+      }
+    }
+  },
+  {
+    "archive": "survex-duplicates_v1.1.0-local_windows_arm64.zip",
+    "archive_sha256": "ade3eb67458f828412c5310e9b58d6ce02a46b2528a19ac23c3bb9c55ddbcbcc",
+    "manifest": {
+      "schema_version": 1,
+      "version": "v1.1.0-local",
+      "revision": "1143a96292d49457ea344d46410072ecbbcec1af-dirty",
+      "dirty": true,
+      "snapshot": true,
+      "source_date_epoch": 1793021677,
+      "toolchain": "go1.26.3",
+      "target": {
+        "id": "windows_arm64",
+        "goos": "windows",
+        "goarch": "arm64",
+        "env": {
+          "GOARM64": "v8.0"
+        },
+        "kind": "native",
+        "archive": "zip",
+        "runner": "windows-11-arm"
+      },
+      "source_sha256": {
+        ".gitattributes": "52f432efc1fee29283258c6761b8c40ddbe998713099aaba00dda0969dff32e3",
+        ".github/workflows/check.yml": "387150142d1a4b3f22cbee1ba02e399365e3fd470799d4ec6d3497f890473e27",
+        ".github/workflows/release.yml": "0a81b3b48d876afac0bb71c32b242f4c7e7e2121c5b32a47512035cc19b59549",
+        ".gitignore": "256002b1d2ea46e32b6e6c046fe7c81af9d7791cc6fda3cc20c99b58a276f3e9",
+        ".go-version": "2024f46f44cce5cf8671607c46b0b205966dce32f7458b1f74b9042cbc9032ae",
+        ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+        "AGENTS.md": "c80b421fd7afe1eb03fa8dfcfea3679f639f3b4584d17d3f5180fd1d10ec4318",
+        "GLOSSARY.md": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+        "LICENSE": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+        "MANIFEST.in": "5101ec2d5b6d8774a1467a6ca7923a4e24d142bb87c9575e89934e32f3019e82",
+        "NOTICE.md": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+        "README.md": "bcefe680f7c267e9b86addff8f70067a090d76c2ed392156b4312809b4689040",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
+        "benchmarks/README.md": "202a0a65efc76c0a1295d0e9bf880add60248d81bffd44a6abf3702ded577942",
+        "benchmarks/__init__.py": "b28ba3d65f59a936650e6ee46e42857c2ec5141fab47a3ae3022c90bffea531d",
+        "benchmarks/audit-results.json": "dfe357e2670a6f1a2af61e64e938b5f459084402d9caa2622d8d97a6bfb7aa65",
+        "benchmarks/compare_go.py": "468df83221328232066ba7e5dccf79adb7821b253b95d899a7a89d49d55cc6f0",
+        "benchmarks/datasets.py": "796676af6ee590b29448df94fea48b2860d5b80738690054fa982608ca3571a0",
+        "benchmarks/kataster-results/kataster-absolute_m-all.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "benchmarks/kataster-results/kataster-absolute_m-no-splays.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "benchmarks/kataster-results/kataster-relative_percent-all.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "benchmarks/kataster-results/kataster-relative_percent-no-splays.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "benchmarks/kataster-results/verification.json": "e247bb22b7b55925af718b9eb69e06ca5fb90ca0d5efe99af57a6d127875d45b",
+        "benchmarks/publication-results.json": "9b3ff640188615538fe9130ada6eb7726383b867c689442631e0b502ed4e9387",
+        "benchmarks/results.json": "3a5cb1c38b053aab7262db36347d8f0eb474f008aa1ff5f962d91f6f526ef75d",
+        "benchmarks/run.py": "16b69e5e230c7d07cd2cdcc9048c93ae523357fd08cf8d34637b73aa250c2f78",
+        "benchmarks/verify_kataster.py": "3b293dfbc02bc06255940319eb984b4155227ed0c0893350f4cbc2acfeccaf6b",
+        "benchmarks/worker.py": "814f91e3321a0dadb8c607b9b827484a1bb790788e189dedc9b6249d0fd957cf",
+        "cli.go": "e94e42133da9a18fb9345625f3679e7035f371e2e6c73ba1b205a6c39df989d6",
+        "cli_args.go": "897efc395dc53292197b888987656d34da7604f8397cc1cb67a18472bea047af",
+        "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+        "cli_test.go": "69ff3892940bbc39be57d5beb9e3ef66d61d65dd4f4c9f361130b24a71fe8196",
+        "cmd/release/main.go": "799791984be6b2758263f32cf598598d63735a4ba88e34ec053f97fba345f8fd",
+        "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+        "docs/adr/0001-station-names-from-model.md": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+        "docs/adr/0002-default-relative-tolerance.md": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+        "docs/adr/0004-go-runtime.md": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+        "docs/code-review.md": "8dd58f4bdd25cd44b576236621e1d85361183e2658bdbc45a357c6b4a4b3bf41",
+        "docs/implementation-plan.md": "54ba08d8b71b9a5617835f74f6d7ac176a9c25aad9417b8979814208e6025386",
+        "docs/platforms.md": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+        "docs/publication-plan.md": "92f4441d9de586a4af6fad4ed491b66939340c84acbd528b207e0fbcc9efbe20",
+        "docs/publication-review.md": "b704e0427a554aefa1555e8368d4ec4475ba91335f5b46c1ec0b8d8a0d0b9c8a",
+        "docs/releases/1.1.0.md": "67b4baa599365b070696ac938082bed3f6589f675316e19541ebbbc7131513f4",
+        "docs/releasing.md": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+        "docs/specification.md": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+        "docs/superpowers/plans/2026-10-26-go-migration.md": "5bf6958c016a6fc406183f1c11f0154008414573d8d228ceea8d569bf4586e3a",
+        "docs/superpowers/plans/2026-10-26-go-release.md": "63786ccb57ea60560d76573f4e9dec2d87f83becf5a4f4da208a7579bfe9890a",
+        "docs/usage.md": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+        "docs/verification.md": "bb489394d3b71dc86d67c4bd11c1c21be8cf70d09a7fe86248aa34cf625c2997",
+        "examples/kataster/KATASTER.3d": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+        "examples/kataster/KATASTER.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "examples/kataster/LICENCE": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+        "examples/kataster/README.md": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+        "examples/kataster/provenance.json": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+        "examples/kataster/results/kataster-absolute_m-all.csv": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+        "examples/kataster/results/kataster-relative_percent-all.csv": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+        "examples/kataster/results/verification.json": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+        "experiments/go-2026-10-26/README.md": "6b14169e473d5df622f9bb562c639413a427368a79e64a6b050a31035d03d887",
+        "experiments/go-2026-10-26/results.json": "b6a509d79f0572a0a524746ef5792938b00afdaa016df451d0acbd82f4baf960",
+        "experiments/go-2026-10-26/validation.json": "fb6306eae5bd13c6bc642ba02361433ae0c027a126afac3510692dac4aad2e26",
+        "experiments/tolerance-2026-10-25/README.md": "83b7f326f1d6ebaea77d74aec6f2225495ecc38fc6be4181e0aa77cd12c5d278",
+        "experiments/tolerance-2026-10-25/compare.py": "4ea64cf65c80bc75ef0e3dab59a4a1fa7d5293da09f13920a21543cb5d998ec1",
+        "experiments/tolerance-2026-10-25/kataster.legs.dump": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+        "experiments/tolerance-2026-10-25/pairs.csv": "be4ef0b0da225cc5bdd4e7c7f45608ee9d799887f1ecf45eafb3fa99356e1a59",
+        "experiments/tolerance-2026-10-25/publication-provenance.json": "53bb95080304f2604a821af0cf7e3cad72b176dd691f43ffa5c9c3b4a61baad1",
+        "experiments/tolerance-2026-10-25/results.json": "77c32c9b1d0ad7383dfcd0eb3784879fb931f5fff7c0e13a1800d11f114e005b",
+        "experiments/tolerance-2026-10-25/verification.json": "506a40face46ab297700bbb91c1e7b13eab571f75b7971ef5710e10d7f3331d8",
+        "experiments/tolerance-2026-10-25/verification.py": "d447eac65d719870cd0e127b5646bcae83b3c1e6964e49280ad923cf0fcba3b7",
+        "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+        "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+        "go.mod": "7eed7d4377e4f2fc38ddbc90afe4cb55c1103e9d8298d1f89746a314cf076d89",
+        "internal/releasepack/archive.go": "8353c838df9f9d552c5708eb2e172196d4692c8745bb44d90b5ce1ce113b382a",
+        "internal/releasepack/build.go": "b5e15ef2476346a787ce7faff45deb5256b4d2c3c864a74de8cd894632d1b281",
+        "internal/releasepack/bundle.go": "6634d2c380c2621837c2af9ba22baec9ae873971ed1e0695c36695498dca342b",
+        "internal/releasepack/commands.go": "c1427fffefb2b04cdce1c6d274e1507bf85e084ad200085932b331ef9b67dda0",
+        "internal/releasepack/release_test.go": "a33eff647be455c4da915e8c48342683bb5ceeea963c2ef9b41955ec39093b62",
+        "internal/releasepack/targets.go": "3ec0c82cd5d5baa650e0341ecd2e80dd1400970baa7415b77c098ff00d69c1fb",
+        "internal/releasepack/verify.go": "b03600ed5f3467cdd4c24388d62ba2ca0bf759287645689bd874f7841dd455a8",
+        "kataster_test.go": "fdf363d8248d952db1318ef289620db8d275326e5655ed20240578584d248f07",
+        "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+        "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+        "pyproject.toml": "f403d1cac9755c007efdf813c3fbabddd00c9717fabca23fd73687f6b0826793",
+        "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+        "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+        "release/GO-LICENSE": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "release/README.md.tmpl": "0cedd4fb8d4fbeca1a675af6e7b92f712f9d4a3e696357d0c905dee84a8a2986",
+        "release/targets.json": "e849942f5ba2534bf905a7ff18e75b5be05741d2ccd33fc8f5f8b8efc0b1c059",
+        "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+        "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+        "requirements-tested.txt": "8213d7ee8fc0d3bc310b47f370f440c7d6819fe0af2ecf647ad8d204ac64a6b5",
+        "scripts/publish-release.sh": "271849a96f1097cd400016c3fcb433d52355689ae5d9e45be86077f3a15eeb30",
+        "scripts/test_publish_release.py": "0d3d140437dadd46a31cae3aa60f5b2165e1cbfd6c7e3079c29188f5f061d4a7",
+        "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+        "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6",
+        "survex_duplicates/__init__.py": "cd54fe67d97cf2bfb0501a854e7485acd43276d8385aa3ad623872a7d20f65ea",
+        "survex_duplicates/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "survex_duplicates/_decimal_syntax.py": "6167b954cfeda15fe4bfd09a514212980c82ff381aa4844ca86e3db1140dde9c",
+        "survex_duplicates/cli.py": "674e3aad07e84bcc811562f8ba473850a14ee44b4ea11c9537ac48fd52780fc9",
+        "survex_duplicates/geometry.py": "d8d42d533144d04545bc4886642cefec75961ac5069f7a82a08ab27a120a8f8c",
+        "survex_duplicates/models.py": "782eafca0e64155d977beb75d9c87fd4b9edb107efabf1609a8b395f0210ab07",
+        "survex_duplicates/reader.py": "db2b313399fda8866d490a0ffcd6809411e1e7709aa2c453f1fe34466fc91d9b",
+        "survex_duplicates/report.py": "392c34939169a05e9e91a959f9e217fe6cb6673ecfec1af549f67158a3f169d6",
+        "survex_duplicates/search.py": "f0d0b47114c3da7254a742d2d2f9b745d99fc5911b3be21065ae1fd0005f23f9",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/fixtures/README.md": "ec213439e8fd5496c43caa6e43862b02cca6b18403331b11d56f8774a1eb837e",
+        "tests/fixtures/closure.3d": "4a3606ff35fca31f37908fe4dc2de7627970af03020fd3f87ca04bbfdafe7888",
+        "tests/fixtures/closure.legs.dump": "b4fcf7220109744c88d4a8cdc15eafbc51aa682628ffa8401ea5fb5bae3ac81e",
+        "tests/fixtures/extended.3d": "16c5753b909cd7e2e08919d554d13149cab72f0de412583cd9b2a70f48b160e2",
+        "tests/fixtures/extended.legs.dump": "800a292e50b51a5858c518a3910bce1bf20dec0acdf1bc25a52380a009b3aa00",
+        "tests/fixtures/legacy.3d": "fc7bc1fc85e4bfb017ac3ab07610e7f2d78c86613338da1132336383d1b794b1",
+        "tests/fixtures/legacy.legs.dump": "1cdc5301a19b2b71d03b26c5d66142c21c78d771a1e6f45ad553e46867aa26ac",
+        "tests/fixtures/legacy.svx": "8fcfe22ab06ea9582dd83aff9ee5daeebc84d4f2ac50620a1b24506ee6df665d",
+        "tests/fixtures/provenance.json": "282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a",
+        "tests/fixtures/regenerate.py": "2549060ca05651b0efe04a14c9854a84298da10ad1387472b568f8591ce29caa",
+        "tests/fixtures/survey.3d": "f961215f2aac8b31842ed3d1b3440c8e053831bdddddafde280b2572d30a1a0a",
+        "tests/fixtures/survey.legs.dump": "976edb8779e6b176253d797fe1ff008d89752a82a7a1475242e8b5d0a58e20e7",
+        "tests/fixtures/survey.lines.dump": "840c4518a492150eb21e2cdb2a86460a0af6d645054b8367f5aa15f3bed1bcae",
+        "tests/fixtures/survey.svx": "3b4dacd251315e09afbcf1d0a501c1e318adb5d21d1746c5ca5722ab397116cb",
+        "tests/oracle.py": "e9a9c3bf04d8b6a251841959e45a698232524e275a89cf4311c00cc70bcd36e0",
+        "tests/test_cli.py": "e3c355099a3fdebd891e4ec507297a455fda868087ea3a4fcbd86c04ec89ece3",
+        "tests/test_geometry.py": "696b5fc2f60416df06e378c32b4b89fa233d2bfee0ab46ae9da401575585c5df",
+        "tests/test_integration.py": "c975cf0c3141d7fb9b069e8a4b6065d11f4fc43f302fc215e463553d060f4e79",
+        "tests/test_reader.py": "e2a8afb044751a937463c1d93ccdeb247e279564b625fca91bdc60a06bb20350",
+        "tests/test_search.py": "3f24d38277802c68246a3e3ef6aefbd46eb889ae31126667b755f087ba0e35db",
+        "uv.lock": "c00a68b2019bf7d60a1f29aa372568e3e2fb06932fdfdb039605cbfa37ce47bd",
+        "version.go": "9abbfc0541d339fd3d090265494462ad29ef8eacb87af624ecaae21b642f52c8",
+        "znajdz_duplikaty.py": "da5f45f3e5bb9d8da37b93a9ee37421a562b9715fe37f71fdd8e5b7332bd47d4"
+      },
+      "files": {
+        "GLOSSARY.md": {
+          "sha256": "5b1e9ef9ae1dc9194410a0d5d89f0e694017b2d6581bc3b4f6b1da10509e02cb",
+          "size": 2692,
+          "mode": 420
+        },
+        "GO-LICENSE": {
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "size": 1453,
+          "mode": 420
+        },
+        "LICENSE": {
+          "sha256": "587ad9bcccdee656b5039a417d0eb0602deab6be668735ee4f32832a7767dd1b",
+          "size": 1073,
+          "mode": 420
+        },
+        "NOTICE.md": {
+          "sha256": "b6100c1f9219dcc6496f4cdcd63e3b558d57dff6d025e850409c02f4e9f9f37c",
+          "size": 1936,
+          "mode": 420
+        },
+        "README.md": {
+          "sha256": "90e9b14483b561157c138a726a89b703b20fcecbeca47935f7c3de77ff56e2c5",
+          "size": 3015,
+          "mode": 420
+        },
+        "docs/adr/0001-station-names-from-model.md": {
+          "sha256": "9233035717700956593e5e2dbb41b76dfcc357c62fc57ae73a166726430a7564",
+          "size": 647,
+          "mode": 420
+        },
+        "docs/adr/0002-default-relative-tolerance.md": {
+          "sha256": "ecf8e4f069102910af98adbcc8a75897ce18667cf3c96cf72b148c64ea4fa39c",
+          "size": 1028,
+          "mode": 420
+        },
+        "docs/adr/0003-exclude-acknowledged-duplicates.md": {
+          "sha256": "e061396818e1579e5c7df5e31a6440337633c06fd4bdc7f1429f452a9e32281b",
+          "size": 1452,
+          "mode": 420
+        },
+        "docs/adr/0004-go-runtime.md": {
+          "sha256": "479c96868b0226f98d8c8ded1e9305f76d9a25d4259903aaa4a6711dfa6f80cf",
+          "size": 2652,
+          "mode": 420
+        },
+        "docs/platforms.md": {
+          "sha256": "f0ce455fde12b1ec428cddd2c26392237cc6a6bccfbf49d6f955d569c07cba35",
+          "size": 6886,
+          "mode": 420
+        },
+        "docs/releasing.md": {
+          "sha256": "4d1b61b301bf25530dc4852dd3486541038fc14d1e68dbf5e24cd9cd5c2af097",
+          "size": 7495,
+          "mode": 420
+        },
+        "docs/specification.md": {
+          "sha256": "a7b9ea6693b6d99996f0a7ad01a696265691f741babacf8e241a75c748279ef4",
+          "size": 26613,
+          "mode": 420
+        },
+        "docs/usage.md": {
+          "sha256": "1cdbbe47319ee29d93fb017036d9e4b4d06f2de68772bb37e227e87e1a9eee53",
+          "size": 16048,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.3d": {
+          "sha256": "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
+          "size": 662051,
+          "mode": 420
+        },
+        "examples/kataster/KATASTER.legs.dump": {
+          "sha256": "845c9bc863f40dd2375c1004c4d02b0293b15134abab7006de60c72addf6f298",
+          "size": 3122729,
+          "mode": 420
+        },
+        "examples/kataster/LICENCE": {
+          "sha256": "ef3c494413d184abc1f53fdbf8a2b77498a2d00312405d9e3af76e8f0b6ec679",
+          "size": 259,
+          "mode": 420
+        },
+        "examples/kataster/README.md": {
+          "sha256": "9ebd338d60acff821077ca87579ebdbcc719dae4eecaffedc7640b1b36d8e317",
+          "size": 7686,
+          "mode": 420
+        },
+        "examples/kataster/provenance.json": {
+          "sha256": "769a5d92601d4eac39bf42ed5896388f3a54c0eabe9069dd24a5c504a57fd87c",
+          "size": 1093,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all-include-duplicates.csv": {
+          "sha256": "fdfe96c312f8e9f9c9e49bff6d13d7001fba9243187668bcb4e305736a5c06f8",
+          "size": 52712,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-all.csv": {
+          "sha256": "644eea2f3c212cd49b040aa60e4a4b03259d5254f71ff53bee32a5509ec898c5",
+          "size": 52155,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays-include-duplicates.csv": {
+          "sha256": "8f573f9a126bd96f6991ae7fed05a0ae9be84315ac356f764ea9a2fc2cc0994b",
+          "size": 27785,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-absolute_m-no-splays.csv": {
+          "sha256": "7c9db5fe3538f764979686a89baeafd38ae70eec17c209b6d8b3cc986f37ebf0",
+          "size": 27228,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all-include-duplicates.csv": {
+          "sha256": "b04a1680f91de13fc1c6b9a088c6d60bd62faa07320b259d4f7295f59d14a63a",
+          "size": 119746,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-all.csv": {
+          "sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7",
+          "size": 118544,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays-include-duplicates.csv": {
+          "sha256": "cd18bb7028fd46f3add5fb8469c77a14b19b134534ce773c7a347677860e223c",
+          "size": 35715,
+          "mode": 420
+        },
+        "examples/kataster/results/kataster-relative_percent-no-splays.csv": {
+          "sha256": "925758846e7c8de118e6e0ce13c290dcca24bf134cd24b97c73685a0ed220943",
+          "size": 34513,
+          "mode": 420
+        },
+        "examples/kataster/results/verification.json": {
+          "sha256": "f184f463b221470b51720c417a0b8fa8286c3d24e56d0add03b2ab0ea2f41a93",
+          "size": 6014,
+          "mode": 420
+        },
+        "survex-duplicates.exe": {
+          "sha256": "b9633057a8e98c675861876d8cfe282dd240652e7dc9f50f79a164c4004f6289",
+          "size": 3926528,
+          "mode": 493
+        }
+      }
+    }
+  }
+]

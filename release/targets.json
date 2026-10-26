@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "targets": [
+    {
+      "id": "darwin_amd64",
+      "goos": "darwin",
+      "goarch": "amd64",
+      "env": {
+        "GOAMD64": "v1"
+      },
+      "kind": "native",
+      "archive": "zip",
+      "runner": "macos-15-intel"
+    },
+    {
+      "id": "darwin_arm64",
+      "goos": "darwin",
+      "goarch": "arm64",
+      "env": {
+        "GOARM64": "v8.0"
+      },
+      "kind": "native",
+      "archive": "zip",
+      "runner": "macos-15"
+    },
+    {
+      "id": "linux_amd64",
+      "goos": "linux",
+      "goarch": "amd64",
+      "env": {
+        "GOAMD64": "v1"
+      },
+      "kind": "native",
+      "archive": "zip",
+      "runner": "ubuntu-24.04"
+    },
+    {
+      "id": "linux_arm64",
+      "goos": "linux",
+      "goarch": "arm64",
+      "env": {
+        "GOARM64": "v8.0"
+      },
+      "kind": "native",
+      "archive": "zip",
+      "runner": "ubuntu-24.04-arm"
+    },
+    {
+      "id": "windows_amd64",
+      "goos": "windows",
+      "goarch": "amd64",
+      "env": {
+        "GOAMD64": "v1"
+      },
+      "kind": "native",
+      "archive": "zip",
+      "runner": "windows-2025"
+    },
+    {
+      "id": "windows_arm64",
+      "goos": "windows",
+      "goarch": "arm64",
+      "env": {
+        "GOARM64": "v8.0"
+      },
+      "kind": "native",
+      "archive": "zip",
+      "runner": "windows-11-arm"
+    }
+  ]
+}

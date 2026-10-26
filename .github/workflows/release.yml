@@ -1,0 +1,167 @@
+name: Verify and package
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-package-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+jobs:
+  checks:
+    uses: ./.github/workflows/check.yml
+
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.prepare.outputs.matrix }}
+      version: ${{ steps.prepare.outputs.version }}
+      revision: ${{ steps.prepare.outputs.revision }}
+      snapshot: ${{ steps.prepare.outputs.snapshot }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
+      - name: Resolve exact source, version and six native targets
+        id: prepare
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          revision=$(git rev-parse HEAD)
+          version="v$(cat VERSION)"
+          snapshot=true
+          if [ "$EVENT_NAME" = push ] && [ "$REF_TYPE" = tag ]; then
+            test "$REF_NAME" = "$version"
+            test "$(git rev-parse "$REF_NAME^{commit}")" = "$revision"
+            snapshot=false
+          else
+            version="$version-dev.${revision:0:12}"
+          fi
+          matrix=$(go run ./cmd/release matrix)
+          printf 'matrix=%s\nversion=%s\nrevision=%s\nsnapshot=%s\n' "$matrix" "$version" "$revision" "$snapshot" >> "$GITHUB_OUTPUT"
+
+  package:
+    name: Package (${{ matrix.target }})
+    needs: prepare
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      RELEASE_VERSION: ${{ needs.prepare.outputs.version }}
+      RELEASE_REVISION: ${{ needs.prepare.outputs.revision }}
+      RELEASE_SNAPSHOT: ${{ needs.prepare.outputs.snapshot }}
+      RELEASE_TARGET: ${{ matrix.target }}
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
+      - name: Build native ZIP and verify every member
+        run: |
+          test "$(go env GOOS)_$(go env GOARCH)" = "$RELEASE_TARGET"
+          test "$(git rev-parse HEAD)" = "$RELEASE_REVISION"
+          flags=()
+          if [ "$RELEASE_SNAPSHOT" = true ]; then flags+=(--snapshot); fi
+          go run ./cmd/release build --target "$RELEASE_TARGET" --version "$RELEASE_VERSION" --out dist "${flags[@]}"
+          go run ./cmd/release verify --archive "dist/survex-duplicates_${RELEASE_VERSION}_${RELEASE_TARGET}.zip"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: package-${{ matrix.target }}
+          path: dist/*
+          if-no-files-found: error
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: package-${{ matrix.target }}
+          path: build/readback
+      - name: Run downloaded program and compare complete example CSVs
+        run: go run ./cmd/release smoke --archive "build/readback/survex-duplicates_${RELEASE_VERSION}_${RELEASE_TARGET}.zip"
+
+  assemble:
+    needs: [checks, prepare, package]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      RELEASE_VERSION: ${{ needs.prepare.outputs.version }}
+      RELEASE_REVISION: ${{ needs.prepare.outputs.revision }}
+      RELEASE_SNAPSHOT: ${{ needs.prepare.outputs.snapshot }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          pattern: package-*
+          merge-multiple: true
+          path: dist
+      - name: Verify exact artifact set and generate checksums
+        run: |
+          flags=()
+          if [ "$RELEASE_SNAPSHOT" = true ]; then flags+=(--snapshot); fi
+          go run ./cmd/release assemble --dir dist --version "$RELEASE_VERSION" --revision "$RELEASE_REVISION" "${flags[@]}"
+          (cd dist && sha256sum --check SHA256SUMS)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: verified-release
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: [prepare, assemble]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_VERSION: ${{ needs.prepare.outputs.version }}
+      RELEASE_REVISION: ${{ needs.prepare.outputs.revision }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: verified-release
+          path: dist
+      - name: Publish only the complete verified release
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: bash scripts/publish-release.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: publication-readback
+          path: build/release-publication.json
+          if-no-files-found: warn

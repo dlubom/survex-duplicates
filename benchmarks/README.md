@@ -1,5 +1,10 @@
 # Reproducible performance measurements
 
+The primary runtime is now Go. See the separate
+[Go/Python comparison](../experiments/go-2026-10-26/README.md) for repeated
+end-to-end measurements and byte-for-byte CSV verification. The Python
+measurements below are preserved historical evidence.
+
 Publication measurements were made on Apple M4 (10 logical cores), Mac16,10, 16 GiB RAM, macOS 27.0.1 arm64. Python 3.12.14, NumPy 2.3.5, SciPy 1.16.3. Each case runs sequentially in a fresh process.
 
 ```bash

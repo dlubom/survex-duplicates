@@ -1,13 +1,22 @@
-# Third-party survey data
+# Third-party notices
 
 The detector's source code and original software documentation are licensed
 under the [MIT License](LICENSE).
+
+The executable includes the Go runtime under its BSD-style license. Release
+packages reproduce it as `GO-LICENSE`; the source copy is
+[release/GO-LICENSE](https://github.com/dlubom/survex-duplicates/blob/main/release/GO-LICENSE),
+copied unchanged from [Go 1.26.3](https://github.com/golang/go/blob/go1.26.3/LICENSE).
+
+## Survey data
 
 The complete registry example and survey-derived evidence are separately
 licensed under **Creative Commons Attribution-ShareAlike 4.0 International**:
 
 - `examples/kataster/`: the full spatial model, its text dump and derived reports;
 - `experiments/tolerance-2026-10-25/`: registry dump, geometric results and survey excerpts;
+- `experiments/go-2026-10-26/`: new registry verification summaries and performance measurements;
+- `experiments/go-release-2026-10-26/`: new registry parity and package-verification records;
 - `benchmarks/kataster-results/`: historical reports derived from the registry.
 
 Attribution: **Tatra Cave Registry contributors**,

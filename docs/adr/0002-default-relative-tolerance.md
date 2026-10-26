@@ -3,7 +3,7 @@
 Decision: 2026-10-25.
 
 Use a configurable tolerance of 5% of the shorter leg by default, with no fixed
-centimetre cap. The [full registry experiment](../../experiments/tolerance-2026-10-25/README.md)
+centimetre cap. The [full registry experiment](https://github.com/dlubom/survex-duplicates/blob/main/experiments/tolerance-2026-10-25/README.md)
 found an acknowledged repeat survey with a 10 cm difference and a repeated
 six-leg sequence with model differences up to 13.6 cm. An absolute 5 cm limit
 missed these examples.

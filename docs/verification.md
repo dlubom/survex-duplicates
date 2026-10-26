@@ -150,3 +150,71 @@ frontend. The historical `requirements-tested.txt` remains unchanged.
 The commands above are documented in [the development workflow](../README.md#development-and-verification).
 GitHub Actions is configured to run the locked checks on Python 3.12, 3.13 and
 3.14 with Survex installed; the local checks recorded here used Python 3.12.13.
+
+## Go migration checks (2026-10-26)
+
+The primary runtime is now the Go executable. The original Python source and
+historical input/evidence files remain unchanged. See
+[the migration comparison](../experiments/go-2026-10-26/README.md) for new
+measurements, source fingerprints, parity records and reproduction commands.
+
+Executed locally with Go 1.26.3, macOS arm64 and real Survex 1.4.24:
+
+- Final Go suite: 114 tests/subtests passed. The test-only differential probe
+  is skipped by the ordinary suite and executed explicitly by the comparison.
+- `go test -p 1 -race ./...` passed on the final Go source (11.017 seconds).
+  `go vet ./...` and Go formatting checks passed.
+- Python reference: 246 passed, zero skips. Strict mypy checks all nine
+  original modules; Ruff lint and formatting pass, including the new harness.
+- Complete historical registry verification passed in all eight settings,
+  including ordered pairs, orientations and both endpoint errors.
+- Native macOS arm64 build and cross-builds for Linux amd64 and Windows amd64
+  succeeded. The latter two binaries were not executed locally.
+- Independent review findings were corrected: exact large-exponent metadata,
+  repeated invalid tolerance arguments, dash-prefixed option values, portable
+  subprocess tests, Windows locale-key case, fixture EOL preservation and
+  comparison output directories outside the repository.
+
+Low disk space interrupted preliminary benchmark and race-build attempts.
+Only task-created caches and scratch files were cleaned. The successful final
+race run used a separate clean cache and serial package compilation; preliminary
+partial timings are not used as final performance evidence.
+
+GitHub Actions now includes Go runtime tests on Linux, macOS and Windows and
+the full differential comparison with real Survex on Linux. Those remote jobs
+have not been run for these local changes; cross-build success is not evidence
+of native runtime behaviour on those operating systems.
+
+## Six-platform Go release qualification (2026-10-26)
+
+The owner's final platform scope is Linux, macOS and Windows on amd64 and
+arm64, matching PocketTopo Exporter. The target manifest contains six ZIPs.
+See [the durable qualification record](../experiments/go-release-2026-10-26/README.md)
+for source fingerprints, archive/member hashes, fresh parity checks and limits.
+
+- Full Go race suite: 133 tests/subtests passed; the differential probe is the
+  sole ordinary-suite skip and was separately exercised by 320 comparisons.
+  Root and release-package vet checks and Go formatting passed.
+- Python: 246 tests passed, no skips; mypy passed for nine modules; Ruff lint
+  and formatting passed for 27 files, including publication tests.
+- Fresh differential verification: 160 complete CSV byte comparisons and
+  320 exact ordered-result/metadata comparisons passed. Real `dump3d` input
+  and all eight historical KATASTER settings also passed; input hashes stayed fixed.
+- Six native ZIPs built and passed source, architecture, toolchain, inventory,
+  hash and license validation. Independent Python readback checked their real
+  ELF/Mach-O/PE headers and all 29 members, including archive-relative doc links.
+- The extracted macOS ARM64 executable ran with an empty `PATH`; `--version`
+  matched its manifest and the 218-pair/60-pair CSVs matched all saved bytes.
+- Publication gates passed five test methods covering 24 offline success/failure
+  scenarios. Actionlint 1.7.12 accepted both workflows. Code, workflow, docs and
+  artifact reviews found no remaining blocking defect.
+
+Low disk space interrupted preliminary cold compiles; the final complete race
+run passed after cleaning task-created caches. Packaging exposed a Homebrew
+Go-license path assumption, corrected by bundling the pinned Go 1.26.3 license
+from the repository and testing that every required member can be opened.
+
+These checks used an uncommitted local snapshot. No commit, push, tag or public
+release was made, and no GitHub-hosted run for these changes has completed.
+The other five native platforms remain unexecuted locally. The workflow gates
+tag publication on all six native runs and independent uploaded-asset readback.

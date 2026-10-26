@@ -1,22 +1,66 @@
 name: Checks
 
 on:
-  push:
-  pull_request:
+  workflow_call:
 
 permissions:
   contents: read
 
 jobs:
+  go:
+    name: Go (${{ matrix.target }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {target: linux_amd64, runner: ubuntu-24.04, race: true}
+          - {target: linux_arm64, runner: ubuntu-24.04-arm, race: true}
+          - {target: darwin_amd64, runner: macos-15-intel, race: true}
+          - {target: darwin_arm64, runner: macos-15, race: true}
+          - {target: windows_amd64, runner: windows-2025, race: true}
+          - {target: windows_arm64, runner: windows-11-arm, race: false}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
+      - name: Verify native architecture
+        env:
+          EXPECTED_TARGET: ${{ matrix.target }}
+        run: test "$(go env GOOS)_$(go env GOARCH)" = "$EXPECTED_TARGET"
+      - name: Test including all eight KATASTER reports
+        run: go test -count=1 ./...
+      - name: Race detector
+        if: matrix.race
+        run: go test -race -count=1 ./...
+      - name: Vet
+        run: go vet ./...
+      - name: Formatting
+        shell: bash
+        run: test -z "$(gofmt -l .)"
+      - name: Build
+        run: go build ./...
+
   check:
     name: Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.12", "3.13", "3.14"]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
       - name: Install uv and Python
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
@@ -35,10 +79,25 @@ jobs:
       - name: Check types
         run: uv run --locked mypy
       - name: Lint
-        run: uv run --locked ruff check survex_duplicates tests benchmarks znajdz_duplikaty.py
+        run: uv run --locked ruff check survex_duplicates tests benchmarks scripts znajdz_duplikaty.py
       - name: Check formatting
-        run: uv run --locked ruff format --check survex_duplicates tests benchmarks znajdz_duplikaty.py
+        run: uv run --locked ruff format --check survex_duplicates tests benchmarks scripts znajdz_duplikaty.py
+      - name: Check release publication gates
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Validate GitHub Actions workflows
+        if: matrix.python-version == '3.12'
+        run: |
+          mkdir -p build/actionlint
+          curl --fail --location --silent --show-error https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o build/actionlint/archive.tar.gz
+          printf '%s  %s\n' 8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8 build/actionlint/archive.tar.gz | sha256sum --check
+          tar -xzf build/actionlint/archive.tar.gz -C build/actionlint actionlint
+          build/actionlint/actionlint
       - name: Verify complete registry results
         run: uv run --locked python -m benchmarks.verify_kataster --out-dir reports/verification
+      - name: Verify Go against Python and the independent oracle
+        run: |
+          go build -o bin/survex-duplicates .
+          go test -c -o bin/differential-probe .
+          uv run --locked python -m benchmarks.compare_go --go-bin bin/survex-duplicates --probe-bin bin/differential-probe --skip-benchmark
       - name: Build distributions
         run: uv build

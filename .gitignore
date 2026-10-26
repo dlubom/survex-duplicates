@@ -11,3 +11,6 @@ dist/
 /reports/
 /duplicates*.csv
 /absolute.csv
+/bin/
+/survex-duplicates
+/survex-duplicates.exe

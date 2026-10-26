@@ -19,9 +19,10 @@ The agreed TDD seams are:
 4. CLI → status, stderr and saved CSV: arguments, filters, identity and atomic publication.
 
 Write tests through these interfaces. Keep the oracle independent of the
-production predicate and KDTree. Qualification uses exact centimetre arithmetic;
-convert coordinates to Python integers before squaring. Streaming production
-code retains only the current query batch, not all candidates or results.
+production predicate and KDTree. Qualification uses exact centimetre arithmetic:
+use arbitrary-precision squares in Go and convert NumPy coordinates to Python
+integers in the independent oracle. Streaming production code retains only the
+current query batch, not all candidates or results.
 
 ## Data and portability
 
@@ -42,3 +43,5 @@ after behaviour changes. Check complete pairs, orientation and both endpoint
 errors when altering search or selection. Report executed checks and skips.
 For data updates, follow [examples/kataster/README.md](examples/kataster/README.md).
 Keep the MIT software license and CC BY-SA survey-data notices distinct.
+For release changes, follow [docs/releasing.md](docs/releasing.md); verify all
+six archive contents and execute the packaged demo on each native CI target.

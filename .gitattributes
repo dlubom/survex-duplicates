@@ -1,0 +1,12 @@
+# Portable source files. Provenance snapshots below must preserve every byte.
+* text=auto eol=lf
+*.go text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+/go.mod text eol=lf
+*.csv -text
+*.json -text
+/tests/fixtures/** -text
+/examples/kataster/** -text
+/experiments/tolerance-2026-10-25/** -text

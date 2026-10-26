@@ -1,5 +1,9 @@
 # Publication preparation
 
+Historical plan for the initial repository publication. Current Go runtime and
+package publication decisions are documented in
+[ADR 0004](adr/0004-go-runtime.md) and the [release guide](releasing.md).
+
 ## Goal
 
 Prepare a portable, English-language repository with an immediately runnable

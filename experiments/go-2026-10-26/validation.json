@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-26",
+  "reference_commit": "1143a96292d49457ea344d46410072ecbbcec1af",
+  "go_tests": {
+    "passed_tests_and_subtests": 114,
+    "ordinary_suite_skips": [
+      "TestDifferentialProbe (executed separately by comparison harness)"
+    ]
+  },
+  "race": {
+    "command": "go test -p 1 -race ./...",
+    "passed": true,
+    "seconds": 11.017
+  },
+  "vet": {
+    "command": "go vet ./...",
+    "passed": true
+  },
+  "python_reference": {
+    "tests_passed": 246,
+    "skipped": 0,
+    "mypy_modules": 9,
+    "ruff_passed": true
+  },
+  "historical_registry": {
+    "settings": 8,
+    "full_pairs_orientation_both_endpoint_errors": true,
+    "input_hashes_unchanged": true
+  },
+  "parity": {
+    "byte_identical_csv_checks": 160,
+    "exact_ordered_tuple_checks": 320,
+    "reader_metadata_checked": true,
+    "independent_oracle": "tests/oracle.py on seeded cases, fixtures and 512-leg registry sample"
+  },
+  "cross_builds": [
+    "linux/amd64 CGO_ENABLED=0",
+    "windows/amd64 CGO_ENABLED=0"
+  ],
+  "native_build": "darwin/arm64",
+  "standalone": {
+    "passed": true,
+    "cwd": "outside repository",
+    "PATH": "empty",
+    "rows": 218,
+    "columns": 47,
+    "csv_sha256": "c028fd991125c3738d3f9159c7907943b2a7e2afb47d068486ae4d58a29fbcd7"
+  },
+  "source_sha256": {
+    "cli.go": "c75be318fd03c05f47d44069c5cdb098426beb7c25b041b89de15d78e5696104",
+    "cli_args.go": "1803dfe1ceeaa4ea5cf5b4e76267f2157fe638a1b477bc092f9d196fa3fc1694",
+    "cli_args_test.go": "055bf6272e7de7a04b57c4ad162f0dba6eea59fbf797ffc926eaf1d7758202c9",
+    "cli_test.go": "ee2ca3b15e7d1ca1a2a60741cd8ad3750c259261a124a91ce866516b2f433259",
+    "differential_test.go": "e4a1dc69683f68bfb6ee86227ac93e9e2ecb6cb77530416cd37a4875e1e97352",
+    "geometry.go": "c9e3b6ae8914b09034ecf85f5f7004bc687044f2483c03eb7149273f0879be37",
+    "geometry_test.go": "07dade3ba8fdd5ed3b8eeac24020fb24357b808b4efe9fd21e3e240ea89226da",
+    "main.go": "d0913e554719b3845712d6e13ecc26ad3719f3c84b5ce9161d2113ac1fe62e99",
+    "models.go": "e22df682d507d84368808ab92c0d876b3707c29c5632ef636d0790d3e3925b30",
+    "reader.go": "2c75ef61ccdea0fc190cd0a1052ea1d153967a96ba4316c491c23f6995618510",
+    "reader_test.go": "04302586a03059ce5326e010076548747d20c78a548e1a04dde1774166800ffb",
+    "report.go": "263b94f4183779347f5942b8af99f75f67ca28c756767d221edc6f36ea600a1b",
+    "report_test.go": "c529d3e7e624d9726ad6612799f79b8902599c024e96cf5a639d566d8baba602",
+    "search.go": "ff522861761477d3ab06f68736692a33aed24f9762867d39c54ebefe94218f43",
+    "search_test.go": "a01fb0515a23dfcb42a91c65d22ec9c3317f4b1c3f1bc30f590107010c1f48e6"
+  },
+  "limits": [
+    "Cross-built Windows/Linux executables were not run locally.",
+    "Remote CI not run for this local change.",
+    "Initial timing and some build attempts failed due disk exhaustion; only the complete final timing series is preserved.",
+    "Measurements are warm filesystem cache, fresh process, one machine, not a universal bound."
+  ],
+  "review_findings_resolved": [
+    "exact non-leg decimal exponent handling",
+    "repeated invalid tolerance validation",
+    "dash-prefixed argument values",
+    "portable subprocess test helper",
+    "Windows locale key casing",
+    "byte-preserving Git attributes for snapshots",
+    "out-of-repository comparison directory paths"
+  ]
+}

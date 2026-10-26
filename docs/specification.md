@@ -4,6 +4,8 @@ Approved design: 2026-10-25. Publication amendment: legs carrying DUPLICATE
 are excluded by default; `--include-duplicates` restores the original all-flags
 audit. [ADR 0003](adr/0003-exclude-acknowledged-duplicates.md) records the owner's
 subsequent decision. Historical 220/62 registry results describe that explicit audit.
+Runtime amendment (2026-10-26): ADR 0004 makes Go the primary implementation
+while retaining the original Python implementation as a verification reference.
 This English specification replaces the original Polish document for publication.
 
 ## Purpose and scope
@@ -40,18 +42,20 @@ References: [Survex programs](https://survex.com/docs/manual/cmdline.htm),
 
 ## Runtime and CLI
 
-Python 3.12+, NumPy, SciPy KDTree and pytest. Use the standard library for
-CLI parsing, CSV, subprocesses and exact decimal/rational arithmetic.
-Declare compatible dependency ranges and record exact tested versions.
+Go 1.26 module, standard library only; release and CI builds use the pinned
+Go 1.26.3 toolchain. Keep reader, exact geometry, streaming search,
+report and CLI responsibilities separate. Use math/big for exact integer/rational
+arithmetic and preserve the reference decimal formatting. Record tested versions.
+The preserved Python 3.12+/NumPy/SciPy implementation, pytest and independent
+Python-integer oracle are development verification tools, not runtime dependencies.
 Survex is an external dependency only for binary input; reading a saved dump
 must work without Survex installed.
 
 ```bash
-python -m survex_duplicates model.3d --out duplicates.csv
-python -m survex_duplicates model.3d --relative-percent 5 --exclude-splays --out without-splays.csv
-python -m survex_duplicates model.dump --epsilon 0.05 --out absolute.csv
-python -m survex_duplicates model.3d --include-duplicates --out full-audit.csv
-python znajdz_duplikaty.py model.3d --out duplicates.csv
+go run . model.3d --out duplicates.csv
+go run . model.3d --relative-percent 5 --exclude-splays --out without-splays.csv
+go run . model.dump --epsilon 0.05 --out absolute.csv
+go run . model.3d --include-duplicates --out full-audit.csv
 ```
 
 | Argument | Contract |
@@ -67,6 +71,7 @@ python znajdz_duplikaty.py model.3d --out duplicates.csv
 | --batch-size | Positive integer; default 1. |
 | --force | Allow replacing an existing result after successful processing. |
 | --help | Explain both endpoint tolerances, units, examples, flags and adjusted-model limitations. |
+| --version | Print executable version and source revision without requiring input or output. |
 
 Explicit tolerance arguments are mutually exclusive. Accept decimal scientific
 notation exactly. Reject zero, negatives, NaN and Infinity. Default 5% must not
@@ -75,6 +80,8 @@ Auto mode detects the `Survex 3D Image File` signature; otherwise the input must
 validate as a full dump. The filename extension is not evidence of its format.
 Exit 0 means success, including no matches; 2 means invalid arguments; 1 means
 input, subprocess, computation or write failure. Diagnostics and summary use stderr.
+Help and version output use stdout. Ordinary unversioned source builds report
+`dev (unknown)`; release packaging embeds the intended version and source revision.
 All detector-authored documentation and diagnostics are in English. Errors
 from external tools retain their original diagnostic text.
 
@@ -135,8 +142,9 @@ saved dumps without requiring Survex; real binary integration is separate.
 
 ## Data model, identity and station names
 
-Store endpoints in int64 NumPy arrays `A_cm` and `B_cm`, shape `(n, 3)`, after
-checking each coordinate is a valid signed int32 centimetre value. Parse metres
+Store each endpoint as a three-element int64 point after checking each
+coordinate is a valid signed int32 centimetre value. The Python reference
+retains int64 NumPy arrays `A_cm` and `B_cm` of shape `(n, 3)`. Parse metres
 exactly; multiplying by 100 must produce an integer. Reject off-grid values
 instead of silently rounding. The supported spatial axes are East, North, Up.
 
@@ -196,16 +204,18 @@ orientation. At 5%, equivalently test
 `400 * min(direct_sq,reverse_sq) <= min(length_i_sq,length_j_sq)`.
 Do not use the longer/mean length or a floor radius for point legs.
 
-The predicate must not overflow. Convert coordinates to Python int before
-subtraction and squaring; int64 cannot hold every squared-distance sum across
-the full int32 range. A vector optimisation needs a proven safe range plus an
+The predicate must not overflow. Subtract validated int32 coordinates in int64,
+then square and sum with math/big integers; int64 cannot hold every squared-distance
+sum across the full int32 range. The independent Python oracle converts
+coordinates to Python int before subtraction and squaring. A vector optimisation needs a proven safe range plus an
 exact fallback. No arbitrary numeric epsilon or rounded CSV value may decide
 a match. Floating roots are only for accepted-result formatting; integer isqrt
 is allowed for index radii.
 
 ## KDTree search and streaming
 
-Use the orientation-independent bounding key in centimetres:
+Use the orientation-independent bounding key in centimetres. This reference
+notation defines the key; the Go implementation stores it as six int64 values:
 
 ```python
 F_cm = np.concatenate([np.minimum(A_cm, B_cm), np.maximum(A_cm, B_cm)], axis=1)
@@ -222,7 +232,8 @@ Query i at `ceil(rho * sqrt(length_i_sq))` centimetres in relative mode, or
 length; per-query radius is valid regardless of leg order. Round without float:
 for exact rational radius square q, return `2**32` if `q >= (2**32)**2`;
 otherwise set `k=isqrt(floor(q))` and increment if `k*k < q` exactly.
-For q=0 return 0. Convert this final integer to float only for KDTree.
+For q=0 return 0. Go queries use this integer directly; only the Python/SciPy reference converts
+the final integer to float for KDTree.
 This is `min(ceil(sqrt(q)),2**32)` and covers every possible int32 coordinate
 difference. The outward rounding may add candidates, rejected by the predicate.
 
@@ -231,7 +242,10 @@ neighbors = tree.query_ball_point(F_cm[i].astype(np.float64),
     r=query_radius_cm[i], p=np.inf, eps=0.0, return_sorted=True)
 ```
 
-SciPy eps=0.0 disables approximate searching; it is not user tolerance.
+The Go KDTree performs exact integer maximum-norm queries. In the Python
+reference, SciPy eps=0.0 disables approximate searching; it is not user tolerance.
+The Go median-partition implementation sorts partitions during construction,
+which costs O(n log² n); this is not a guarantee about query complexity.
 Process selected legs in original ID order, preserve an explicit mapping
 between compact tree rows and original records, retain only neighbours with
 higher IDs, and evaluate the exact predicate. Emit pairs ordered by `(leg_a,leg_b)`.
@@ -250,8 +264,8 @@ settings, batch size, detected format and read/build/search-with-write times.
 
 ## CSV report
 
-UTF-8, comma delimiter, a header even for zero matches, standard-library CSV
-quoting. Empty metadata is an empty field; reversed and boolean indicators are
+UTF-8, comma delimiter, a header even for zero matches, minimal CSV quoting
+and CRLF record endings compatible with the preserved Python csv.writer. Empty metadata is an empty field; reversed and boolean indicators are
 0/1. Column order:
 
 ```text
@@ -267,7 +281,7 @@ leg_a,leg_b,survey_a,survey_b,source_line_a,source_line_b,distance_m,endpoint_1_
 - `tolerance_mode` is `relative_percent` or `absolute_m`. `tolerance_value`
   is the exact decimal parameter (default `5`). `tolerance_m` is the actual
   pair tolerance before squared-integer truncation, not the rounded tree radius.
-  Allow scientific notation and use Decimal with sufficient range so a large
+  Allow scientific notation and use exact decimal formatting with sufficient range so a large
   valid parameter does not become float Infinity or a formatting error.
 - Preserve original endpoint order in all coordinates and a1/a2/b1/b2 names;
   reversal affects matching, not these columns. Coordinates are metres with
@@ -289,6 +303,12 @@ processing succeeds, preserving an existing report and removing the temporary
 file on failure. Without --force, an existing output is an error, including a
 file created while processing runs. Output must not refer to input through
 its direct path, symlink or hardlink.
+
+The Go writer flushes and syncs the temporary file before publication. Normal
+publication requires filesystem hardlink support; `--force` uses the operating
+system's rename operation. Atomic replacement is not guaranteed on every
+platform, and file sync does not guarantee directory-entry durability after a
+crash. See [platform filesystem behavior](platforms.md#output-filesystem-behavior).
 
 ## Acceptance tests
 
@@ -410,22 +430,23 @@ established evidence without overwriting the historical record.
 
 | File | Responsibility |
 | --- | --- |
-| pyproject.toml | Package, dependency ranges, entry point and check configuration. |
-| znajdz_duplikaty.py | Thin legacy CLI invocation. |
-| survex_duplicates/__main__.py | python -m entry point. |
-| cli.py | Arguments, coordination, diagnostics and exit status. |
-| reader.py | dump3d process, full-stream parsing and validation. |
-| models.py | Leg metadata, input model and match/pair records. |
-| geometry.py | Exact tolerance, predicate, orientation and endpoint errors. |
-| search.py | F key, KDTree and ordered streaming iterator. |
-| report.py | CSV formatting and atomic publication. |
-| tests/ | Approved-seam tests, independent oracle and real fixtures. |
+| go.mod / main.go | Go module and executable entry point. |
+| version.go / VERSION | Development identity and intended release version; release builds embed version and revision. |
+| cli_args.go / cli.go | Arguments, coordination, diagnostics and exit status. |
+| reader.go | dump3d process, full-stream parsing and validation. |
+| models.go | Leg metadata, input model and match/pair records. |
+| geometry.go | Exact tolerance, predicate, orientation and endpoint errors. |
+| search.go | F key, KDTree and ordered streaming callback. |
+| report.go | CSV formatting and atomic publication. |
+| *_test.go | Go tests at the approved seams; test-only differential probe. |
+| survex_duplicates/ / pyproject.toml / uv.lock | Preserved Python verification reference and locked dependencies. |
+| tests/ | Python reference tests, independent oracle and real fixtures. |
 | benchmarks/ | Reproducible generators, measurement and full verification. |
 | examples/kataster/ | Complete portable registry demo with provenance and license. |
 | README.md / AGENTS.md | Human and agent entry points. |
 
-The reader returns ordered records and metadata; the engine returns an iterator
-of matches; reporting consumes it. Predicate and engine are usable without
+The reader returns ordered records and metadata; the engine streams matches
+through a callback; reporting consumes them. Predicate and engine are usable without
 Survex processes or input files. Shared private lexical syntax may be factored
 without widening the public interfaces.
 

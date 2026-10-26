@@ -1,0 +1,67 @@
+# Survex Duplicate Detector {{VERSION}}
+
+Package target: `{{TARGET}}`.
+
+Find geometric duplicate candidates in a Survex spatial model. Both endpoints
+must match within tolerance, allowing reversed direction. The default is **5%
+of the shorter leg**. Results are saved as CSV for review; the input is preserved.
+
+## Run the bundled demo
+
+Keep this directory's executable, `docs/` and `examples/` together. Open a
+terminal here. This native package requires no Go, Python or Survex installation
+for the text demo. The [platform guide](docs/platforms.md) lists the six Linux,
+macOS and Windows packages and their processor architectures.
+
+On macOS or Linux with the matching native package:
+
+```bash
+./survex-duplicates examples/kataster/KATASTER.legs.dump --out duplicates.csv
+./survex-duplicates examples/kataster/KATASTER.legs.dump --exclude-splays --out duplicates-without-splays.csv
+```
+
+On Windows, use PowerShell:
+
+```powershell
+.\survex-duplicates.exe examples/kataster/KATASTER.legs.dump --out duplicates.csv
+.\survex-duplicates.exe examples/kataster/KATASTER.legs.dump --exclude-splays --out duplicates-without-splays.csv
+```
+
+The first report contains **218 pairs**, the second **60**. The complete
+18,584-leg KATASTER snapshot, its text dump and all eight expected CSV reports
+are included. See the [demo guide](examples/kataster/README.md) for report links,
+hashes, provenance and reproduction commands.
+
+## Review your model
+
+```bash
+./survex-duplicates "my cave.dump" --exclude-splays --out review.csv
+./survex-duplicates "my cave.dump" --epsilon 0.05 --out review-5cm.csv
+./survex-duplicates --version
+./survex-duplicates --help
+```
+
+For Windows, use `.\survex-duplicates.exe` in place of `./survex-duplicates`.
+Binary `.3d` input additionally requires Survex's `dump3d` on supported native
+platforms. Saved text dumps need no Survex. A complete dump has a header and
+final `STOP`; copied LEG lines alone are insufficient.
+
+`--relative-percent 5` means **5%**; `--epsilon 0.05` means **5 cm**. Each limit
+applies to both matched endpoints. Legs carrying `DUPLICATE` are excluded by
+default. Add `--include-duplicates` for the full geometric audit. SPLAY legs
+are included unless `--exclude-splays` is set.
+
+Existing output files are protected. Choose a new filename, or add `--force`
+to replace a report after successful processing. Open CSVs using UTF-8 and a
+comma delimiter. A match identifies a candidate for review, not a measurement
+that should automatically be deleted.
+
+The [usage guide](docs/usage.md) explains every option, CSV columns, reversal,
+station names and three real duplicate examples. The
+[platform guide](docs/platforms.md) describes target compatibility
+and filesystem behavior. Source builds, development checks and historical
+evidence are in the [source repository](https://github.com/dlubom/survex-duplicates).
+
+Software: [MIT](LICENSE); Go runtime: [Go license](GO-LICENSE).
+The bundled model, dump and survey-derived reports:
+[CC BY-SA 4.0 with attribution](NOTICE.md).
