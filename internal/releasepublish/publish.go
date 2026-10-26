@@ -28,7 +28,7 @@ type publisher struct {
 	created, published, publicationAttempted    bool
 	getenv                                      func(string) string
 	command                                     func(...string) (string, error)
-	evidence                                    any
+	evidence                                    map[string]any
 	stdout                                      io.Writer
 }
 
@@ -89,15 +89,15 @@ func (p *publisher) gh(args ...string) (string, error) {
 	return output, nil
 }
 func (p *publisher) validateEnvironment() error {
+	p.repository = p.getenv("GH_REPO")
+	p.version = p.getenv("RELEASE_VERSION")
+	p.revision = p.getenv("RELEASE_REVISION")
+	p.runURL = p.getenv("RUN_URL")
 	for _, name := range []string{"GH_TOKEN", "GH_REPO", "RELEASE_VERSION", "RELEASE_REVISION", "RUN_URL"} {
 		if p.getenv(name) == "" {
 			return fmt.Errorf("missing required publication environment variable: %s", name)
 		}
 	}
-	p.repository = p.getenv("GH_REPO")
-	p.version = p.getenv("RELEASE_VERSION")
-	p.revision = p.getenv("RELEASE_REVISION")
-	p.runURL = p.getenv("RUN_URL")
 	if !repositoryPattern.MatchString(p.repository) {
 		return fmt.Errorf("invalid GitHub repository")
 	}
@@ -281,7 +281,7 @@ func (p *publisher) execute() error {
 		assets = append(assets, map[string]string{"name": name, "sha256": hashes[name]})
 	}
 	releaseURL := "https://github.com/" + p.repository + "/releases/tag/" + p.version
-	p.evidence = map[string]any{"schema_version": 1, "phase": p.phase, "version": p.version, "revision": p.revision, "run_url": p.runURL, "release_url": releaseURL, "published": true, "notes_source_sha256": notesHash, "readback_directory": readbackRelative, "assets": assets}
+	p.evidence = map[string]any{"schema_version": 2, "phase": p.phase, "version": p.version, "revision": p.revision, "run_url": p.runURL, "release_url": releaseURL, "published": true, "notes_source_sha256": notesHash, "readback_directory": readbackRelative, "assets": assets}
 	fmt.Fprintln(p.stdout, "Published and verified", releaseURL)
 	fmt.Fprintln(p.stdout, "Independent readback retained in", readbackRelative)
 	return nil
@@ -290,8 +290,24 @@ func (p *publisher) execute() error {
 func (p *publisher) saveEvidence() error {
 	value := p.evidence
 	if value == nil {
-		value = map[string]any{"phase": p.phase, "published": p.published}
+		value = map[string]any{}
 	}
+	state := "not_attempted"
+	var published any = false
+	if p.published {
+		state, published = "confirmed", true
+	} else if p.publicationAttempted {
+		state, published = "unknown", nil
+	}
+	value["schema_version"] = 2
+	value["phase"] = p.phase
+	value["version"] = p.version
+	value["revision"] = p.revision
+	value["run_url"] = p.runURL
+	value["draft_created"] = p.created
+	value["publication_attempted"] = p.publicationAttempted
+	value["publication_state"] = state
+	value["published"] = published
 	b, err := json.MarshalIndent(value, "", "  ")
 	if err != nil {
 		return err

@@ -53,6 +53,76 @@ jobs:
       - name: Build
         run: go build ./...
 
+  quality:
+    name: Static analysis, coverage and fuzzing
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    env:
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
+      - name: Install pinned analyzers and real binary reader
+        run: |
+          go install honnef.co/go/tools/cmd/staticcheck@v0.7.0
+          go install golang.org/x/vuln/cmd/govulncheck@v1.1.4
+          sudo apt-get update
+          sudo apt-get install --yes survex
+      - name: Static analysis
+        run: staticcheck ./...
+      - name: Reachable vulnerability analysis
+        run: govulncheck ./...
+      - name: Unit and instrumented release CLI coverage
+        run: bash scripts/coverage.sh
+      - name: Bounded native fuzz campaigns
+        run: |
+          go test -run '^$' -fuzz '^FuzzParseDump$' -fuzztime=30s -parallel=2 .
+          go test -run '^$' -fuzz '^FuzzSearchOracle$' -fuzztime=30s -parallel=2 .
+      - name: Benchmark measurements without timing gates
+        run: |
+          mkdir -p reports
+          go test -run '^$' -bench . -benchmem -benchtime=100ms -count=1 . | tee reports/benchmarks.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: quality-reports
+          path: |
+            reports/coverage/
+            reports/benchmarks.txt
+            testdata/fuzz/
+          if-no-files-found: warn
+
+  mutations:
+    name: Curated mutation regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
+      - name: Install real binary reader
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes survex
+      - name: Run isolated mutations against the full suite
+        run: go run ./cmd/mutate
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: mutation-reports
+          path: reports/mutations/
+          if-no-files-found: warn
+
   tooling:
     name: Workflow validation
     runs-on: ubuntu-24.04

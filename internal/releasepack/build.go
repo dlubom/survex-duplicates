@@ -222,10 +222,30 @@ func Build(root, id, version, out string, snapshot bool) (string, error) {
 	}
 	h, err := hashFile(archive)
 	if err != nil {
+		os.Remove(archive)
 		return "", err
 	}
-	if err = os.WriteFile(archive+".sha256", []byte(h+"  "+filepath.Base(archive)+"\n"), 0644); err != nil {
+	if err = writeExclusive(archive+".sha256", []byte(h+"  "+filepath.Base(archive)+"\n")); err != nil {
+		os.Remove(archive)
 		return "", err
 	}
 	return archive, nil
+}
+
+// writeExclusive preserves existing output and removes an incomplete new file.
+func writeExclusive(name string, data []byte) (err error) {
+	f, err := os.OpenFile(name, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if closeErr := f.Close(); err == nil {
+			err = closeErr
+		}
+		if err != nil {
+			os.Remove(name)
+		}
+	}()
+	_, err = f.Write(data)
+	return err
 }

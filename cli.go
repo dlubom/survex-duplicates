@@ -38,7 +38,13 @@ Examples:
   survex-duplicates model.dump --epsilon 0.05 --out absolute.csv
 `
 
+type reportWriter func(string, *Model, *Search, *Tolerance, int, bool) error
+
 func RunCLI(args []string, stdout, stderr io.Writer) int {
+	return runCLI(args, stdout, stderr, WriteReport)
+}
+
+func runCLI(args []string, stdout, stderr io.Writer, writeReport reportWriter) int {
 	o, err := ParseOptions(args)
 	if err != nil {
 		fmt.Fprintln(stderr, "Error:", err)
@@ -60,14 +66,14 @@ func RunCLI(args []string, stdout, stderr io.Writer) int {
 			return 2
 		}
 	}
-	if err := run(o, tolerance, stderr); err != nil {
+	if err := run(o, tolerance, stderr, writeReport); err != nil {
 		fmt.Fprintln(stderr, "Error:", err)
 		return 1
 	}
 	return 0
 }
 
-func run(o Options, tolerance *Tolerance, stderr io.Writer) error {
+func run(o Options, tolerance *Tolerance, stderr io.Writer, writeReport reportWriter) error {
 	info, err := os.Stat(o.Input)
 	if err != nil {
 		return err
@@ -86,7 +92,7 @@ func run(o Options, tolerance *Tolerance, stderr io.Writer) error {
 	readSeconds := time.Since(start).Seconds()
 	search := NewSearch(model, tolerance, o.ExcludeSplays, o.IncludeDuplicates)
 	start = time.Now()
-	if err := WriteReport(o.Out, model, search, tolerance, o.BatchSize, o.Force); err != nil {
+	if err := writeReport(o.Out, model, search, tolerance, o.BatchSize, o.Force); err != nil {
 		return err
 	}
 	unit := "percent"

@@ -250,7 +250,7 @@ func TestVerifiedReadbackPublishes(t *testing.T) {
 		t.Fatalf("publication state: %+v", f.calls)
 	}
 	e := f.evidence()
-	if e["published"] != true || e["phase"] != "verified" || e["revision"] != testRevision || e["version"] != testVersion || len(e["assets"].([]any)) != 14 {
+	if e["schema_version"] != float64(2) || e["publication_state"] != "confirmed" || e["publication_attempted"] != true || e["draft_created"] != true || e["published"] != true || e["phase"] != "verified" || e["revision"] != testRevision || e["version"] != testVersion || len(e["assets"].([]any)) != 14 {
 		t.Fatal(e)
 	}
 	notesHash := sum(f.read("docs/releases/1.1.0.md"))
@@ -273,7 +273,7 @@ func TestRemoteFailuresNeverPublish(t *testing.T) {
 				t.Fatalf("unexpected publication: %v, %s", f.calls, &f.stdout)
 			}
 			e := f.evidence()
-			if len(e) != 2 || e["published"] != false || e["phase"] == "verified" {
+			if e["published"] != false || e["publication_state"] != "not_attempted" || e["publication_attempted"] != false || e["draft_created"] != f.created || e["version"] != testVersion || e["revision"] != testRevision || e["run_url"] != f.env["RUN_URL"] || e["phase"] == "verified" {
 				t.Fatal(e)
 			}
 		})
@@ -335,7 +335,7 @@ func TestPublicationFailureReportsUncertainty(t *testing.T) {
 		t.Fatalf("%s", &f.stderr)
 	}
 	e := f.evidence()
-	if e["phase"] != "publish_draft" || e["published"] != false {
+	if e["phase"] != "publish_draft" || e["published"] != nil || e["publication_state"] != "unknown" || e["publication_attempted"] != true {
 		t.Fatal(e)
 	}
 }
@@ -362,5 +362,30 @@ func TestInvalidEnvironmentNeverContactsGitHub(t *testing.T) {
 				t.Fatal(f.evidence())
 			}
 		})
+	}
+}
+
+func TestAcceptedPublicationWithLostResponseRecordsUnknown(t *testing.T) {
+	f := newFixture(t)
+	command := func(args ...string) (string, error) {
+		output, err := f.gh(args...)
+		if len(args) > 1 && args[0] == "release" && args[1] == "edit" && err == nil {
+			return "", errors.New("response lost after server accepted publication")
+		}
+		return output, err
+	}
+	code := Run(Config{Root: f.root, Getenv: func(k string) string { return f.env[k] }, Command: command}, &f.stdout, &f.stderr)
+	e := f.evidence()
+	if code != 1 || f.draft || e["published"] != nil || e["publication_state"] != "unknown" || e["publication_attempted"] != true || e["draft_created"] != true || e["version"] != testVersion || e["revision"] != testRevision || e["run_url"] != f.env["RUN_URL"] || !strings.Contains(f.stderr.String(), "attempted but not confirmed") {
+		t.Fatalf("remote draft=%v evidence=%v stderr=%s", f.draft, e, &f.stderr)
+	}
+	edits := 0
+	for _, args := range f.calls {
+		if len(args) > 1 && args[0] == "release" && args[1] == "edit" {
+			edits++
+		}
+	}
+	if edits != 1 {
+		t.Fatalf("publication retried %d times", edits)
 	}
 }

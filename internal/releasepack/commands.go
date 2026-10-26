@@ -109,13 +109,19 @@ func Assemble(root, dir, version, revision string, snapshot bool) (ReleaseManife
 	if err != nil {
 		return r, err
 	}
-	if err = os.WriteFile(filepath.Join(dir, "SHA256SUMS"), []byte(sums.String()), 0644); err != nil {
-		return r, err
+	return r, writeAssemblyMetadata(dir, []byte(sums.String()), append(b, '\n'))
+}
+
+func writeAssemblyMetadata(dir string, sums, manifest []byte) error {
+	checksums := filepath.Join(dir, "SHA256SUMS")
+	if err := writeExclusive(checksums, sums); err != nil {
+		return err
 	}
-	if err = os.WriteFile(filepath.Join(dir, "release-manifest.json"), append(b, '\n'), 0644); err != nil {
-		return r, err
+	if err := writeExclusive(filepath.Join(dir, "release-manifest.json"), manifest); err != nil {
+		os.Remove(checksums)
+		return err
 	}
-	return r, nil
+	return nil
 }
 
 func Smoke(root, archive string, w io.Writer) error {

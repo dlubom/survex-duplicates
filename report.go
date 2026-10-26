@@ -338,10 +338,38 @@ func writeReportRecord(writer io.StringWriter, fields []string) error {
 	return err
 }
 
+// reportFile exposes the file lifecycle needed before atomic publication.
+type reportFile interface {
+	io.Writer
+	Name() string
+	Sync() error
+	Close() error
+}
+
+// reportFileOperations keeps fault injection local to one report invocation.
+// Publication still uses the operating system's atomic link/rename operations.
+type reportFileOperations struct {
+	createTemp func(string, string) (reportFile, error)
+	link       func(string, string) error
+	rename     func(string, string) error
+	remove     func(string) error
+}
+
+func osReportFileOperations() reportFileOperations {
+	return reportFileOperations{
+		createTemp: func(dir, pattern string) (reportFile, error) { return os.CreateTemp(dir, pattern) },
+		link:       os.Link, rename: os.Rename, remove: os.Remove,
+	}
+}
+
 // WriteReport streams into a private file in the destination directory. Only
 // complete, flushed output is published; Link provides atomic no-clobber
 // semantics even if another process creates the destination during search.
 func WriteReport(path string, model *Model, search *Search, tolerance *Tolerance, batchSize int, force bool) error {
+	return writeReportWithFiles(path, model, search, tolerance, batchSize, force, osReportFileOperations())
+}
+
+func writeReportWithFiles(path string, model *Model, search *Search, tolerance *Tolerance, batchSize int, force bool, files reportFileOperations) error {
 	if model == nil || search == nil || tolerance == nil {
 		return fmt.Errorf("missing report input")
 	}
@@ -353,12 +381,12 @@ func WriteReport(path string, model *Model, search *Search, tolerance *Tolerance
 	if err != nil {
 		return err
 	}
-	file, err := os.CreateTemp(filepath.Dir(path), "."+filepath.Base(path)+".*.tmp")
+	file, err := files.createTemp(filepath.Dir(path), "."+filepath.Base(path)+".*.tmp")
 	if err != nil {
 		return err
 	}
 	temporary := file.Name()
-	defer os.Remove(temporary)
+	defer files.remove(temporary)
 	defer file.Close()
 	writer := bufio.NewWriterSize(file, 64*1024)
 	if err := writeReportRecord(writer, reportHeader); err != nil {
@@ -383,9 +411,9 @@ func WriteReport(path string, model *Model, search *Search, tolerance *Tolerance
 		return err
 	}
 	if force {
-		return os.Rename(temporary, path)
+		return files.rename(temporary, path)
 	}
-	return os.Link(temporary, path)
+	return files.link(temporary, path)
 }
 
 func resolveReportPath(path string) (string, error) {
