@@ -120,22 +120,19 @@ func WriteArchive(name, format string, epoch int64, entries []Entry) (err error)
 		}
 		return err
 	}
-	if format == "zip" {
-		zw := zip.NewWriter(f)
-		for _, e := range entries {
-			h := &zip.FileHeader{Name: e.Name, Method: zip.Deflate, Modified: stamp}
-			h.SetMode(os.FileMode(e.Mode))
-			w, x := zw.CreateHeader(h)
-			if x != nil {
-				return x
-			}
-			if x = write(e, w); x != nil {
-				return x
-			}
+	zw := zip.NewWriter(f)
+	for _, e := range entries {
+		h := &zip.FileHeader{Name: e.Name, Method: zip.Deflate, Modified: stamp}
+		h.SetMode(os.FileMode(e.Mode))
+		w, x := zw.CreateHeader(h)
+		if x != nil {
+			return x
 		}
-		return zw.Close()
+		if x = write(e, w); x != nil {
+			return x
+		}
 	}
-	return fmt.Errorf("unsupported archive format %q", format)
+	return zw.Close()
 }
 
 // ReadArchive performs a separate pass over the compressed file. Consumers see

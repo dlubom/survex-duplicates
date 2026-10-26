@@ -134,6 +134,28 @@ in files or command arguments. It saves publication/readback evidence to
 offline stub and cover failure before publication and uncertain publication
 responses. No Python interpreter is needed for this workflow.
 
+Evidence schema 2 records `phase`, version, revision, workflow URL,
+`draft_created`, `publication_attempted` and `publication_state` even on failure.
+The `published` field is deliberately nullable:
+
+| publication_state | published | Meaning |
+| --- | --- | --- |
+| `not_attempted` | `false` | The public-transition command was not invoked. |
+| `unknown` | `null` | It was invoked, but its response did not confirm success. |
+| `confirmed` | `true` | The public-transition command confirmed success. |
+
+Only `phase: verified` confirms that subsequent release and tag checks also
+passed. For `unknown`, inspect the current remote release before retrying; a
+lost response may follow a successful publication. A failed postpublication
+check leaves `published: true` with the failing phase, not a false assertion
+that the release is still private. Consumers of schema 1 must account for the
+new nullable field and explicit state.
+
+Local packaging also preserves existing output files. If writing a ZIP's
+checksum sidecar fails, the newly created ZIP is removed. If assembly cannot
+write its second metadata file, it removes the newly created `SHA256SUMS`.
+These are error-path cleanups; two-file publication is not crash-atomic.
+
 ## Updating a version or platform
 
 Change `VERSION` deliberately and keep the release tag consistent. An ordinary

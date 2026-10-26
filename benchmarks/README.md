@@ -8,6 +8,34 @@ generators and lockfile are archived at commit
 [`b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1`](https://github.com/dlubom/survex-duplicates/tree/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1);
 the current tree and CI use Go.
 
+## Current Go benchmarks
+
+Run on an otherwise idle machine with the pinned Go toolchain:
+
+```bash
+go test -run '^$' -bench . -benchmem -benchtime=1s -count=5 .
+```
+
+`BenchmarkParseDump` reads the hash-verified 18,584-leg bundled text dump.
+`BenchmarkSearch` separates index `Build` from streaming `Pairs` for sparse
+and repeated 50k/100k models and a bounded dense 128-leg model. Generator v1
+uses no randomness: separated cells contain one or four records, alternating
+direction and cycling plain/SPLAY/DUPLICATE/both flags. Dense records share
+one segment. Four named settings expose tolerance, flags and batch size.
+
+Before timing, construction-derived expected selection and match counts are
+checked, and a small prefix is compared with the independent rational oracle.
+Output includes `ns/op`, `B/op`, `allocs/op`, input/selected/excluded leg counts,
+candidates and pairs. Search consumes results without collecting them.
+These benchmarks exclude CSV formatting and filesystem publication and are
+different workloads from the historical Python tables below; do not compare
+their times as equivalent end-to-end measurements.
+
+CI saves a short 100 ms run per case as an artifact, with no timing threshold.
+Use repeated local runs for performance decisions and record Go version,
+architecture, hardware and workload parameters alongside new measurements.
+Do not replace the historical JSON files with fresh benchmark output.
+
 ## Reproduce the archived Python reference
 
 From the current repository, create a separate detached worktree. The destination

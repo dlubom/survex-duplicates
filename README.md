@@ -48,6 +48,8 @@ names, `reversed`, and **both** endpoint errors together. The
 [usage guide](docs/usage.md) explains the columns, tolerance choices, binary
 input and real examples. The [demo guide](examples/kataster/README.md) links
 all eight expected reports and records their provenance and data license.
+The [documentation index](docs/index.md) separates usage, development, releases
+and historical evidence.
 
 ## Use your own model
 
@@ -117,6 +119,11 @@ command stub; ordinary tests do not publish releases.
 For workflow edits, run `actionlint` 1.7.12; CI downloads that pinned version and
 verifies its checksum. The six native CI targets run Go checks and extracted
 package tests, with real `dump3d` integration on Linux.
+
+See the [quality guide](docs/development.md) for pinned Staticcheck and
+govulncheck, unit plus release-CLI coverage, curated mutation regressions,
+native fuzzing and allocation benchmarks. CI saves coverage, mutation logs and
+benchmark reports. These checks supplement the exact-result assertions above.
 
 The registry is bundled; no external checkout is needed. Binary integration
 requires `dump3d`, and tests report a skip if it is unavailable. Optional

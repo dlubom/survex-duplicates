@@ -6,7 +6,7 @@ those snapshots. For current development commands use
 [README.md](../README.md#development-and-verification); for Python reproduction
 use the [immutable reference checkout](../benchmarks/README.md#reproduce-the-archived-python-reference).
 The latest completed checks are recorded under
-[Python retirement](#python-retirement--2026-10-26).
+[Quality hardening](#quality-hardening--2026-10-26).
 
 ## Initial implementation — 2026-10-25
 
@@ -274,3 +274,60 @@ intentionally omits the unsupported Go race detector; binary Survex integration
 runs on both native Linux targets and locally, while other native jobs may skip
 it when `dump3d` is unavailable. No new performance measurement was made during
 cleanup; the preserved migration measurements still describe the measured code.
+
+## Quality hardening — 2026-10-26
+
+The audit started at `1995da56d276be02a0853ba0ddfdf37bb81caa42`. Its original
+23 selected mutations produced 15 killed and eight surviving cases. Statement
+coverage alone had not exposed the missing assertions: named `ANON`, blank
+source lines, CSV flush/sync and four public archive-verification guards.
+The new regression tests kill those faults. No parser, geometry, filter or CSV
+format contract was changed.
+
+Three production corrections followed observable failures: publication evidence
+now distinguishes an unknown remote outcome from an unattempted publication;
+failed checksum-sidecar creation removes its new ZIP; failed second assembly
+metadata creation removes the new first file. Existing outputs are preserved.
+Private report/CLI fault seams add error-path coverage without changing public
+interfaces. Unreachable ZIP/CPU branches were removed. Five completed plans
+were deleted; historical numerical evidence and survey/fixture bytes remain
+unchanged. Current guidance is indexed in [docs/index.md](index.md).
+
+Executed locally with Go 1.26.3, macOS arm64 and real Survex 1.4.24:
+
+- Full ordinary and race suites passed, with no skipped tests. Vet, gofmt,
+  build, Staticcheck v0.7.0, actionlint 1.7.12 and whitespace checks passed.
+- Govulncheck v1.1.4 reported no reachable vulnerable calls. It additionally
+  reported two affected imported packages and 25 module-level vulnerabilities
+  whose affected calls were not reached; this is not a blanket security claim.
+- The real release CLI completed instrumented matrix/build/verify/smoke checks.
+  Main-package statement coverage is **92.3%**. Release-package unit coverage
+  rose from **35.8% to 67.8%**; the union with CLI integration is **79.7%**.
+  Publication-package unit coverage is **83.3%**. Function-level geometry and
+  search coverage remains **100%**. Profiles are separate from mutation results.
+- All **27 curated mutants** were killed by actual failing tests after a passing
+  baseline. Build errors, stale anchors and timeouts do not count as kills.
+  This is a selected regression catalogue, not an exhaustive mutation score.
+- Both native fuzz campaigns passed, including real fixture parser seeds and
+  complete rational-oracle search comparisons with transformation checks.
+  Initial 12-second campaigns exercised 600,373 parser inputs and 71,412 search
+  models; independent five-second review campaigns also passed.
+- All **41 benchmark cases** passed workload/oracle checks with allocation
+  reporting. Short runs overlapped other checks and are smoke evidence only;
+  no comparative speed claim or historical timing replacement is made.
+- Six snapshot ZIPs passed source, inventory, hash and binary validation plus
+  complete-set assembly. Independent readback checked all 30 members of each
+  archive. The extracted macOS arm64 executable passed version reporting and
+  complete 218-pair/60-pair CSV smoke checks.
+
+Independent review found no further production or test defect. Tooling review
+found that inherited Git environment overrides could escape the mutation
+snapshot through child tests; the runner now strips those overrides for both
+its own Git commands and the test process, with a regression using an external
+index path. Running coverage also exposed a macOS awk regular-expression
+portability issue; the corrected script completed successfully.
+
+Local outputs are in ignored `reports/coverage/` and `reports/mutations/`.
+The [quality guide](development.md) documents reproduction and CI artifacts.
+These checks do not establish remote CI success or execution on the other five
+native platforms. No tag or public release was created by this maintenance.

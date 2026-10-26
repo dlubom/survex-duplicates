@@ -199,11 +199,7 @@ func verifyBinary(data []byte, m Manifest) error {
 		}
 	}
 	for k, v := range m.Target.Env {
-		got := settings[k]
-		if k == "GOARM" {
-			got, _, _ = strings.Cut(got, ",")
-		}
-		if got != v {
+		if settings[k] != v {
 			return fmt.Errorf("executable CPU setting %s mismatch", k)
 		}
 	}

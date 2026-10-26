@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "mutations": [
+    {
+      "name": "geometry_inclusive_boundary",
+      "file": "geometry.go",
+      "before": "if largerSquared(e1, e2).Cmp(threshold) > 0 {",
+      "after": "if largerSquared(e1, e2).Cmp(threshold) >= 0 {"
+    },
+    {
+      "name": "geometry_longer_length",
+      "file": "geometry.go",
+      "before": "if lengthB.Cmp(lengthA) < 0 {",
+      "after": "if lengthB.Cmp(lengthA) > 0 {"
+    },
+    {
+      "name": "geometry_reversed_tie",
+      "file": "geometry.go",
+      "before": "reversed := largerSquared(r1, r2).Cmp(largerSquared(e1, e2)) < 0",
+      "after": "reversed := largerSquared(r1, r2).Cmp(largerSquared(e1, e2)) <= 0"
+    },
+    {
+      "name": "geometry_ignore_second_endpoint",
+      "file": "geometry.go",
+      "before": "if largerSquared(e1, e2).Cmp(threshold) > 0 {",
+      "after": "if e1.Cmp(threshold) > 0 {"
+    },
+    {
+      "name": "radius_no_outward_rounding",
+      "file": "geometry.go",
+      "before": "result++",
+      "after": "result += 0"
+    },
+    {
+      "name": "search_include_self",
+      "file": "search.go",
+      "before": "if node.row > first {",
+      "after": "if node.row >= first {"
+    },
+    {
+      "name": "search_prune_left_boundary",
+      "file": "search.go",
+      "before": "if key[node.axis]-radius <= feature[node.axis] {",
+      "after": "if key[node.axis]-radius < feature[node.axis] {"
+    },
+    {
+      "name": "search_unsorted_neighbors",
+      "file": "search.go",
+      "before": "sort.Ints(neighbors[offset])",
+      "after": "// mutation: omit neighbor order"
+    },
+    {
+      "name": "search_include_acknowledged_duplicates",
+      "file": "search.go",
+      "before": "flag == \"DUPLICATE\" && !includeDuplicates",
+      "after": "flag == \"DUPLICATE\" && false && !includeDuplicates"
+    },
+    {
+      "name": "search_include_splays",
+      "file": "search.go",
+      "before": "flag == \"SPLAY\" && excludeSplays",
+      "after": "flag == \"SPLAY\" && false && excludeSplays"
+    },
+    {
+      "name": "reader_missing_stop",
+      "file": "reader.go",
+      "before": "if !inBody || !stopped {",
+      "after": "if !inBody {"
+    },
+    {
+      "name": "reader_truncate_bracket_name",
+      "file": "reader.go",
+      "before": "i := strings.LastIndexByte(s, ']')",
+      "after": "i := strings.IndexByte(s, ']')"
+    },
+    {
+      "name": "report_replace_without_force",
+      "file": "report.go",
+      "before": "return files.link(temporary, path)",
+      "after": "return files.rename(temporary, path)"
+    },
+    {
+      "name": "report_ignore_flush_error",
+      "file": "report.go",
+      "before": "if err := writer.Flush(); err != nil {",
+      "after": "if err := writer.Flush(); false {"
+    },
+    {
+      "name": "report_remove_sync",
+      "file": "report.go",
+      "before": "if err := file.Sync(); err != nil {",
+      "after": "if err := error(nil); err != nil {"
+    },
+    {
+      "name": "report_ignore_hardlink_identity",
+      "file": "report.go",
+      "before": "if err == nil && os.SameFile(sourceInfo, destinationInfo) {",
+      "after": "if err == nil && false && os.SameFile(sourceInfo, destinationInfo) {"
+    },
+    {
+      "name": "release_ignore_binary_verification",
+      "file": "internal/releasepack/verify.go",
+      "before": "if err = verifyBinary(executable, m); err != nil {",
+      "after": "if err = verifyBinary(executable, m); false {"
+    },
+    {
+      "name": "release_ignore_source_identity",
+      "file": "internal/releasepack/verify.go",
+      "before": "if err = verifySourceIdentity(root, m); err != nil {",
+      "after": "if err = verifySourceIdentity(root, m); false {"
+    },
+    {
+      "name": "release_ignore_trusted_entries",
+      "file": "internal/releasepack/verify.go",
+      "before": "if err = verifyExpectedEntries(entries, records); err != nil {",
+      "after": "if err = verifyExpectedEntries(entries, records); false {"
+    },
+    {
+      "name": "release_ignore_inventory",
+      "file": "internal/releasepack/verify.go",
+      "before": "if err = verifyInventory(m, records); err != nil {",
+      "after": "if err = verifyInventory(m, records); false {"
+    },
+    {
+      "name": "reader_ignore_named_anon",
+      "file": "reader.go",
+      "before": "case \"ANON\":\n\t\t\t\t\tstation.Anonymous = true",
+      "after": "case \"ANON\":\n\t\t\t\t\t// omit flag effect"
+    },
+    {
+      "name": "reader_ignore_blank_source_lines",
+      "file": "reader.go",
+      "before": "if text == \"\" {\n\t\t\treturn nil",
+      "after": "if text == \"\" {\n\t\t\tlineNumber--\n\t\t\treturn nil"
+    },
+    {
+      "name": "report_invert_half_even_tie",
+      "file": "report.go",
+      "before": "comparison == 0 && quotient.Bit(0) == 1",
+      "after": "comparison == 0 && quotient.Bit(0) == 0"
+    },
+    {
+      "name": "report_ignore_close_error",
+      "file": "report.go",
+      "before": "if err := file.Close(); err != nil {",
+      "after": "if err := file.Close(); false {"
+    },
+    {
+      "name": "publication_ignore_download_checksum",
+      "file": "internal/releasepublish/publish.go",
+      "before": "if digest != hashes[name] {",
+      "after": "if digest != hashes[name] && false {"
+    },
+    {
+      "name": "publication_ignore_remote_identity",
+      "file": "internal/releasepublish/publish.go",
+      "before": "if remote.Draft == nil || *remote.Draft != draft || remote.Tag != p.version || remote.Revision != p.revision {",
+      "after": "if false {"
+    },
+    {
+      "name": "publication_hide_attempt_uncertainty",
+      "file": "internal/releasepublish/publish.go",
+      "before": "p.publicationAttempted = true",
+      "after": "p.publicationAttempted = false"
+    }
+  ]
+}
