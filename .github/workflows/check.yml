@@ -37,8 +37,8 @@ jobs:
       - name: Install Survex for native binary integration
         if: startsWith(matrix.target, 'linux_')
         run: |
-          sudo apt-get update
-          sudo apt-get install --yes survex
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --yes --no-install-recommends survex
           dump3d --version
       - name: Test including independent oracle and all eight KATASTER reports
         run: go test -count=1 ./...
@@ -72,8 +72,8 @@ jobs:
         run: |
           go install honnef.co/go/tools/cmd/staticcheck@v0.7.0
           go install golang.org/x/vuln/cmd/govulncheck@v1.1.4
-          sudo apt-get update
-          sudo apt-get install --yes survex
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --yes --no-install-recommends survex
       - name: Static analysis
         run: staticcheck ./...
       - name: Reachable vulnerability analysis
@@ -112,8 +112,8 @@ jobs:
           cache: false
       - name: Install real binary reader
         run: |
-          sudo apt-get update
-          sudo apt-get install --yes survex
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --yes --no-install-recommends survex
       - name: Run isolated mutations against the full suite
         run: go run ./cmd/mutate
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

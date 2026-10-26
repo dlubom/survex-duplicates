@@ -18,7 +18,8 @@
 ## Preparing releases
 
 - [Building, verifying and publishing releases](releasing.md)
-- [Prepared v1.1.0 release notes](releases/1.1.0.md)
+- [v1.0.0 release notes](releases/1.0.0.md)
+- [Changelog](../CHANGELOG.md)
 
 ## Historical evidence
 
