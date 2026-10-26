@@ -15,6 +15,11 @@ import (
 // Full CSV equality includes pair order, orientation, both endpoint errors and
 // all metadata; counts alone would not establish compatibility.
 func TestCLIBundledKatasterReports(t *testing.T) {
+	assertKatasterReports(t, filepath.Join("examples", "kataster", "KATASTER.legs.dump"), "dump")
+}
+
+func assertKatasterReports(t *testing.T, input, inputFormat string) {
+	t.Helper()
 	base := filepath.Join("examples", "kataster")
 	inputHashes := map[string]string{
 		"KATASTER.3d":        "55c9a785bd4494cd4c8e41dbcdfd106eedfd4e415558e7d4cee856a789821077",
@@ -67,7 +72,7 @@ func TestCLIBundledKatasterReports(t *testing.T) {
 				t.Fatalf("invalid saved report: rows=%d, error=%v", len(rows), err)
 			}
 			output := filepath.Join(t.TempDir(), "report.csv")
-			args := []string{filepath.Join(base, "KATASTER.legs.dump"), "--input-format", "dump", "--out", output}
+			args := []string{input, "--input-format", inputFormat, "--out", output}
 			if expected.ToleranceMode == "absolute_m" {
 				args = append(args, "--epsilon", expected.ToleranceValue)
 			} else if expected.ToleranceMode != "relative_percent" || expected.ToleranceValue != "5" {
@@ -109,7 +114,7 @@ func TestCLIBundledKatasterReports(t *testing.T) {
 				summary.N != expected.N || summary.K != expected.K || summary.ToleranceMode != expected.ToleranceMode ||
 				summary.ToleranceValue != expected.ToleranceValue || summary.ToleranceUnit != expected.ToleranceUnit ||
 				summary.ExcludeSplays != expected.ExcludeSplays || summary.IncludeDuplicates != expected.IncludeDuplicates ||
-				summary.InputFormat != "dump" {
+				summary.InputFormat != inputFormat {
 				t.Fatalf("unexpected CLI summary: %+v", summary)
 			}
 		})

@@ -34,7 +34,13 @@ jobs:
         env:
           EXPECTED_TARGET: ${{ matrix.target }}
         run: test "$(go env GOOS)_$(go env GOARCH)" = "$EXPECTED_TARGET"
-      - name: Test including all eight KATASTER reports
+      - name: Install Survex for native binary integration
+        if: startsWith(matrix.target, 'linux_')
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes survex
+          dump3d --version
+      - name: Test including independent oracle and all eight KATASTER reports
         run: go test -count=1 ./...
       - name: Race detector
         if: matrix.race
@@ -47,57 +53,16 @@ jobs:
       - name: Build
         run: go build ./...
 
-  check:
-    name: Python ${{ matrix.python-version }}
+  tooling:
+    name: Workflow validation
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.12", "3.13", "3.14"]
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
-        with:
-          go-version-file: .go-version
-          cache: false
-      - name: Install uv and Python
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
-        with:
-          version: "0.11.8"
-          python-version: ${{ matrix.python-version }}
-          enable-cache: true
-      - name: Install Survex
-        run: |
-          sudo apt-get update
-          sudo apt-get install --yes survex
-          dump3d --version
-      - name: Install locked dependencies
-        run: uv sync --locked
-      - name: Test
-        run: uv run --locked pytest -q -rs
-      - name: Check types
-        run: uv run --locked mypy
-      - name: Lint
-        run: uv run --locked ruff check survex_duplicates tests benchmarks scripts znajdz_duplikaty.py
-      - name: Check formatting
-        run: uv run --locked ruff format --check survex_duplicates tests benchmarks scripts znajdz_duplikaty.py
-      - name: Check release publication gates
-        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Validate GitHub Actions workflows
-        if: matrix.python-version == '3.12'
         run: |
           mkdir -p build/actionlint
           curl --fail --location --silent --show-error https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o build/actionlint/archive.tar.gz
           printf '%s  %s\n' 8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8 build/actionlint/archive.tar.gz | sha256sum --check
           tar -xzf build/actionlint/archive.tar.gz -C build/actionlint actionlint
           build/actionlint/actionlint
-      - name: Verify complete registry results
-        run: uv run --locked python -m benchmarks.verify_kataster --out-dir reports/verification
-      - name: Verify Go against Python and the independent oracle
-        run: |
-          go build -o bin/survex-duplicates .
-          go test -c -o bin/differential-probe .
-          uv run --locked python -m benchmarks.compare_go --go-bin bin/survex-duplicates --probe-bin bin/differential-probe --skip-benchmark
-      - name: Build distributions
-        run: uv build

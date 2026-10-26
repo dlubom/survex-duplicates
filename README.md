@@ -87,52 +87,47 @@ go build -o bin/survex-duplicates.exe .
 
 For the other examples, use the executable under `bin/` instead of the archive's
 root executable. `go run . INPUT --out OUTPUT` also works from a source checkout.
-The Python package is retained as an executable verification reference.
 An ordinary source build reports `dev (unknown)` with `--version`; release
 packages report their version and source revision.
+The detector, tests and release tools use Go. The former Python implementation
+is archived in Git; it is not installed or built by the current project.
 
 ## Development and verification
 
 Run the Go checks from the repository root:
 
 ```bash
-go test ./...
-go test -race ./...
+go test -count=1 ./...
+go test -race -count=1 ./...
 go vet ./...
 gofmt -l .
-go build -o bin/survex-duplicates .
+go build ./...
+go run ./cmd/release matrix
 ```
 
 `gofmt -l` must print nothing. On Windows ARM64, omit the race command because
 Go 1.26.3 does not support that combination; ordinary tests still run.
-Differential verification additionally requires
-[uv](https://docs.astral.sh/uv/getting-started/installation/) and the locked
-Python reference environment:
+The Go suite checks complete ordered pairs, orientation, both squared endpoint
+errors, reader metadata and CSV bytes. An independent exhaustive oracle uses
+exact rational arithmetic without calling the production predicate or spatial
+index. Tests cover seeded inputs, int32 extremes, the 512-leg registry sample
+and all eight complete KATASTER reports. Publication tests use an offline GitHub
+command stub; ordinary tests do not publish releases.
 
-```bash
-uv sync --locked
-uv run --locked pytest -q -rs
-uv run --locked mypy
-uv run --locked ruff check survex_duplicates tests benchmarks scripts znajdz_duplikaty.py
-uv run --locked ruff format --check survex_duplicates tests benchmarks scripts znajdz_duplikaty.py
-python3 -m unittest discover -s scripts -p 'test_*.py' -v
-uv run --locked python -m benchmarks.verify_kataster --out-dir reports/verification
-go test -c -o bin/differential-probe .
-uv run --locked python -m benchmarks.compare_go --go-bin bin/survex-duplicates --probe-bin bin/differential-probe --skip-benchmark
-```
-
-The comparison checks full ordered pairs, orientation, both squared endpoint
-errors, reader metadata and CSV bytes. It covers all eight registry settings,
-real fixtures, int32 extremes, seeded inputs and an independent 512-leg oracle.
-Omit `--skip-benchmark` to measure fresh Python and Go processes, alternating
-execution order, with five runs after one warm-up. Run benchmarks separately
-from builds and tests.
+For workflow edits, run `actionlint` 1.7.12; CI downloads that pinned version and
+verifies its checksum. The six native CI targets run Go checks and extracted
+package tests, with real `dump3d` integration on Linux.
 
 The registry is bundled; no external checkout is needed. Binary integration
 requires `dump3d`, and tests report a skip if it is unavailable. Optional
 `KATASTER_PATH` selects another binary, but historical expectations apply only
 when its SHA-256 matches. New results belong in ignored `reports/`; binaries
 belong in ignored `bin/`. Preserve the input snapshots and historical evidence.
+
+The completed Go/Python comparisons remain reproducible from the fixed
+pre-cleanup commit. See [historical benchmark reproduction](benchmarks/README.md#reproduce-the-archived-python-reference)
+and [ADR 0005](docs/adr/0005-retire-python-reference.md). Python, NumPy, SciPy
+and uv are needed only when deliberately replaying that archived checkout.
 
 See the [verification record](docs/verification.md),
 [Go migration evidence](experiments/go-2026-10-26/README.md),

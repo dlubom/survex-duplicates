@@ -110,17 +110,19 @@ Report hashes are listed individually in `results/verification.json`. Comparing
 only the number of CSV rows is insufficient: orientation and both endpoint
 errors must agree too.
 
-For developers, full historical verification from a source checkout uses the
-locked Python reference and requires `dump3d`:
+For developers, the Go CLI regression test verifies all eight complete reports
+from the saved dump without requiring Survex:
 
 ```bash
-uv sync --locked
-uv run --locked python -m benchmarks.verify_kataster --out-dir reports/verification
+go test -count=1 -run '^TestCLIBundledKatasterReports$' .
 ```
 
-This validates the binary hash before using expectations, verifies all eight
-settings, and checks the input hash again afterwards. Go/Python differential
-checks are documented in [development and verification in the source repository](https://github.com/dlubom/survex-duplicates#development-and-verification).
+This validates the preserved model/dump hashes before using expectations,
+compares complete CSV bytes and checks the input hashes again afterwards.
+The full Go suite also covers the independent exact oracle and real binary
+integration when `dump3d` is installed. Historical Go/Python comparisons can
+be replayed from the
+[pinned pre-cleanup checkout](https://github.com/dlubom/survex-duplicates/blob/main/benchmarks/README.md#reproduce-the-archived-python-reference).
 The saved verification file records its original run, not timings for the
 machine on which you run the demo.
 

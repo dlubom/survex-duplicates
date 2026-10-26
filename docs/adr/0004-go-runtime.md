@@ -4,6 +4,11 @@ Date: 2026-10-26. Status: accepted. The implementation was promoted after
 the recorded comparison demonstrated result parity and improved performance
 on the measured workloads. Publication remains a separate operation.
 
+The active Python-reference retention decision below is superseded by
+[ADR 0005](0005-retire-python-reference.md). The Go runtime decision and
+recorded migration evidence remain valid; the old executable reference is
+preserved in Git at the fixed pre-cleanup commit.
+
 ## Context
 
 The owner requested a Go migration and an investigation of speed and identical
@@ -33,8 +38,9 @@ Existing historical reports and data-license notices remain intact.
 ## Evidence and consequences
 
 `experiments/go-2026-10-26/` records the comparison method, measurements and
-limits. `benchmarks/compare_go.py` reproduces exact tuple, metadata and CSV-byte
-checks, followed by alternating fresh-process timing runs. Registry/fixture
+limits. The archived
+[`benchmarks/compare_go.py`](https://github.com/dlubom/survex-duplicates/blob/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1/benchmarks/compare_go.py)
+reproduces exact tuple, metadata and CSV-byte checks, followed by alternating fresh-process timing runs. Registry/fixture
 hashes must match provenance before expectations are used.
 
 The runtime is one executable with no NumPy/SciPy installation. `dump3d` remains

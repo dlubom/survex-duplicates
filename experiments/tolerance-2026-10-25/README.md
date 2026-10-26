@@ -1,5 +1,11 @@
 # Tolerance experiment — 2026-10-25
 
+This is preserved historical evidence. Its Python scripts were retired from the
+active tree after the Go migration and remain available at immutable commit
+[`b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1`](https://github.com/dlubom/survex-duplicates/tree/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1).
+Follow the [archived reproduction guide](../../benchmarks/README.md#reproduce-the-archived-python-reference)
+before running the commands below; current development uses Go.
+
 ## Conclusion and scope
 
 An absolute 5 cm limit misses examples worth reviewing. Relative 5% of the
@@ -47,7 +53,8 @@ and that pair is exactly coincident.
 
 ## Method
 
-`compare.py` is an experimental script for this real dump, not the production
+[The archived compare.py](https://github.com/dlubom/survex-duplicates/blob/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1/experiments/tolerance-2026-10-25/compare.py)
+is an experimental script for this real dump, not the production
 parser or detector. It enumerates every pair in NumPy blocks **without KDTree**,
 computes four squared endpoint distances in centimetres and picks the smaller
 orientation-specific maximum. It proves int64 safety for the actual input range.
@@ -169,19 +176,20 @@ named station. It requires review and is not a confirmed false positive.
 
 ## Independent verification and reproduction
 
-`verification.py` uses MOVE/LINE, Fraction parsing and Python integers only,
+[The archived verification.py](https://github.com/dlubom/survex-duplicates/blob/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1/experiments/tolerance-2026-10-25/verification.py)
+uses MOVE/LINE, Fraction parsing and Python integers only,
 without importing compare.py or NumPy. A deterministic 512-leg sample (seed
 20261025, including both Mietusia examples) checked all 130816 pairs. Pair sets,
 rules, squared errors and orientations agreed, as did 67 available metadata
 records. There were zero discrepancies. This is a sample check, not a second
 full enumeration of 172.7 million pairs.
 
-From the repository root, use a separate output directory so preserved evidence
-is not overwritten:
+From the root of the archived `b99bef2` checkout, use a separate output directory
+so preserved evidence is not overwritten:
 
 ```bash
-python experiments/tolerance-2026-10-25/compare.py examples/kataster/KATASTER.3d --out-dir reports/tolerance-experiment
-python experiments/tolerance-2026-10-25/verification.py --out reports/tolerance-experiment/verification.json
+uv run --locked python experiments/tolerance-2026-10-25/compare.py examples/kataster/KATASTER.3d --out-dir reports/tolerance-experiment
+uv run --locked python experiments/tolerance-2026-10-25/verification.py --results reports/tolerance-experiment/results.json --out reports/tolerance-experiment/verification.json
 ```
 
 Both find dump3d in PATH. The comparison requires NumPy; the independent

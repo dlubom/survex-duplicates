@@ -1,7 +1,13 @@
 # Go migration: parity and performance investigation
 
 Date: 2026-10-26. Reference: Python implementation at `1143a96292d49457ea344d46410072ecbbcec1af`.
-Go is now the primary runtime under ADR 0004. The Python source remains unchanged as an executable verification reference.
+Go became the primary runtime under ADR 0004. At the time of this investigation,
+the Python source remained unchanged as an executable verification reference.
+It was subsequently retired from the active tree under
+[ADR 0005](../../docs/adr/0005-retire-python-reference.md). This report preserves
+the original measurements and verification boundaries; its tools remain
+available at immutable commit
+[`b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1`](https://github.com/dlubom/survex-duplicates/tree/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1).
 
 ## Result
 
@@ -88,7 +94,9 @@ All values are medians of five recorded runs. Raw individual runs, counters, sta
 
 ## Reproduce
 
-Run from the repository root. Benchmark measurement with peak RSS requires Unix; `--skip-benchmark` leaves the parity checks available independently.
+First create the [archived reference checkout](../../benchmarks/README.md#reproduce-the-archived-python-reference),
+then run from its root. Benchmark measurement with peak RSS requires Unix;
+`--skip-benchmark` leaves the parity checks available independently.
 
 ```bash
 uv sync --locked
@@ -100,11 +108,17 @@ go test -c -o bin/differential-probe .
 uv run --locked python -m benchmarks.compare_go --go-bin bin/survex-duplicates --probe-bin bin/differential-probe --out-dir reports/go-comparison --repeats 5
 ```
 
-New runs belong under `reports/`; do not overwrite this measurement snapshot. The synthetic generator is `benchmarks/datasets.py` with seed 20261025. Each raw result identifies its input hash, tolerance and filters. [validation.json](validation.json) records executed checks and their limits.
+New runs belong under `reports/`; do not overwrite this measurement snapshot. The synthetic generator is [the archived benchmarks/datasets.py](https://github.com/dlubom/survex-duplicates/blob/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1/benchmarks/datasets.py) with seed 20261025. Each raw result identifies its input hash, tolerance and filters. [validation.json](validation.json) records executed checks and their limits.
 
 ## Limits and portability
 
-Linux amd64 and Windows amd64 cross-builds succeeded, but those binaries were not executed locally. CI is configured to run Go tests on all three operating systems and the full differential comparison on Linux; the remote jobs have not run for this local change. No network-filesystem, power-loss or SIGKILL guarantee is claimed. Go build time and the size/cost of installing Go are not included in runtime comparisons.
+At the time of this record, Linux amd64 and Windows amd64 cross-builds succeeded,
+but those binaries were not executed locally. CI was configured to run Go tests
+on all three operating systems and the full differential comparison on Linux;
+the remote jobs had not run for that local change. Later native CI evidence is
+recorded in [the platform guide](../../docs/platforms.md). No network-filesystem,
+power-loss or SIGKILL guarantee is claimed. Go build time and the size/cost of
+installing Go are not included in runtime comparisons.
 
 Five repetitions on one machine support this migration decision; they do not establish a general performance bound. Individual timings and their spread can be inspected in the raw JSON.
 

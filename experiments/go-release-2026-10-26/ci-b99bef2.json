@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "run_id": 40376871944,
+  "source_revision": "b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1",
+  "workflow_conclusion": "success",
+  "version": "v1.1.0-dev.b99bef2f7cda",
+  "assets": [
+    {
+      "target": "darwin_amd64",
+      "archive_sha256": "ea611b654efcdb1ea7d861b1d346a99030ad7ea522739a12e47488683a8c93ef",
+      "executable_sha256": "307d72a3d3d5ddc9501f8304b3fd72eafdd78979747e00bd017aa5ad7699bff1",
+      "members": 29,
+      "source_commit_verified": true,
+      "cpu_header_verified": true
+    },
+    {
+      "target": "darwin_arm64",
+      "archive_sha256": "d810122d7e0827e19f449af1d61fb5113a5431db0f6bfbd1ac751efa9fb3d32b",
+      "executable_sha256": "0a1dde1fe76cf50efa7f64f3dd7450c5dbe40e2d3314a4aebe90ed0efb3d7c19",
+      "members": 29,
+      "source_commit_verified": true,
+      "cpu_header_verified": true
+    },
+    {
+      "target": "linux_amd64",
+      "archive_sha256": "9dba49b5fc4c8ea824d0d201978d993a5a05e834021da5233a0f86d15769e16c",
+      "executable_sha256": "4a5bb21d6c7c0d7c74e7f36fef2ad40a4c744f7cbceb78524df725ccadf0b2a5",
+      "members": 29,
+      "source_commit_verified": true,
+      "cpu_header_verified": true
+    },
+    {
+      "target": "linux_arm64",
+      "archive_sha256": "35a00254c1e6031ba0554791a2e7c953abbc4146e10cff7b328a309ffb311534",
+      "executable_sha256": "1ea37a516b4187a53d04fee582ec8f3782b76c3806b8f18d656a1edb178378be",
+      "members": 29,
+      "source_commit_verified": true,
+      "cpu_header_verified": true
+    },
+    {
+      "target": "windows_amd64",
+      "archive_sha256": "8cffbd6a2c684d75aff8cc70bc0fc9df08629dd2c8a817692a954df614ef9445",
+      "executable_sha256": "c1f64d551c740005085c8cd69d29aaf4a536b17ff7c776c5e07879297f030309",
+      "members": 29,
+      "source_commit_verified": true,
+      "cpu_header_verified": true
+    },
+    {
+      "target": "windows_arm64",
+      "archive_sha256": "cb776d12d48b5ba7425ba7602bc7f126378bbb29473aecbb5bca3b5bf468c280",
+      "executable_sha256": "613f03f9ccb001f5eb883ca5ff222d25bc0a19ba2d2d7c3e13415eb17fc5336e",
+      "members": 29,
+      "source_commit_verified": true,
+      "cpu_header_verified": true
+    }
+  ],
+  "native_local_readback": {
+    "target": "darwin_arm64",
+    "path": "empty",
+    "full_csv_comparisons": 8,
+    "version": "matched"
+  },
+  "source_files_verified": 138,
+  "asset_count": 14,
+  "run_url": "https://github.com/dlubom/survex-duplicates/actions/runs/40376871944",
+  "jobs": [
+    {
+      "id": 121762205531,
+      "name": "prepare",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206051,
+      "name": "checks / Go (windows_arm64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206066,
+      "name": "checks / Go (linux_amd64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206156,
+      "name": "checks / Python 3.12",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206191,
+      "name": "checks / Go (windows_amd64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206237,
+      "name": "checks / Python 3.13",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206244,
+      "name": "checks / Go (linux_arm64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206264,
+      "name": "checks / Python 3.14",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206336,
+      "name": "checks / Go (darwin_amd64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762206422,
+      "name": "checks / Go (darwin_arm64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762373524,
+      "name": "Package (darwin_arm64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762373587,
+      "name": "Package (linux_amd64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762373651,
+      "name": "Package (darwin_amd64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762373730,
+      "name": "Package (windows_arm64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762373733,
+      "name": "Package (linux_arm64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121762374079,
+      "name": "Package (windows_amd64)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121764127965,
+      "name": "assemble",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 121764364464,
+      "name": "publish",
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "artifact": {
+    "id": 12676635602,
+    "name": "verified-release",
+    "size_in_bytes": 19774309,
+    "url": "https://api.github.com/repos/dlubom/survex-duplicates/actions/artifacts/12676635602",
+    "archive_download_url": "https://api.github.com/repos/dlubom/survex-duplicates/actions/artifacts/12676635602/zip",
+    "expired": false,
+    "created_at": "2026-10-26T18:24:36Z",
+    "expires_at": "2027-01-24T18:20:31Z",
+    "updated_at": "2026-10-26T18:24:36Z",
+    "digest": "sha256:0d2a3695a54975ebaafe25672410df093447b9ac3a390bc408eb55bec9cd8d78",
+    "workflow_run": {
+      "id": 40376871944,
+      "repository_id": 1433528816,
+      "head_repository_id": 1433528816,
+      "head_branch": "main",
+      "head_sha": "b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1"
+    }
+  }
+}

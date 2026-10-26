@@ -7,9 +7,10 @@ The [platform guide](platforms.md) lists the six native ZIP packages.
 
 Run maintenance commands below from a source checkout, with Git and the pinned
 **Go 1.26.3** toolchain. Application users only need their extracted executable.
-The source repository keeps the Python implementation, lockfile, oracle and
-historical reports as verification evidence; they are not runtime dependencies
-of the Go package.
+The detector, tests, packaging and publication tools use Go. Historical reports
+remain in the repository; the former Python implementation and lockfile are
+available at the fixed pre-cleanup commit described in
+[ADR 0005](adr/0005-retire-python-reference.md).
 
 ## Build a local snapshot
 
@@ -104,8 +105,8 @@ jobs may run in parallel; assembly waits for both groups to finish successfully:
 
 1. Run Go checks on native Linux, macOS and Windows runners for both amd64 and
    arm64. Use the race detector where the pinned Go toolchain supports it.
-   Run the locked Python reference, real `dump3d` integration and differential
-   verification on Python 3.12, 3.13 and 3.14.
+   Run the independent Go oracle, all eight KATASTER CSV comparisons and real
+   `dump3d` integration on Linux. Validate workflow syntax with pinned actionlint.
 2. Build all six ZIP packages and verify their contents. Transfer them as
    workflow artifacts, then extract and execute each package on its matching
    native runner.
@@ -124,6 +125,14 @@ statuses and source SHA of the actual run before treating a version as ready.
 If upload or independent readback fails, the draft must remain unpublished.
 Do not substitute locally rebuilt files into a partially verified release set;
 repair the failure and verify a complete set with consistent provenance.
+
+The publication job invokes `go run ./cmd/publish` with the GitHub CLI (`gh`)
+available. It receives `GH_TOKEN`, `GH_REPO`, `RELEASE_VERSION`,
+`RELEASE_REVISION` and `RUN_URL` from the workflow environment; do not put tokens
+in files or command arguments. It saves publication/readback evidence to
+`build/release-publication.json`. Its tests replace GitHub commands with an
+offline stub and cover failure before publication and uncertain publication
+responses. No Python interpreter is needed for this workflow.
 
 ## Updating a version or platform
 

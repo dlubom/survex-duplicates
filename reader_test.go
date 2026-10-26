@@ -93,14 +93,12 @@ func readerProcessHelper(t *testing.T, mode string) string {
 func readerFixture(t *testing.T, name string) string {
 	t.Helper()
 	dir := filepath.Join("tests", "fixtures")
-	provenance, err := os.ReadFile(filepath.Join(dir, "provenance.json"))
-	if err != nil {
-		t.Fatal(err)
-	}
+	provenance := readVerifiedKataster(t, filepath.Join(dir, "provenance.json"),
+		"282ad9665dc31ce37f013369cfb262c522021c5f41dfd220c1a513f9951fd11a")
 	var saved struct {
 		SHA256 map[string]string `json:"sha256"`
 	}
-	if err = json.Unmarshal(provenance, &saved); err != nil {
+	if err := json.Unmarshal(provenance, &saved); err != nil {
 		t.Fatal(err)
 	}
 	path := filepath.Join(dir, name)

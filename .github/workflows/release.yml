@@ -151,6 +151,10 @@ jobs:
         with:
           ref: ${{ needs.prepare.outputs.revision }}
           fetch-depth: 0
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: .go-version
+          cache: false
       - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
         with:
           name: verified-release
@@ -158,7 +162,7 @@ jobs:
       - name: Publish only the complete verified release
         env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: bash scripts/publish-release.sh
+        run: go run ./cmd/publish
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:

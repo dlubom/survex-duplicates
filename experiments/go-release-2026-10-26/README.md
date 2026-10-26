@@ -1,13 +1,21 @@
 # Go release qualification — 2026-10-26
 
-This is a new verification record for the Go release preparation. It preserves
+This is the original local verification record for the Go release preparation. It preserves
 the earlier [migration measurements](../go-2026-10-26/README.md) unchanged.
 The requested release matrix follows PocketTopo Exporter: Linux, macOS and
 Windows, each on amd64 and arm64, distributed as six native ZIPs.
 
+The counts, hashes and limitations below describe that qualification snapshot.
+The Python verification tools were later retired from the active tree and can
+be recovered from the [archived reference checkout](../../benchmarks/README.md#reproduce-the-archived-python-reference)
+at immutable commit `b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1`. Subsequent native
+CI evidence is recorded in [the platform guide](../../docs/platforms.md).
+
 ## Evidence
 
 - [validation.json](validation.json): executed checks, counts, review and limits.
+- [ci-b99bef2.json](ci-b99bef2.json): subsequent terminal migration CI and
+  independent readback of its downloaded six-platform artifact set.
 - [parity.json](parity.json): fresh 160 full CSV comparisons and 320 ordered
   exact-result comparisons, including reader metadata and both endpoint errors.
 - [package-qualification.json](package-qualification.json): identities and complete
@@ -46,10 +54,11 @@ checked against the qualified binaries. Archive hashes may differ because
 documentation and source-manifest contents changed. The local ZIPs are previews,
 not published assets or tagged releases.
 
-Only macOS ARM64 was executed locally. Native execution on the other five
-platforms and GitHub-hosted CI for the delivered commit remain release gates.
-The workflow runs those checks before publishing; configuration and successful
-cross-builds do not establish that remote runtime tests have passed.
+Only macOS ARM64 was executed locally for this snapshot. Native execution on
+the other five platforms and GitHub-hosted CI for the delivered commit remained
+release gates at that point. The workflow runs those checks before publishing;
+configuration and successful cross-builds do not establish that remote runtime
+tests have passed.
 
 Cold Go test compiles encountered insufficient disk space. Task-created caches
 and regenerable local artifacts were cleaned, and the final full race command
@@ -57,7 +66,8 @@ completed successfully. The packaging integration also found and corrected a
 Homebrew layout assumption: the Go license is now a pinned repository file,
 and a regression test opens every required bundle member.
 
-Reproduction commands and publication requirements are in
-[the release guide](../../docs/releasing.md). No inputs or historical numerical
+Current Go packaging commands and publication requirements are in
+[the release guide](../../docs/releasing.md); use the archived checkout to replay
+the Python comparisons described here. No inputs or historical numerical
 results were changed. Software remains MIT licensed; survey-derived records
 retain the attribution and CC BY-SA terms in [NOTICE.md](../../NOTICE.md).

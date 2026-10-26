@@ -1,5 +1,13 @@
 # Verification record
 
+This is an append-only history of checks at successive source snapshots. Older
+references to active Python tooling, pending pushes or unexecuted CI describe
+those snapshots. For current development commands use
+[README.md](../README.md#development-and-verification); for Python reproduction
+use the [immutable reference checkout](../benchmarks/README.md#reproduce-the-archived-python-reference).
+The latest completed checks are recorded under
+[Python retirement](#python-retirement--2026-10-26).
+
 ## Initial implementation — 2026-10-25
 
 The initial implementation used the approved specification, glossary and ADRs.
@@ -218,3 +226,51 @@ These checks used an uncommitted local snapshot. No commit, push, tag or public
 release was made, and no GitHub-hosted run for these changes has completed.
 The other five native platforms remain unexecuted locally. The workflow gates
 tag publication on all six native runs and independent uploaded-asset readback.
+
+## Python retirement — 2026-10-26
+
+Migration commit `b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1` completed
+[GitHub Actions run 40376871944](https://github.com/dlubom/survex-duplicates/actions/runs/40376871944)
+successfully: six native Go checks, three Python-reference checks, six native
+package jobs and complete-set assembly. Publication was correctly skipped for
+the branch push. The [CI and independent artifact readback record](../experiments/go-release-2026-10-26/ci-b99bef2.json)
+includes exact job identities, artifact metadata and source fingerprints.
+The downloaded six-archive set passed independent checksum, inventory and
+ELF/Mach-O/PE architecture checks. The extracted macOS arm64 binary, run with
+an empty `PATH`, reproduced all eight complete reference CSVs.
+
+This established the retirement baseline in [ADR 0005](adr/0005-retire-python-reference.md).
+The active tree now uses Go for the detector, tests, packaging and publication.
+The Python implementation, lockfile and experiment scripts remain reproducible
+from the immutable baseline above. Historical numerical results and all survey,
+fixture and expected-report bytes remain unchanged.
+
+Executed on the cleanup working tree with Go 1.26.3, macOS arm64 and real
+Survex 1.4.24:
+
+- `go test -p 1 -count=1 ./...`: 230 tests/subtests passed, no test skips.
+- `go test -p 1 -race -count=1 ./...`: the same 230 tests/subtests passed.
+  The two command-wrapper packages contain no tests; their implementations
+  are exercised through the internal packages.
+- `go vet -p 1 ./...`, Go formatting, actionlint 1.7.12 and `git diff --check`
+  passed.
+- Independent rational-oracle checks cover a documented 512-leg registry
+  sample, two tolerances, four filters and two batch sizes. Real binary,
+  LEG and MOVE/LINE inputs agree through the CLI. All eight complete saved
+  CSV comparisons and failure-before-publication checks passed.
+- The Go publisher preserves the old publication gates and extends offline
+  coverage to 34 leaf scenarios. No test performs an external publication.
+- All six local snapshot ZIPs passed archive verification and complete-set
+  assembly. The packaged macOS arm64 demo passed both full-CSV smoke checks
+  and its version check. Other native targets require their own CI execution.
+- Independent code, workflow and documentation review found no remaining
+  code defect. Archived reproduction commands and historical-status navigation
+  were corrected following review.
+
+These local cleanup checks do not assert remote success for a later commit.
+Inspect the source SHA and terminal status of its own GitHub Actions run before
+treating that commit as verified on all six native targets. Windows arm64
+intentionally omits the unsupported Go race detector; binary Survex integration
+runs on both native Linux targets and locally, while other native jobs may skip
+it when `dump3d` is unavailable. No new performance measurement was made during
+cleanup; the preserved migration measurements still describe the measured code.

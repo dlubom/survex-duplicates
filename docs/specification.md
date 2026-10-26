@@ -4,8 +4,9 @@ Approved design: 2026-10-25. Publication amendment: legs carrying DUPLICATE
 are excluded by default; `--include-duplicates` restores the original all-flags
 audit. [ADR 0003](adr/0003-exclude-acknowledged-duplicates.md) records the owner's
 subsequent decision. Historical 220/62 registry results describe that explicit audit.
-Runtime amendment (2026-10-26): ADR 0004 makes Go the primary implementation
-while retaining the original Python implementation as a verification reference.
+Runtime amendment (2026-10-26): [ADR 0004](adr/0004-go-runtime.md) makes Go the
+primary implementation. [ADR 0005](adr/0005-retire-python-reference.md) retires
+active Python code after qualification and preserves its fixed Git reference.
 This English specification replaces the original Polish document for publication.
 
 ## Purpose and scope
@@ -46,8 +47,9 @@ Go 1.26 module, standard library only; release and CI builds use the pinned
 Go 1.26.3 toolchain. Keep reader, exact geometry, streaming search,
 report and CLI responsibilities separate. Use math/big for exact integer/rational
 arithmetic and preserve the reference decimal formatting. Record tested versions.
-The preserved Python 3.12+/NumPy/SciPy implementation, pytest and independent
-Python-integer oracle are development verification tools, not runtime dependencies.
+Current tests, packaging and publication tools also use Go. The former Python
+implementation and its lockfile are archived at the fixed commit in ADR 0005;
+they are used only when replaying historical comparisons.
 Survex is an external dependency only for binary input; reading a saved dump
 must work without Survex installed.
 
@@ -143,8 +145,7 @@ saved dumps without requiring Survex; real binary integration is separate.
 ## Data model, identity and station names
 
 Store each endpoint as a three-element int64 point after checking each
-coordinate is a valid signed int32 centimetre value. The Python reference
-retains int64 NumPy arrays `A_cm` and `B_cm` of shape `(n, 3)`. Parse metres
+coordinate is a valid signed int32 centimetre value. Parse metres
 exactly; multiplying by 100 must produce an integer. Reject off-grid values
 instead of silently rounding. The supported spatial axes are East, North, Up.
 
@@ -206,25 +207,25 @@ Do not use the longer/mean length or a floor radius for point legs.
 
 The predicate must not overflow. Subtract validated int32 coordinates in int64,
 then square and sum with math/big integers; int64 cannot hold every squared-distance
-sum across the full int32 range. The independent Python oracle converts
-coordinates to Python int before subtraction and squaring. A vector optimisation needs a proven safe range plus an
+sum across the full int32 range. The independent Go oracle uses math/big
+rationals for distances and thresholds without production helpers. A vector optimisation needs a proven safe range plus an
 exact fallback. No arbitrary numeric epsilon or rounded CSV value may decide
 a match. Floating roots are only for accepted-result formatting; integer isqrt
 is allowed for index radii.
 
 ## KDTree search and streaming
 
-Use the orientation-independent bounding key in centimetres. This reference
-notation defines the key; the Go implementation stores it as six int64 values:
+Use the orientation-independent bounding key in centimetres, stored as six
+int64 values:
 
-```python
-F_cm = np.concatenate([np.minimum(A_cm, B_cm), np.maximum(A_cm, B_cm)], axis=1)
-tree = KDTree(F_cm.astype(np.float64))
+```text
+F = [min(A.x,B.x), min(A.y,B.y), min(A.z,B.z),
+     max(A.x,B.x), max(A.y,B.y), max(A.z,B.z)]
 ```
 
 The six coordinates are component-wise minima followed by maxima. Lexicographic
 sorting of the real endpoints is not an equivalent key. A matching pair has
-coordinate differences within tolerance in F; use the maximum norm `p=np.inf`.
+coordinate differences within tolerance in F; use the maximum norm (L-infinity).
 The default 6D Euclidean norm could miss valid endpoint matches.
 
 Query i at `ceil(rho * sqrt(length_i_sq))` centimetres in relative mode, or
@@ -232,18 +233,12 @@ Query i at `ceil(rho * sqrt(length_i_sq))` centimetres in relative mode, or
 length; per-query radius is valid regardless of leg order. Round without float:
 for exact rational radius square q, return `2**32` if `q >= (2**32)**2`;
 otherwise set `k=isqrt(floor(q))` and increment if `k*k < q` exactly.
-For q=0 return 0. Go queries use this integer directly; only the Python/SciPy reference converts
-the final integer to float for KDTree.
+For q=0 return 0. Go queries use this integer directly.
 This is `min(ceil(sqrt(q)),2**32)` and covers every possible int32 coordinate
 difference. The outward rounding may add candidates, rejected by the predicate.
 
-```python
-neighbors = tree.query_ball_point(F_cm[i].astype(np.float64),
-    r=query_radius_cm[i], p=np.inf, eps=0.0, return_sorted=True)
-```
-
-The Go KDTree performs exact integer maximum-norm queries. In the Python
-reference, SciPy eps=0.0 disables approximate searching; it is not user tolerance.
+The Go KDTree performs exact integer maximum-norm queries and returns sorted
+neighbours. Approximate searching is outside the contract.
 The Go median-partition implementation sorts partitions during construction,
 which costs O(n log² n); this is not a guarantee about query complexity.
 Process selected legs in original ID order, preserve an explicit mapping
@@ -252,8 +247,8 @@ higher IDs, and evaluate the exact predicate. Emit pairs ordered by `(leg_a,leg_
 Batching uses the appropriate radius for every query leg and must return every
 neighbour. There is no k-nearest-neighbour cap or hidden output truncation.
 
-No n-by-n matrix, global candidate-pair list, full output list or production
-`query_pairs`. Stream accepted rows to the temporary CSV. One query may return
+No n-by-n matrix, global candidate-pair list or full output list. Stream
+accepted rows to the temporary CSV. One query may return
 n neighbours: memory is O(n + NODE storage) at batch 1, with potential O(B*n)
 neighbour-list storage for batch B. K can reach n(n-1)/2. Do not claim an
 O(n+K) guarantee for this KDTree; measure actual performance.
@@ -265,7 +260,7 @@ settings, batch size, detected format and read/build/search-with-write times.
 ## CSV report
 
 UTF-8, comma delimiter, a header even for zero matches, minimal CSV quoting
-and CRLF record endings compatible with the preserved Python csv.writer. Empty metadata is an empty field; reversed and boolean indicators are
+and CRLF record endings matching the preserved reference CSVs. Empty metadata is an empty field; reversed and boolean indicators are
 0/1. Column order:
 
 ```text
@@ -438,10 +433,11 @@ established evidence without overwriting the historical record.
 | geometry.go | Exact tolerance, predicate, orientation and endpoint errors. |
 | search.go | F key, KDTree and ordered streaming callback. |
 | report.go | CSV formatting and atomic publication. |
-| *_test.go | Go tests at the approved seams; test-only differential probe. |
-| survex_duplicates/ / pyproject.toml / uv.lock | Preserved Python verification reference and locked dependencies. |
-| tests/ | Python reference tests, independent oracle and real fixtures. |
-| benchmarks/ | Reproducible generators, measurement and full verification. |
+| *_test.go | Go tests at the approved seams, independent exhaustive oracle and full saved-result comparisons. |
+| cmd/release/ / internal/releasepack/ | Native packaging, archive verification and packaged-demo checks. |
+| cmd/publish/ / internal/releasepublish/ | Gated release publication through gh, with offline failure tests. |
+| tests/fixtures/ | Preserved real Survex fixtures and provenance. |
+| benchmarks/ / experiments/ | Historical numerical evidence and instructions for replaying the archived reference. |
 | examples/kataster/ | Complete portable registry demo with provenance and license. |
 | README.md / AGENTS.md | Human and agent entry points. |
 

@@ -3,7 +3,42 @@
 The primary runtime is now Go. See the separate
 [Go/Python comparison](../experiments/go-2026-10-26/README.md) for repeated
 end-to-end measurements and byte-for-byte CSV verification. The Python
-measurements below are preserved historical evidence.
+measurements below are preserved historical evidence. Their implementation,
+generators and lockfile are archived at commit
+[`b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1`](https://github.com/dlubom/survex-duplicates/tree/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1);
+the current tree and CI use Go.
+
+## Reproduce the archived Python reference
+
+From the current repository, create a separate detached worktree. The destination
+must not already exist. Run the following commands in a terminal with Git,
+Go 1.26.3 and uv available; real binary-input checks additionally need Survex.
+
+```bash
+git worktree add --detach ../survex-duplicates-python-reference b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1
+cd ../survex-duplicates-python-reference
+uv sync --locked
+```
+
+The commands in this guide and in the preserved experiment guides that use
+Python are historical reproduction commands: run them inside this archived
+worktree. They are not prerequisites for current Go development. Save new
+measurements in that worktree's ignored `reports/` directory. Preserve its
+original evidence files.
+
+To repeat the full Go/Python parity and performance investigation there:
+
+```bash
+go build -o bin/survex-duplicates .
+go test -c -o bin/differential-probe .
+uv run --locked python -m benchmarks.compare_go --go-bin bin/survex-duplicates --probe-bin bin/differential-probe --out-dir reports/go-comparison --repeats 5
+```
+
+Use `--skip-benchmark` instead of `--repeats 5` for parity checks without timing.
+Performance measurements require Unix process-resource reporting. Run timed
+comparisons separately from builds and tests, on an otherwise idle machine.
+
+## Historical publication measurements
 
 Publication measurements were made on Apple M4 (10 logical cores), Mac16,10, 16 GiB RAM, macOS 27.0.1 arm64. Python 3.12.14, NumPy 2.3.5, SciPy 1.16.3. Each case runs sequentially in a fresh process.
 
@@ -21,11 +56,11 @@ Seed 20261025; batch size 1. Inputs are generated as full text dumps, then read 
 
 ## Generator and expected results
 
-[datasets.py](datasets.py) uses cells separated by 100 metres. Lengths are 4, 20, 100, 1000 or 3000 cm, sometimes on a diagonal, so relative query radii differ. Separate cells cannot match at the tested thresholds. Sparse inputs have no pairs. Repeated inputs contain two oppositely oriented legs per cell: every fourth pair is shifted by (30,40,0) cm with length at least 30 m; the others coincide. Geometry therefore accepts all at 5%, while absolute 5 cm rejects the shifted pairs.
+[The archived datasets.py](https://github.com/dlubom/survex-duplicates/blob/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1/benchmarks/datasets.py) uses cells separated by 100 metres. Lengths are 4, 20, 100, 1000 or 3000 cm, sometimes on a diagonal, so relative query radii differ. Separate cells cannot match at the tested thresholds. Sparse inputs have no pairs. Repeated inputs contain two oppositely oriented legs per cell: every fourth pair is shifted by (30,40,0) cm with length at least 30 m; the others coincide. Geometry therefore accepts all at 5%, while absolute 5 cm rejects the shifted pairs.
 
 The second leg of every tenth repeated cell is SPLAY; all other second legs are DUPLICATE. This deliberately exercises acknowledged-repeat exclusion: normal selection omits the DUPLICATE copies, and excluding SPLAY removes the remaining copies too. Explicit audit selection keeps the full repeated workload. Sparse/dense inputs mark every tenth leg SPLAY. The dense case contains 400 identical legs with alternating orientation and 79,800 geometric pairs.
 
-Each complete CSV is read back and compared, in order, with all pair IDs and orientations implied independently by the construction. Smaller 80-leg versions of every dataset, both tolerance modes and all filter settings are also checked against the independent exhaustive oracle in tests/test_search.py. Production code does not retain a global result list.
+Each complete CSV is read back and compared, in order, with all pair IDs and orientations implied independently by the construction. Smaller 80-leg versions of every dataset, both tolerance modes and all filter settings were also checked against the independent exhaustive oracle in the archived tests/test_search.py. Production code does not retain a global result list.
 
 ## Publication results
 

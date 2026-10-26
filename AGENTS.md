@@ -20,9 +20,10 @@ The agreed TDD seams are:
 
 Write tests through these interfaces. Keep the oracle independent of the
 production predicate and KDTree. Qualification uses exact centimetre arithmetic:
-use arbitrary-precision squares in Go and convert NumPy coordinates to Python
-integers in the independent oracle. Streaming production code retains only the
-current query batch, not all candidates or results.
+use arbitrary-precision squares in Go. The independent exhaustive oracle uses
+rational arithmetic without calling the production predicate or spatial index.
+Streaming production code retains only the current query batch, not all
+candidates or results.
 
 ## Data and portability
 

@@ -114,10 +114,12 @@ The Windows ARM64 race-detector limitation comes from the
 The Go tests verify all eight KATASTER settings; each extracted-archive smoke
 test checks `--version` and complete CSV bytes for the 218-pair default and
 60-pair no-SPLAY reports.
-Configuring these jobs is not evidence that they have passed. At preparation
-time, native local execution has been verified on macOS ARM64; the other
-targets require completed remote jobs for the release's exact revision.
-A successful cross-build alone does not verify runtime behavior.
+All six native test and package jobs passed for migration commit
+[`b99bef2`](https://github.com/dlubom/survex-duplicates/commit/b99bef2f7cda6ccc97432fd32f70ded9ea0a2de1)
+in [workflow run 40376871944](https://github.com/dlubom/survex-duplicates/actions/runs/40376871944),
+including downloaded-archive execution. That result applies to that exact
+commit. Later changes still require completed jobs for their own revision;
+workflow configuration or cross-build success alone does not verify runtime behavior.
 
 ## Output filesystem behavior
 
